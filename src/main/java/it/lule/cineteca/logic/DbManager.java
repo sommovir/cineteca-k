@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package it.cnr.istc.cineteca.k;
+package it.lule.cineteca.logic;
 
 /**
  *
  * @author sommovir
  */
-public class Main {
+public class DbManager {
     
 }

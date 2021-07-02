@@ -11,15 +11,15 @@ import java.util.Date;
  *
  * @author lele
  */
-public class FilmDirector {
+public class FilmDirectorEntity {
 
     private Long id;
     private String name;
     private String surname;
     private Date dateOfBirth;
-    private Movie film;
+    private MovieEntity film;
 
-    public FilmDirector() {
+    public FilmDirectorEntity() {
     }
     
     public Long getId() {
@@ -54,11 +54,11 @@ public class FilmDirector {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public Movie getFilm() {
+    public MovieEntity getFilm() {
         return film;
     }
 
-    public void setFilm(Movie film) {
+    public void setFilm(MovieEntity film) {
         this.film = film;
     }
 

@@ -6,7 +6,7 @@
 package it.lule.cineteca.logic.prova.gui;
 
 import it.lule.cineteca.logic.prova.logic.FakeManagerMovieDB;
-import it.lule.cineteca.logic.prova.logic.Movie;
+import it.lule.cineteca.logic.prova.logic.MovieEntity;
 import javax.swing.JTextField;
 
 /**
@@ -14,7 +14,7 @@ import javax.swing.JTextField;
  * @author lele
  */
 public class MovieJPanel extends javax.swing.JPanel {
-    private Movie movie = new Movie();
+    private MovieEntity movie = new MovieEntity();
     private FakeManagerMovieDB fakeManagerMovieDB = new FakeManagerMovieDB();
     
     /**

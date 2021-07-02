@@ -21,5 +21,6 @@
         <!-- Names the annotated entity class -->
         <mapping class="it.lule.cineteca.logic.entities.Film"/>
         <mapping class="it.lule.cineteca.logic.entities.Regista"/>
+        <mapping class="it.lule.cineteca.logic.entities.UserEntity"/>
     </session-factory>
 </hibernate-configuration>

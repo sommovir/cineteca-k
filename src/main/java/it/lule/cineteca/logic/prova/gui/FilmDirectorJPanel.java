@@ -6,16 +6,16 @@
 package it.lule.cineteca.logic.prova.gui;
 
 import it.lule.cineteca.logic.prova.logic.FakeManagerFilmDirectorDB;
-import it.lule.cineteca.logic.prova.logic.FilmDirector;
-import it.lule.cineteca.logic.prova.logic.Movie;
+import it.lule.cineteca.logic.prova.logic.FilmDirectorEntity;
+import it.lule.cineteca.logic.prova.logic.MovieEntity;
 
 /**
  *
  * @author lele
  */
 public class FilmDirectorJPanel extends javax.swing.JPanel {
-    private Movie movie = new Movie();
-    private FilmDirector filmDirector = new FilmDirector();
+    private MovieEntity movie = new MovieEntity();
+    private FilmDirectorEntity filmDirector = new FilmDirectorEntity();
     private FakeManagerFilmDirectorDB fakeManagerFilmDirectorDB = new FakeManagerFilmDirectorDB();
     
     /**
@@ -139,7 +139,7 @@ public class FilmDirectorJPanel extends javax.swing.JPanel {
     private void jButtonVisualizzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVisualizzaActionPerformed
         fakeManagerFilmDirectorDB.getFilmDirecotrs();
         
-        for (FilmDirector filmDirecotr : fakeManagerFilmDirectorDB.getFilmDirecotrs()) {
+        for (FilmDirectorEntity filmDirecotr : fakeManagerFilmDirectorDB.getFilmDirecotrs()) {
             System.out.println(""+ filmDirecotr.getName() + " " + filmDirecotr.getSurname());
         }
         

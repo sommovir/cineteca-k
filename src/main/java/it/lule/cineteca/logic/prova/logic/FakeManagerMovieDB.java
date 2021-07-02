@@ -13,17 +13,17 @@ import java.util.List;
  * @author lele
  */
 public class FakeManagerMovieDB {
-    private List <Movie> movies = new ArrayList<>();
+    private List <MovieEntity> movies = new ArrayList<>();
 
-    public List<Movie> getMovies() {
+    public List<MovieEntity> getMovies() {
         return movies;
     }
 
-    public void setMovies(List<Movie> movies) {
+    public void setMovies(List<MovieEntity> movies) {
         this.movies = movies;
     }
     
-    public void addMovies(Movie movie) {
+    public void addMovies(MovieEntity movie) {
         this.movies.add(movie);
     }    
 }

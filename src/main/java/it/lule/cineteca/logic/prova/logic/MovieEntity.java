@@ -11,14 +11,14 @@ import java.util.Date;
  *
  * @author lele
  */
-public class Movie {
+public class MovieEntity {
     private Long id;
     private String titoloTradotto;
     private String originalTitle;    
     private Date releaseDate;
     private String mainActor;
 
-    public Movie() {
+    public MovieEntity() {
     }
      
     public Long getId() {

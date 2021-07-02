@@ -13,17 +13,17 @@ import java.util.List;
  * @author lele
  */
 public class FakeManagerFilmDirectorDB {
-    private List <FilmDirector> filmDirecotrs = new ArrayList<>();
+    private List <FilmDirectorEntity> filmDirecotrs = new ArrayList<>();
 
-    public List<FilmDirector> getFilmDirecotrs() {
+    public List<FilmDirectorEntity> getFilmDirecotrs() {
         return filmDirecotrs;
     }
 
-    public void setFilmDirecotrs(List<FilmDirector> filmDirecotrs) {
+    public void setFilmDirecotrs(List<FilmDirectorEntity> filmDirecotrs) {
         this.filmDirecotrs = filmDirecotrs;
     }
     
-    public void addFilmDirecotrs(FilmDirector filmDirecotr) {
+    public void addFilmDirecotrs(FilmDirectorEntity filmDirecotr) {
         this.filmDirecotrs.add(filmDirecotr);
     }
     

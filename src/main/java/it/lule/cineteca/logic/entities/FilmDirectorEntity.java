@@ -6,6 +6,7 @@
 package it.lule.cineteca.logic.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,7 +18,7 @@ import javax.persistence.Id;
  * @author Luca Coraci <luca.coraci@istc.cnr.it> ISTC-CNR
  */
 @Entity
-public class Regista implements Serializable {
+public class FilmDirectorEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -25,6 +26,11 @@ public class Regista implements Serializable {
     private Long id;
     @Column(unique = true,length = 256)
     private String nome;
+
+    private String name;
+    private String surname;
+    private Date dateOfBirth;
+    private MovieEntity movieEntity;  
 
     public Long getId() {
         return id;
@@ -34,34 +40,64 @@ public class Regista implements Serializable {
         this.id = id;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-    
-    
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Regista)) {
-            return false;
-        }
-        Regista other = (Regista) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
-
     public String getNome() {
         return nome;
     }
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public MovieEntity getMovieEntity() {
+        return movieEntity;
+    }
+
+    public void setMovieEntity(MovieEntity movieEntity) {
+        this.movieEntity = movieEntity;
+    }
+    
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (id != null ? id.hashCode() : 0);
+        return hash;
+    }
+        
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof FilmDirectorEntity)) {
+            return false;
+        }
+        FilmDirectorEntity other = (FilmDirectorEntity) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
     }
 
     @Override

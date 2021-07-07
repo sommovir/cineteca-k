@@ -5,9 +5,9 @@
  */
 package it.lule.cineteca.logic.prova.gui;
 
+import it.lule.cineteca.logic.entities.FilmDirectorEntity;
+import it.lule.cineteca.logic.entities.MovieEntity;
 import it.lule.cineteca.logic.prova.logic.FakeManagerFilmDirectorDB;
-import it.lule.cineteca.logic.prova.logic.FilmDirectorEntity;
-import it.lule.cineteca.logic.prova.logic.MovieEntity;
 
 /**
  *

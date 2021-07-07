@@ -19,8 +19,8 @@
         <!--<property name="hbm2ddl.auto">validate</property>-->
 
         <!-- Names the annotated entity class -->
-        <mapping class="it.lule.cineteca.logic.entities.Film"/>
-        <mapping class="it.lule.cineteca.logic.entities.Regista"/>
+        <mapping class="it.lule.cineteca.logic.entities.FilmDirectorEntity"/>
+        <mapping class="it.lule.cineteca.logic.entities.MovieEntity"/>
         <mapping class="it.lule.cineteca.logic.entities.UserEntity"/>
     </session-factory>
 </hibernate-configuration>

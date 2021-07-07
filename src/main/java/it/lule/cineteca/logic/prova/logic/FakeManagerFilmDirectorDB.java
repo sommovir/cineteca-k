@@ -5,6 +5,7 @@
  */
 package it.lule.cineteca.logic.prova.logic;
 
+import it.lule.cineteca.logic.entities.FilmDirectorEntity;
 import java.util.ArrayList;
 import java.util.List;
 

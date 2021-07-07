@@ -6,6 +6,7 @@
 package it.lule.cineteca.logic.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,21 +18,18 @@ import javax.persistence.OneToOne;
  * @author Luca Coraci <luca.coraci@istc.cnr.it> ISTC-CNR
  */
 @Entity
-public class Film implements Serializable {
+public class MovieEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String nome;
-    private int anno;
-    private String attorePrincipale;
-    private String titoloOriginale;
+    private String titoloTradotto;
+    private String originalTitle;    
+    private Date releaseDate;
+    private String mainActor;
     @OneToOne
-    private Regista regista;
-    
-    
-    
+    private FilmDirectorEntity filmDirectorEntity;
 
     public Long getId() {
         return id;
@@ -41,44 +39,44 @@ public class Film implements Serializable {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getTitoloTradotto() {
+        return titoloTradotto;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setTitoloTradotto(String titoloTradotto) {
+        this.titoloTradotto = titoloTradotto;
     }
 
-    public int getAnno() {
-        return anno;
+    public String getOriginalTitle() {
+        return originalTitle;
     }
 
-    public void setAnno(int anno) {
-        this.anno = anno;
+    public void setOriginalTitle(String originalTitle) {
+        this.originalTitle = originalTitle;
     }
 
-    public String getAttorePrincipale() {
-        return attorePrincipale;
+    public Date getReleaseDate() {
+        return releaseDate;
     }
 
-    public void setAttorePrincipale(String attorePrincipale) {
-        this.attorePrincipale = attorePrincipale;
+    public void setReleaseDate(Date releaseDate) {
+        this.releaseDate = releaseDate;
     }
 
-    public String getTitoloOriginale() {
-        return titoloOriginale;
+    public String getMainActor() {
+        return mainActor;
     }
 
-    public void setTitoloOriginale(String titoloOriginale) {
-        this.titoloOriginale = titoloOriginale;
+    public void setMainActor(String mainActor) {
+        this.mainActor = mainActor;
     }
 
-    public Regista getRegista() {
-        return regista;
+    public FilmDirectorEntity getFilmDirectorEntity() {
+        return filmDirectorEntity;
     }
 
-    public void setRegista(Regista regista) {
-        this.regista = regista;
+    public void setFilmDirectorEntity(FilmDirectorEntity filmDirectorEntity) {
+        this.filmDirectorEntity = filmDirectorEntity;
     }
     
     
@@ -93,10 +91,10 @@ public class Film implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Film)) {
+        if (!(object instanceof MovieEntity)) {
             return false;
         }
-        Film other = (Film) object;
+        MovieEntity other = (MovieEntity) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

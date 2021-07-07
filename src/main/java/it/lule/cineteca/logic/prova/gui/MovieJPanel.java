@@ -5,8 +5,8 @@
  */
 package it.lule.cineteca.logic.prova.gui;
 
+import it.lule.cineteca.logic.entities.MovieEntity;
 import it.lule.cineteca.logic.prova.logic.FakeManagerMovieDB;
-import it.lule.cineteca.logic.prova.logic.MovieEntity;
 import javax.swing.JTextField;
 
 /**

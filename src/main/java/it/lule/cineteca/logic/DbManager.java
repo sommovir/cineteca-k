@@ -5,7 +5,7 @@
  */
 package it.lule.cineteca.logic;
 
-import it.lule.cineteca.logic.entities.Regista;
+import it.lule.cineteca.logic.entities.FilmDirectorEntity;
 import it.lule.cineteca.logic.exceptions.DBBadParamaterException;
 import it.lule.cineteca.logic.exceptions.DBUniqueViolationException;
 import javax.persistence.PersistenceException;
@@ -33,7 +33,7 @@ public class DbManager {
         super();
     }
 
-    public long  createRegista(Regista regista) throws DBUniqueViolationException, DBBadParamaterException {
+    public long  createRegista(FilmDirectorEntity regista) throws DBUniqueViolationException, DBBadParamaterException {
         if (regista == null) {
             return -1;
         }

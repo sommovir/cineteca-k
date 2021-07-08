@@ -12,12 +12,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 /**
  *
  * @author Luca Coraci <luca.coraci@istc.cnr.it> ISTC-CNR
  */
 @Entity
+@Table(name = "movie")
 public class MovieEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;

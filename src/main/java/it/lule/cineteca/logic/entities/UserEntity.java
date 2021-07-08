@@ -6,6 +6,7 @@
 package it.lule.cineteca.logic.entities;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,9 +24,9 @@ public class UserEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(unique = true, length = 120)
     private String user;
-    private String password;
-    private String cryptedPassword;     
+    private String password;    
 
     public Long getId() {
         return id;
@@ -49,14 +50,6 @@ public class UserEntity implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getCryptedPassword() {
-        return cryptedPassword;
-    }
-
-    public void setCryptedPassword(String cryptedPassword) {
-        this.cryptedPassword = cryptedPassword;
     }
     
 

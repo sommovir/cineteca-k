@@ -12,12 +12,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 /**
  *
  * @author Luca Coraci <luca.coraci@istc.cnr.it> ISTC-CNR
  */
 @Entity
+@Table(name = "filmdirector")
 public class FilmDirectorEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -30,6 +33,7 @@ public class FilmDirectorEntity implements Serializable {
     private String name;
     private String surname;
     private Date dateOfBirth;
+    @OneToOne
     private MovieEntity movieEntity;  
 
     public Long getId() {

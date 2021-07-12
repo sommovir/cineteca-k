@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package it.lule.cineteca.logic.prova.gui;
+package it.lule.cineteca.logic.prova.gui.movie;
 
 /**
  *
@@ -27,7 +27,7 @@ public class MovieJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        movieJPanel1 = new it.lule.cineteca.logic.prova.gui.MovieJPanel();
+        movieJPanel1 = new it.lule.cineteca.logic.prova.gui.movie.MovieJPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -86,6 +86,6 @@ public class MovieJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private it.lule.cineteca.logic.prova.gui.MovieJPanel movieJPanel1;
+    private it.lule.cineteca.logic.prova.gui.movie.MovieJPanel movieJPanel1;
     // End of variables declaration//GEN-END:variables
 }

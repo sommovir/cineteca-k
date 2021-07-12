@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package it.lule.cineteca.logic.prova.gui.jlist.model;
+package it.lule.cineteca.logic.prova.gui.logic.model;
 
 import it.lule.cineteca.logic.entities.FilmDirectorEntity;
 import javax.swing.DefaultListModel;

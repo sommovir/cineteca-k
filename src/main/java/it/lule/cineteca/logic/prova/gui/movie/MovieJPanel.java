@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package it.lule.cineteca.logic.prova.gui;
+package it.lule.cineteca.logic.prova.gui.movie;
 
 import it.lule.cineteca.logic.entities.MovieEntity;
 import it.lule.cineteca.logic.prova.logic.FakeManagerMovieDB;

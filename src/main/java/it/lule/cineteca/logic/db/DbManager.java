@@ -39,7 +39,7 @@ public class DbManager {
         if (regista == null) {
             return -1;
         }
-        if (regista.getNome().isEmpty()) {
+        if (regista.getName().isEmpty()) {
             throw new DBBadParamaterException("nome", DBBadParamaterException.ErrorType.EMPTY);
         }
         Session session = sessionFactory.openSession();

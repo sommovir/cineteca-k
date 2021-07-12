@@ -28,7 +28,6 @@ public class FilmDirectorEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Column(unique = true,length = 256)
-    private String nome;
 
     private String name;
     private String surname;
@@ -42,14 +41,6 @@ public class FilmDirectorEntity implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
     }
 
     public String getName() {

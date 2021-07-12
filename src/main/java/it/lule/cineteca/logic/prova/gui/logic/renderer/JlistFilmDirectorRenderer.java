@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package it.lule.cineteca.logic.prova.gui.jlist.renderer;
+package it.lule.cineteca.logic.prova.gui.logic.renderer;
 
 import it.lule.cineteca.logic.entities.FilmDirectorEntity;
 import java.awt.Component;
@@ -22,9 +22,10 @@ public class JlistFilmDirectorRenderer extends DefaultListCellRenderer {
         Component c
                 = super.getListCellRendererComponent(
                         list, value, index, isSelected, cellHasFocus);
-
+        System.out.println("XXXXX");
         if (c != null && value instanceof FilmDirectorEntity){
-            ((JLabel)c).setText(( (FilmDirectorEntity)value).getNome());
+            ((JLabel)c).setText(( (FilmDirectorEntity)value).getName());
+            System.out.println("JlistFilmDirectorRenderer "+((FilmDirectorEntity)value).getName() );
         }
         return this;
     }

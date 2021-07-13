@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package it.lule.cineteca.logic.prova.gui.filmDirector;
+package it.lule.cineteca.logic.prova.gui.filmDirector.view;
 
 /**
  *

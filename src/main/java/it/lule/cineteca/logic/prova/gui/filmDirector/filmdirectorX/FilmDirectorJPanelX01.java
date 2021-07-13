@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package it.lule.cineteca.logic.prova.gui.filmDirector;
+package it.lule.cineteca.logic.prova.gui.filmDirector.filmdirectorX;
 
 import it.lule.cineteca.logic.entities.FilmDirectorEntity;
 import it.lule.cineteca.logic.entities.MovieEntity;
@@ -34,6 +34,8 @@ public class FilmDirectorJPanelX01 extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jlistFilmDirectorModel1 = new it.lule.cineteca.logic.prova.gui.logic.model.JlistFilmDirectorModel();
+        jlistFilmDirectorRenderer1 = new it.lule.cineteca.logic.prova.gui.logic.renderer.JlistFilmDirectorRenderer();
         jPanel1 = new javax.swing.JPanel();
         jLabelName = new javax.swing.JLabel();
         jLabelSurname = new javax.swing.JLabel();
@@ -44,6 +46,8 @@ public class FilmDirectorJPanelX01 extends javax.swing.JPanel {
         jListFilmDIrector = new javax.swing.JList<>();
         jButtonAddFilmDirector = new javax.swing.JButton();
         jButtonRemoveFilmDirector = new javax.swing.JButton();
+
+        jlistFilmDirectorRenderer1.setText("jlistFilmDirectorRenderer1");
 
         jLabelName.setText("Name");
 
@@ -60,6 +64,8 @@ public class FilmDirectorJPanelX01 extends javax.swing.JPanel {
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        jListFilmDIrector.setModel(jlistFilmDirectorModel1);
+        jListFilmDIrector.setCellRenderer(jlistFilmDirectorRenderer1);
         jScrollPane1.setViewportView(jListFilmDIrector);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -125,7 +131,7 @@ public class FilmDirectorJPanelX01 extends javax.swing.JPanel {
                         .addComponent(jButtonRemoveFilmDirector, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(18, 18, 18))
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,5 +180,7 @@ public class FilmDirectorJPanelX01 extends javax.swing.JPanel {
     private javax.swing.JList<String> jListFilmDIrector;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private it.lule.cineteca.logic.prova.gui.logic.model.JlistFilmDirectorModel jlistFilmDirectorModel1;
+    private it.lule.cineteca.logic.prova.gui.logic.renderer.JlistFilmDirectorRenderer jlistFilmDirectorRenderer1;
     // End of variables declaration//GEN-END:variables
 }

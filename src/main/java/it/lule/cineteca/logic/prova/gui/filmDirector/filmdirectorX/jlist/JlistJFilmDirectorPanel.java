@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package it.lule.cineteca.logic.prova.gui.filmDirector;
+package it.lule.cineteca.logic.prova.gui.filmDirector.filmdirectorX.jlist;
 
 import it.lule.cineteca.logic.entities.FilmDirectorEntity;
 import it.lule.cineteca.logic.prova.logic.FakeManagerFilmDirectorDB;
@@ -39,16 +39,11 @@ public class JlistJFilmDirectorPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jlistFilmDirectorModel1 = new it.lule.cineteca.logic.prova.gui.logic.model.JlistFilmDirectorModel();
-        jlistFilmDirectorRenderer1 = new it.lule.cineteca.logic.prova.gui.logic.renderer.JlistFilmDirectorRenderer();
         jScrollPane1 = new javax.swing.JScrollPane();
         jListFilmDIrector = new javax.swing.JList<>();
         jButtonAdd = new javax.swing.JButton();
         jButtonRemove = new javax.swing.JButton();
 
-        jlistFilmDirectorRenderer1.setText("jlistFilmDirectorRenderer1");
-
-        jListFilmDIrector.setModel(jlistFilmDirectorModel1);
         jScrollPane1.setViewportView(jListFilmDIrector);
 
         jButtonAdd.setText("Add");
@@ -106,7 +101,5 @@ public class JlistJFilmDirectorPanel extends javax.swing.JPanel {
     private javax.swing.JButton jButtonRemove;
     private javax.swing.JList<String> jListFilmDIrector;
     private javax.swing.JScrollPane jScrollPane1;
-    private it.lule.cineteca.logic.prova.gui.logic.model.JlistFilmDirectorModel jlistFilmDirectorModel1;
-    private it.lule.cineteca.logic.prova.gui.logic.renderer.JlistFilmDirectorRenderer jlistFilmDirectorRenderer1;
     // End of variables declaration//GEN-END:variables
 }

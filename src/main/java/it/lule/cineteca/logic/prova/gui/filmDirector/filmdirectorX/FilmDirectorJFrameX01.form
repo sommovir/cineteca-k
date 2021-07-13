@@ -41,7 +41,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="it.lule.cineteca.logic.prova.gui.filmDirector.FilmDirectorJPanelX01" name="filmDirectorJPanel1">
+    <Component class="it.lule.cineteca.logic.prova.gui.filmDirector.filmdirectorX.FilmDirectorJPanelX01" name="filmDirectorJPanel1">
     </Component>
   </SubComponents>
 </Form>

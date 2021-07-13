@@ -3,18 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package it.lule.cineteca.logic.prova.gui.filmDirector;
+package it.lule.cineteca.logic.prova.gui.filmDirector.filmdirectorX.jlist;
+
+import it.lule.cineteca.logic.entities.FilmDirectorEntity;
+import it.lule.cineteca.logic.prova.logic.FakeManagerFilmDirectorDB;
+
 
 /**
  *
  * @author lele
  */
-public class FilmDirectorJFrameX01 extends javax.swing.JFrame {
+public class JlistFilmDirectorJFrame extends javax.swing.JFrame {
 
     /**
-     * Creates new form FilmDirectorJFrame
+     * Creates new form JlistJFrame
      */
-    public FilmDirectorJFrameX01() {
+    public JlistFilmDirectorJFrame() {
         initComponents();
     }
 
@@ -27,7 +31,7 @@ public class FilmDirectorJFrameX01 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        filmDirectorJPanel1 = new it.lule.cineteca.logic.prova.gui.filmDirector.FilmDirectorJPanelX01();
+        jlistJFilmDirectorPanel1 = new it.lule.cineteca.logic.prova.gui.filmDirector.filmdirectorX.jlist.JlistJFilmDirectorPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -35,17 +39,15 @@ public class FilmDirectorJFrameX01 extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(filmDirectorJPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jlistJFilmDirectorPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(filmDirectorJPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jlistJFilmDirectorPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -68,13 +70,13 @@ public class FilmDirectorJFrameX01 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FilmDirectorJFrameX01.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JlistFilmDirectorJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FilmDirectorJFrameX01.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JlistFilmDirectorJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FilmDirectorJFrameX01.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JlistFilmDirectorJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FilmDirectorJFrameX01.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JlistFilmDirectorJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -82,12 +84,12 @@ public class FilmDirectorJFrameX01 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FilmDirectorJFrameX01().setVisible(true);
+                new JlistFilmDirectorJFrame().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private it.lule.cineteca.logic.prova.gui.filmDirector.FilmDirectorJPanelX01 filmDirectorJPanel1;
+    private it.lule.cineteca.logic.prova.gui.filmDirector.filmdirectorX.jlist.JlistJFilmDirectorPanel jlistJFilmDirectorPanel1;
     // End of variables declaration//GEN-END:variables
 }

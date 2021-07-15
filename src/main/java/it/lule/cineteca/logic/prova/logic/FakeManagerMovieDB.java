@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * @deprecated 
  * @author lele
  */
 public class FakeManagerMovieDB {

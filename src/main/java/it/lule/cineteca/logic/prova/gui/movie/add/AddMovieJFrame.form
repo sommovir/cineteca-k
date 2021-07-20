@@ -39,7 +39,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="it.lule.cineteca.logic.prova.gui.movie.view.MovieJPanel" name="movieJPanel1">
+    <Component class="it.lule.cineteca.logic.prova.gui.movie.add.AddMovieJPanel" name="movieJPanel1">
     </Component>
   </SubComponents>
 </Form>

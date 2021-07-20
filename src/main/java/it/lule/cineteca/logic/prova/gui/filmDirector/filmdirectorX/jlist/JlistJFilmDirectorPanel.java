@@ -19,15 +19,7 @@ public class JlistJFilmDirectorPanel extends javax.swing.JPanel {
      */
     public JlistJFilmDirectorPanel() {
         initComponents();
-        FilmDirectorEntity filmDirecotrEntity = new FilmDirectorEntity();        
-        filmDirecotrEntity.setName("Paolo");
-        FakeManagerFilmDirectorDB directorDB = new FakeManagerFilmDirectorDB();
-        
-        directorDB.addFilmDirecotrs(filmDirecotrEntity);      
-        
-//        jlistFilmDirectorModel1.addElement(filmDirecotr);
-        
-        System.out.println(""+ filmDirecotrEntity.getName());
+
     }
 
     /**
@@ -39,10 +31,14 @@ public class JlistJFilmDirectorPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jlistFilmDirectorModel1 = new it.lule.cineteca.logic.prova.gui.logic.model.JlistFilmDirectorModel();
+        jlistFilmDirectorRenderer1 = new it.lule.cineteca.logic.prova.gui.logic.renderer.JlistFilmDirectorRenderer();
         jScrollPane1 = new javax.swing.JScrollPane();
         jListFilmDIrector = new javax.swing.JList<>();
         jButtonAdd = new javax.swing.JButton();
         jButtonRemove = new javax.swing.JButton();
+
+        jlistFilmDirectorRenderer1.setText("jlistFilmDirectorRenderer1");
 
         jScrollPane1.setViewportView(jListFilmDIrector);
 
@@ -88,6 +84,12 @@ public class JlistJFilmDirectorPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
+                FilmDirectorEntity filmDirecotrEntity = new FilmDirectorEntity();        
+        filmDirecotrEntity.setName("Paolo");
+    
+        jlistFilmDirectorModel1.addElement(filmDirecotrEntity);
+        
+        System.out.println(""+ filmDirecotrEntity.getName());
         
     }//GEN-LAST:event_jButtonAddActionPerformed
 
@@ -99,7 +101,9 @@ public class JlistJFilmDirectorPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAdd;
     private javax.swing.JButton jButtonRemove;
-    private javax.swing.JList<String> jListFilmDIrector;
+    private javax.swing.JList<FilmDirectorEntity> jListFilmDIrector;
     private javax.swing.JScrollPane jScrollPane1;
+    private it.lule.cineteca.logic.prova.gui.logic.model.JlistFilmDirectorModel jlistFilmDirectorModel1;
+    private it.lule.cineteca.logic.prova.gui.logic.renderer.JlistFilmDirectorRenderer jlistFilmDirectorRenderer1;
     // End of variables declaration//GEN-END:variables
 }

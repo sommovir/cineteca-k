@@ -22,10 +22,8 @@ public class JlistFilmDirectorRenderer extends DefaultListCellRenderer {
         Component c
                 = super.getListCellRendererComponent(
                         list, value, index, isSelected, cellHasFocus);
-        System.out.println("XXXXX");
         if (c != null && value instanceof FilmDirectorEntity){
             ((JLabel)c).setText(( (FilmDirectorEntity)value).getName());
-            System.out.println("JlistFilmDirectorRenderer "+((FilmDirectorEntity)value).getName() );
         }
         return this;
     }

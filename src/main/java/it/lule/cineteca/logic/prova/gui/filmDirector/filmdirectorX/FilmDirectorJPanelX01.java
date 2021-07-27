@@ -169,12 +169,14 @@ public class FilmDirectorJPanelX01 extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAddFilmDirectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddFilmDirectorActionPerformed
+        System.out.println("qui");
         fakeManagerFilmDirectorDB.getFilmDirecotrs();
         
         for (FilmDirectorEntity filmDirecotr : fakeManagerFilmDirectorDB.getFilmDirecotrs()) {
             System.out.println(""+ filmDirecotr.getName() + " " + filmDirecotr.getSurname());
         }
         jlistFilmDirectorModel1.addElement(filmDirector);
+        this.jListFilmDIrector.ensureIndexIsVisible(jlistFilmDirectorModel1.getSize());
         
         
     }//GEN-LAST:event_jButtonAddFilmDirectorActionPerformed

@@ -25,7 +25,7 @@ public class JlistFilmDirectorRenderer extends DefaultListCellRenderer {
         if (c != null && value instanceof FilmDirectorEntity){
             ((JLabel)c).setText(( (FilmDirectorEntity)value).getName());
         }
-        return this;
+        return c;
     }
 
 }

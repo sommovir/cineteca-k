@@ -74,8 +74,8 @@ public class JlistJFilmDirectorPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAdd)
                     .addComponent(jButtonRemove))
@@ -90,6 +90,8 @@ public class JlistJFilmDirectorPanel extends javax.swing.JPanel {
         jlistFilmDirectorModel1.addElement(filmDirecotrEntity);
         
         System.out.println(""+ filmDirecotrEntity.getName());
+        
+        this.jListFilmDIrector.ensureIndexIsVisible(jlistFilmDirectorModel1.getSize());        
         
     }//GEN-LAST:event_jButtonAddActionPerformed
 

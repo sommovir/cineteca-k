@@ -15,15 +15,22 @@ import it.lule.cineteca.logic.prova.logic.FakeManagerFilmDirectorDB;
  * @author lele
  */
 public class FilmDirectorJPanelX01 extends javax.swing.JPanel {
+
     private MovieEntity movie = new MovieEntity();
     private FilmDirectorEntity filmDirector = new FilmDirectorEntity();
     private FakeManagerFilmDirectorDB fakeManagerFilmDirectorDB = new FakeManagerFilmDirectorDB();
-    
+
     /**
      * Creates new form FilmDirectorJPanel
      */
     public FilmDirectorJPanelX01() {
         initComponents();
+        jButtonAddMovie.setEnabled(false);
+        jButtonRemoveFilmDirector.setEnabled(false);
+        jTextFieldSurname.setEnabled(false);
+        jTextFielDateOfBird.setEnabled(false);
+        jComboBox1.setEnabled(false);
+        jTextFieldName.setText("ASDASDASDAS");
     }
 
     /**
@@ -43,11 +50,11 @@ public class FilmDirectorJPanelX01 extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jListFilmDIrector = new javax.swing.JList<>();
         jLabelName = new javax.swing.JLabel();
-        textFieldName = new java.awt.TextField();
+        jTextFieldName = new java.awt.TextField();
         jLabelSurname = new javax.swing.JLabel();
-        textFieldSurname = new java.awt.TextField();
+        jTextFieldSurname = new java.awt.TextField();
         jLabelDateOfBirth = new javax.swing.JLabel();
-        textField2 = new java.awt.TextField();
+        jTextFielDateOfBird = new java.awt.TextField();
         jButtonAddFilmDirector = new javax.swing.JButton();
         jButtonRemoveFilmDirector = new javax.swing.JButton();
 
@@ -83,23 +90,23 @@ public class FilmDirectorJPanelX01 extends javax.swing.JPanel {
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonAddMovie, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 8, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabelDateOfBirth, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(textField2, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jTextFielDateOfBird, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabelSurname, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabelName, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(textFieldName, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(textFieldSurname, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(jTextFieldName, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextFieldSurname, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap())
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,22 +114,21 @@ public class FilmDirectorJPanelX01 extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelName)
-                    .addComponent(textFieldName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelSurname)
-                    .addComponent(textFieldSurname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldSurname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelDateOfBirth, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFielDateOfBird, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonAddMovie))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jButtonAddFilmDirector.setText("Add Film director");
@@ -169,21 +175,27 @@ public class FilmDirectorJPanelX01 extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAddFilmDirectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddFilmDirectorActionPerformed
-        System.out.println("qui");
-        fakeManagerFilmDirectorDB.getFilmDirecotrs();
-        
-        for (FilmDirectorEntity filmDirecotr : fakeManagerFilmDirectorDB.getFilmDirecotrs()) {
-            System.out.println(""+ filmDirecotr.getName() + " " + filmDirecotr.getSurname());
-        }
+
+        FilmDirectorEntity filmDirecotr = new FilmDirectorEntity();
+        filmDirecotr.setName(jTextFieldName.getName());
+
         jlistFilmDirectorModel1.addElement(filmDirector);
         this.jListFilmDIrector.ensureIndexIsVisible(jlistFilmDirectorModel1.getSize());
         
         
+//        fakeManagerFilmDirectorDB.getFilmDirecotrs();
+
+//        for (FilmDirectorEntity filmDirecotr : fakeManagerFilmDirectorDB.getFilmDirecotrs()) {
+//            System.out.println(""+ filmDirecotr.getName() + " " + filmDirecotr.getSurname());
+//        }
+//        this.jListFilmDIrector.ensureIndexIsVisible(jlistFilmDirectorModel1.getSize());
+
     }//GEN-LAST:event_jButtonAddFilmDirectorActionPerformed
 
     private void jButtonAddMovieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddMovieActionPerformed
-        filmDirector.setName(textFieldName.getText());
-        filmDirector.setSurname(textFieldSurname.getText());
+        
+        filmDirector.setName(jTextFieldName.getText());
+        filmDirector.setSurname(jTextFieldSurname.getText());
 //        filmDirector.setDateOfBirth(jLabelDateOfBirth.getText());
         fakeManagerFilmDirectorDB.addFilmDirecotrs(filmDirector);
     }//GEN-LAST:event_jButtonAddMovieActionPerformed
@@ -192,7 +204,6 @@ public class FilmDirectorJPanelX01 extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonRemoveFilmDirectorActionPerformed
 
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAddFilmDirector;
@@ -205,10 +216,10 @@ public class FilmDirectorJPanelX01 extends javax.swing.JPanel {
     private javax.swing.JList<FilmDirectorEntity> jListFilmDIrector;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private java.awt.TextField jTextFielDateOfBird;
+    private java.awt.TextField jTextFieldName;
+    private java.awt.TextField jTextFieldSurname;
     private it.lule.cineteca.logic.prova.gui.logic.model.JlistFilmDirectorModel jlistFilmDirectorModel1;
     private it.lule.cineteca.logic.prova.gui.logic.renderer.JlistFilmDirectorRenderer jlistFilmDirectorRenderer1;
-    private java.awt.TextField textField2;
-    private java.awt.TextField textFieldName;
-    private java.awt.TextField textFieldSurname;
     // End of variables declaration//GEN-END:variables
 }

@@ -176,10 +176,10 @@ public class FilmDirectorJPanelX01 extends javax.swing.JPanel {
 
     private void jButtonAddFilmDirectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddFilmDirectorActionPerformed
 
-        FilmDirectorEntity filmDirecotr = new FilmDirectorEntity();
-        filmDirecotr.setName(jTextFieldName.getName());
+        FilmDirectorEntity film = new FilmDirectorEntity();
+        film.setName(jTextFieldName.getName());
 
-        jlistFilmDirectorModel1.addElement(filmDirector);
+        jlistFilmDirectorModel1.addElement(film);
         this.jListFilmDIrector.ensureIndexIsVisible(jlistFilmDirectorModel1.getSize());
         
         

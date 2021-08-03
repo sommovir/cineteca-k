@@ -5,17 +5,20 @@
  */
 package it.lule.cineteca.logic.prova.gui.filmDirector.filmdirectorX02;
 
+import it.lule.cineteca.logic.prova.gui.filmDirector.addfilm.FilmDirectorAddFilmJFrame;
 import it.lule.cineteca.logic.prova.logic.fake.FakeDB;
 import it.lule.cineteca.logic.prova.logic.fake.FakeFilmDirector;
 import it.lule.cineteca.logic.prova.logic.fake.FakeMovie;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 
 /**
  *
  * @author lele
  */
-public class FilmDirectorJPanelX02 extends javax.swing.JPanel {
+public class FilmDirectorJPanelX02 extends javax.swing.JPanel implements ActionListener {
 
     private List<FakeFilmDirector> fakeFilmDirectors = FakeDB.getInstance().getFakeFilmDirectors();
 
@@ -37,6 +40,7 @@ public class FilmDirectorJPanelX02 extends javax.swing.JPanel {
             jComboBoxMovietModelFake1.addElement(fakeMovy);
         }
 
+//        jComboBox1.addActionListener(this);
     }
 
     /**
@@ -191,50 +195,62 @@ public class FilmDirectorJPanelX02 extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAddFilmDirectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddFilmDirectorActionPerformed
-
+        FakeFilmDirector fakeFilmDirector = new FakeFilmDirector();
+        fakeFilmDirector.setName(jTextFieldName.getText());
+        fakeFilmDirector.setSurname(jTextFieldSurname.getText());
+        
+        jlistFilmDirectorModelFake1.addElement(fakeFilmDirector);
     }//GEN-LAST:event_jButtonAddFilmDirectorActionPerformed
 
     private void jButtonAddMovieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddMovieActionPerformed
+        FilmDirectorAddFilmJFrame addFilmJFrame = new FilmDirectorAddFilmJFrame();
 
+        addFilmJFrame.setLocationRelativeTo(null);
+        addFilmJFrame.setVisible(true);
     }//GEN-LAST:event_jButtonAddMovieActionPerformed
 
     private void jButtonRemoveFilmDirectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoveFilmDirectorActionPerformed
-        if ( jListFilmDIrector.getSelectedIndex() == -1)
+        if (jListFilmDIrector.getSelectedIndex() == -1) {
             return;
-        
+        }
+
         int selectedIndex = jListFilmDIrector.getSelectedIndex();
-                
+
         jlistFilmDirectorModelFake1.remove(selectedIndex);
-        
+
         jListFilmDIrector.getSelectionForeground();
-        
+
         jListFilmDIrector.setSelectedIndex(selectedIndex - 1);
         jComboBoxMovietModelFake1.removeAllElements();
-        
 
-        
+        List<FakeMovie> fakeMovies = fakeFilmDirectors.get(selectedIndex - 1).getFakeMovies();
+
+        for (FakeMovie fakeMovy : fakeMovies) {
+            jComboBoxMovietModelFake1.addElement(fakeMovy);
+        }
+
+
     }//GEN-LAST:event_jButtonRemoveFilmDirectorActionPerformed
 
     private void jListFilmDIrectorMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListFilmDIrectorMouseReleased
 
-        if ( jComboBox1.getItemCount() != -1){
+        if (jComboBox1.getItemCount() != -1) {
             jComboBox1.removeAllItems();
         }
-        
+
         int selectedIndex = jListFilmDIrector.getSelectedIndex();
-        
+
         jListFilmDIrector.setSelectedIndex(selectedIndex);
         FakeFilmDirector getFakeFilmDirector = fakeFilmDirectors.get(selectedIndex);
 
         for (FakeMovie fakeMovy : getFakeFilmDirector.getFakeMovies()) {
             jComboBoxMovietModelFake1.addElement(fakeMovy);
         }
-        
-        
+
+
     }//GEN-LAST:event_jListFilmDIrectorMouseReleased
 
 
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAddFilmDirector;
     private javax.swing.JButton jButtonAddMovie;
@@ -254,4 +270,12 @@ public class FilmDirectorJPanelX02 extends javax.swing.JPanel {
     private it.lule.cineteca.logic.prova.logic.fake.logic.model.JlistFilmDirectorModelFake jlistFilmDirectorModelFake1;
     private it.lule.cineteca.logic.prova.logic.fake.logic.renderer.JlistFilmDirectorRendererFake jlistFilmDirectorRendererFake1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        System.out.println(jComboBox1.getSelectedIndex());
+        if (ae.getSource() == jComboBox1) {
+
+        }
+    }
 }

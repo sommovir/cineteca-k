@@ -6,7 +6,9 @@
 package it.lule.cineteca.logic.prova.gui.logic.renderer;
 
 import it.lule.cineteca.logic.entities.FilmDirectorEntity;
+import java.awt.Color;
 import java.awt.Component;
+import java.awt.event.MouseMotionListener;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -22,10 +24,10 @@ public class JlistFilmDirectorRenderer extends DefaultListCellRenderer {
         Component c
                 = super.getListCellRendererComponent(
                         list, value, index, isSelected, cellHasFocus);
+         
         if (c != null && value instanceof FilmDirectorEntity){
-            ((JLabel)c).setText(( (FilmDirectorEntity)value).getName());
-        }
+            ((JLabel)c).setText(( (FilmDirectorEntity)value).getName());           
+        }         
         return c;
     }
-
 }

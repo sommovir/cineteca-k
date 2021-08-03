@@ -7,6 +7,7 @@ package it.lule.cineteca.logic.prova.logic.fake.logic.renderer;
 
 import it.lule.cineteca.logic.entities.MovieEntity;
 import it.lule.cineteca.logic.prova.logic.fake.FakeMovie;
+import java.awt.Color;
 import java.awt.Component;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -27,11 +28,9 @@ public class JComboBoxMovieRendererFake extends BasicComboBoxRenderer {
         Component c
                 = super.getListCellRendererComponent(list, value, index, isSelected,
                         cellHasFocus); //To change body of generated methods, choose Tools | Templates.
-    
         if ( c != null && value instanceof FakeMovie){
             ((JLabel)c).setText( ((FakeMovie)value).getOriginalTitle() );
         }
         return this;
     }
-
 }

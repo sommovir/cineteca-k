@@ -18,6 +18,7 @@ public class FilmDirectorAddFilmJFrame extends javax.swing.JFrame {
      */
     public FilmDirectorAddFilmJFrame() {
         initComponents();
+
     }
 
     /**

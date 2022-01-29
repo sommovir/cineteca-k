@@ -16,7 +16,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.exception.ConstraintViolationException;
 
 /**
- *
+ * setup
  * @author sommovir
  */
 public class DbManager {

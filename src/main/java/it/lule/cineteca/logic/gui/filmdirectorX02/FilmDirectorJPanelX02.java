@@ -5,10 +5,10 @@
  */
 package it.lule.cineteca.logic.gui.filmdirectorX02;
 
-import it.lule.cineteca.logic.prova.gui.filmDirector.addfilm.FilmDirectorAddFilmJFrame;
 import it.lule.cineteca.logic.fake.FakeDB;
 import it.lule.cineteca.logic.fake.FakeFilmDirector;
 import it.lule.cineteca.logic.fake.FakeMovie;
+import it.lule.cineteca.logic.gui.filmDirector.addfilm.FilmDirectorAddFilmJFrame;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

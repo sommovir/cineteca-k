@@ -5,7 +5,7 @@
  */
 package it.lule.cineteca.logic.password;
 
-import it.lule.cineteca.logic.prova.logic.enumname.ErrorCodeEnum;
+import it.lule.cineteca.logic.enumname.ErrorCodeEnum;
 import java.util.Arrays;
 
 /**

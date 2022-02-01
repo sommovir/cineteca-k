@@ -6,7 +6,6 @@
 package it.lule.cineteca.logic.gui.movie.add;
 
 import it.lule.cineteca.logic.entities.MovieEntity;
-import it.lule.cineteca.logic.fake.FakeManagerMovieDB;
 
 
 /**

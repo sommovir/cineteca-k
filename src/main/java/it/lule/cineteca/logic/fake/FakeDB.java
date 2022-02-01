@@ -3,10 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package it.lule.cineteca.logic.prova.logic.fake;
+package it.lule.cineteca.logic.fake;
 
-import it.lule.cineteca.logic.entities.FilmDirectorEntity;
-import it.lule.cineteca.logic.entities.MovieEntity;
 import java.util.ArrayList;
 import java.util.List;
 

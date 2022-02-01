@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package it.lule.cineteca.logic.prova.logic.fake.logic.model;
+package it.lule.cineteca.logic.gui.logic.model;
 
-import it.lule.cineteca.logic.prova.logic.fake.FakeFilmDirector;
+import it.lule.cineteca.logic.entities.FilmDirectorEntity;
 import javax.swing.DefaultListModel;
 
 /**
  *
  * @author lele
  */
-public class JlistFilmDirectorModelFake extends DefaultListModel<FakeFilmDirector>{
+public class JlistFilmDirectorModel extends DefaultListModel<FilmDirectorEntity>{
 
-    public JlistFilmDirectorModelFake() {
+    public JlistFilmDirectorModel() {
     }
     
 }

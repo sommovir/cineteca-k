@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package it.lule.cineteca.logic.prova.logic.fake.logic.model;
+package it.lule.cineteca.logic.gui.logic.model;
 
-import it.lule.cineteca.logic.prova.logic.fake.FakeMovie;
+import it.lule.cineteca.logic.fake.FakeMovie;
 import javax.swing.DefaultComboBoxModel;
 
 /**
  *
  * @author lele
  */
-public class JComboBoxMovietModelFake extends DefaultComboBoxModel<FakeMovie>{
+public class JComboBoxMovietModel extends DefaultComboBoxModel<FakeMovie>{
 
-    public JComboBoxMovietModelFake() {
+    public JComboBoxMovietModel() {
     }
     
 }

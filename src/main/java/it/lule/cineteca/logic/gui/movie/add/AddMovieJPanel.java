@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package it.lule.cineteca.logic.prova.gui.movie.add;
+package it.lule.cineteca.logic.gui.movie.add;
 
 import it.lule.cineteca.logic.entities.MovieEntity;
 import it.lule.cineteca.logic.fake.FakeManagerMovieDB;
-import javax.swing.JTextField;
+
 
 /**
  *
@@ -15,8 +15,7 @@ import javax.swing.JTextField;
  */
 public class AddMovieJPanel extends javax.swing.JPanel {
     private MovieEntity movie = new MovieEntity();
-    private FakeManagerMovieDB fakeManagerMovieDB = new FakeManagerMovieDB();
-    
+
     /**
      * Creates new form filmJPanel
      */
@@ -210,7 +209,7 @@ public class AddMovieJPanel extends javax.swing.JPanel {
         movie.setOriginalTitle(jLabelOriginalTitle.getText());
         movie.setMainActor(jLabelMainActor.getText());
         // movie.setReleaseDate(jLabelTitoloTradotto.getText());
-        fakeManagerMovieDB.addMovies(movie);
+//        FakeManagerMovieDB.addMovies(movie);
     }//GEN-LAST:event_jButtonAddMovieActionPerformed
 
     private void jButtonFilmDirectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFilmDirectorActionPerformed

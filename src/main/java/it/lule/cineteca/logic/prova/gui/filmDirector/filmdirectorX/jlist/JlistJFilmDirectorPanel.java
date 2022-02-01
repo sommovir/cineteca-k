@@ -6,7 +6,7 @@
 package it.lule.cineteca.logic.prova.gui.filmDirector.filmdirectorX.jlist;
 
 import it.lule.cineteca.logic.entities.FilmDirectorEntity;
-import it.lule.cineteca.logic.prova.logic.FakeManagerFilmDirectorDB;
+import it.lule.cineteca.logic.fake.FakeManagerFilmDirectorDB;
 
 /**
  *

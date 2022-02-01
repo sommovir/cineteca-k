@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package it.lule.cineteca.logic.prova.logic.fake.logic.renderer;
+package it.lule.cineteca.logic.fake.logic.renderer;
 
 import it.lule.cineteca.logic.entities.MovieEntity;
-import it.lule.cineteca.logic.prova.logic.fake.FakeMovie;
+import it.lule.cineteca.logic.fake.FakeMovie;
 import java.awt.Color;
 import java.awt.Component;
 import javax.swing.JLabel;

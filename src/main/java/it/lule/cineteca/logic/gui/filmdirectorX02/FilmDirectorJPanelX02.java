@@ -8,7 +8,7 @@ package it.lule.cineteca.logic.gui.filmdirectorX02;
 import it.lule.cineteca.logic.fake.FakeDB;
 import it.lule.cineteca.logic.fake.FakeFilmDirector;
 import it.lule.cineteca.logic.fake.FakeMovie;
-import it.lule.cineteca.logic.gui.filmDirector.addfilm.FilmDirectorAddFilmJFrame;
+import it.lule.cineteca.logic.gui.movie.add.AddMovieJFrame;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -203,7 +203,7 @@ public class FilmDirectorJPanelX02 extends javax.swing.JPanel implements ActionL
     }//GEN-LAST:event_jButtonAddFilmDirectorActionPerformed
 
     private void jButtonAddMovieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddMovieActionPerformed
-        FilmDirectorAddFilmJFrame addFilmJFrame = new FilmDirectorAddFilmJFrame();
+        AddMovieJFrame addFilmJFrame = new AddMovieJFrame();
 
         addFilmJFrame.setLocationRelativeTo(null);
         addFilmJFrame.setVisible(true);

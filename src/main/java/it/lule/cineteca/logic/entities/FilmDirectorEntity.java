@@ -27,11 +27,13 @@ public class FilmDirectorEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    
     @Column(unique = true,length = 256)
-
     private String name;
+    
     private String surname;
     private Date dateOfBirth;
+    
     @OneToOne
     private MovieEntity movieEntity;  
 

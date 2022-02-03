@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package it.lule.cineteca.logic.prova.gui.logic;
+package it.lule.cineteca.logic.gui.logic;
 
 import it.lule.cineteca.logic.entities.UserEntity;
 import java.util.ArrayList;

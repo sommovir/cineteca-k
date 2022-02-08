@@ -22,9 +22,11 @@ public enum ErrorCodeEnum {
     PASSWORD_IS_UPPER_CASE(9,"PASSWORD_IS_UPPER_CASE");
 
     private int code;
-
+    private String message;
+    
     private ErrorCodeEnum(int code, String message) {
         this.code = code;
+        this.message = message;
     }
 
     public int getCode() {

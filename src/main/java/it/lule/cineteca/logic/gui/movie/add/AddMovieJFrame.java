@@ -27,17 +27,27 @@ public class AddMovieJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jComboBoxMovietModel1 = new it.lule.cineteca.logic.gui.logic.model.JComboBoxMovietModel();
+        jComboBoxMovieRenderer1 = new it.lule.cineteca.logic.gui.logic.renderer.JComboBoxMovieRenderer();
+        addMovieJPanel1 = new it.lule.cineteca.logic.gui.movie.add.AddMovieJPanel();
+
+        jComboBoxMovieRenderer1.setText("jComboBoxMovieRenderer1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 38, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(addMovieJPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 28, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(addMovieJPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -82,5 +92,8 @@ public class AddMovieJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private it.lule.cineteca.logic.gui.movie.add.AddMovieJPanel addMovieJPanel1;
+    private it.lule.cineteca.logic.gui.logic.renderer.JComboBoxMovieRenderer jComboBoxMovieRenderer1;
+    private it.lule.cineteca.logic.gui.logic.model.JComboBoxMovietModel jComboBoxMovietModel1;
     // End of variables declaration//GEN-END:variables
 }

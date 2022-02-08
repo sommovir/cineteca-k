@@ -9,7 +9,6 @@ import it.lule.cineteca.logic.fake.FakeDB;
 import it.lule.cineteca.logic.fake.FakeFilmDirector;
 import it.lule.cineteca.logic.fake.FakeMovie;
 import it.lule.cineteca.logic.gui.movie.add.AddMovieJFrame;
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;

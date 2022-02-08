@@ -32,4 +32,9 @@ public enum ErrorCodeEnum {
     public int getCode() {
         return code;
     }
+
+    public String getMessage() {
+        return message;
+    }
+    
 }

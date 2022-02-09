@@ -14,11 +14,13 @@ import javax.persistence.PersistenceException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.exception.ConstraintViolationException;
+import it.lule.cineteca.utils.test.Tested;
 
 /**
  *
  * @author sommovir
  */
+@Tested(name = "DbManager", testEnabled = true)
 public class DbManager {
 
     private static DbManager _instance = null;

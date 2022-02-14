@@ -4,6 +4,9 @@
  */
 
 import it.lule.cineteca.logic.db.DbManager;
+import it.lule.cineteca.logic.entities.FilmDirectorEntity;
+import it.lule.cineteca.logic.entities.MovieEntity;
+import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -12,6 +15,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.mockito.Mockito;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 /**
  *
@@ -40,7 +44,11 @@ public class LoginTest {
     
     @Test
     public void testMock(){
-        mock(DbManager.class);
+        DbManager manager = mock(DbManager.class);
+        when(manager.getAllMovies()).thenReturn(null);
+        List<MovieEntity> prova = DbManager.getInstance().getAllMovies();
+        assertNull(prova);
+        //https://stackoverflow.com/questions/38914433/mocking-a-singleton-with-mockito
     }
         
         

@@ -10,7 +10,13 @@ package it.lule.cineteca.testmockito;
  */
 public class CityServer {
     
+    
+    public void connect(){
+        
+    }
+    
     public boolean isConnected(){
+//        //..
         return false;
     }
     

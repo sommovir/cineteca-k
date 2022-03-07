@@ -36,6 +36,7 @@ public class NavigatorTest {
 
     @BeforeAll
     public static void setUpClass() {
+        
     }
 
     @AfterAll

@@ -36,7 +36,7 @@ public class NavigatorTest {
 
     @BeforeAll
     public static void setUpClass() {
-        
+
     }
 
     @AfterAll
@@ -103,11 +103,44 @@ public class NavigatorTest {
 
         Navigator mock = spy(Navigator.class);
         mock.save("gino");
-        ArgumentCaptor<String> captor = ArgumentCaptor.forClass(String.class);
+//        ArgumentCaptor<String> captor = ArgumentCaptor.forClass(String.class);
         verify(mock).connect();
-        verify(mock).disconnect(captor.capture());
-        assertEquals("ginociao", captor.getValue());
+        verify(mock).disconnect("ginociao");
+//        assertEquals("ginociao", captor.getValue());
 
+    }
+    
+    @Test
+    public void testSave3A(){
+        Navigator mock = spy(Navigator.class);
+        List<String> lista = List.of("Cane", "Gatto", "Gino", "Tommasino");
+        
+        mock.salvaTuttoDelonghi(lista);
+        verify(mock,times(lista.size())).save(any());
+        
+    }
+    
+    @Test
+    public void testSave3B(){
+        //In questo test invece vogliamo anche verificare che TUTTI i valori
+        //della lista siano passati in ordine alle chiamate del metodo 'save'
+        
+        Navigator mock = spy(Navigator.class);
+        List<String> lista = List.of("Cane", "Gatto", "Gino", "Tommasino");
+        
+        mock.salvaTuttoDelonghi(lista);
+        
+        ArgumentCaptor<String> captor = ArgumentCaptor.forClass(String.class);
+        
+        verify(mock,times(lista.size())).save(captor.capture());
+        
+        List<String> listaValoriChiamati = captor.getAllValues();
+        
+        assertEquals(lista, listaValoriChiamati);
+        
+        
+        
+        
     }
 
     @Test
@@ -116,13 +149,44 @@ public class NavigatorTest {
         Navigator mock = spy(Navigator.class);
 
         List<String> lista = List.of("Cane", "Gatto", "Gino", "Tommasino");
+        
+        
         ArgumentCaptor<String> captor = ArgumentCaptor.forClass(String.class);
         mock.salvaTuttoDelonghi(lista);
         verify(mock, times(lista.size())).save(captor.capture());
-        
+
         List<String> tuttiGliArgomenti = captor.getAllValues();
         assertEquals(lista, tuttiGliArgomenti);
 
     }
 
+    @Test
+    public void testSum() {
+        
+        Navigator navigator = new Navigator();
+        
+        int result = navigator.sum(4, 2);
+        
+        assertEquals(6, result,"4+2 dovrebbe far 6... e invece..");
+
+    }
+    
+    @Test
+    public void testSum2(){
+        
+//        public void sum2(int a, int b){
+
+//            sendData(a+b);
+//        }
+        
+        Navigator mock = spy(Navigator.class);
+        mock.sum2(3, 1);
+        
+        verify(mock).sendData(4);
+        
+        
+        
+        
+        
+    }
 }

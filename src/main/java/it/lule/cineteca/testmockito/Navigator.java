@@ -12,6 +12,19 @@ import java.util.List;
  */
 public class Navigator {
 
+    public int sum(int a, int b) {
+        return a + b;
+    }
+
+    public void sum2(int a, int b) {
+
+        sendData(a + b);
+    }
+
+    public void sendData(int sum) {
+        System.out.println("sum = " + sum);
+    }
+
     public int getXDistance(GoogleMapAPI api, String city1, String city2) {
         Position p1 = api.getPositionOf(city1);
         Position p2 = api.getPositionOf(city2);
@@ -30,8 +43,7 @@ public class Navigator {
 
     public void salvaTuttoDelonghi(List<String> lista) {
         for (String cosa : lista) {
-
-            save(cosa);
+                save(cosa);
         }
     }
 

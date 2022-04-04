@@ -145,11 +145,9 @@ public class NavigatorTest {
 
     @Test
     public void testSave2() {
-
         Navigator mock = spy(Navigator.class);
 
         List<String> lista = List.of("Cane", "Gatto", "Gino", "Tommasino");
-        
         
         ArgumentCaptor<String> captor = ArgumentCaptor.forClass(String.class);
         mock.salvaTuttoDelonghi(lista);
@@ -157,7 +155,6 @@ public class NavigatorTest {
 
         List<String> tuttiGliArgomenti = captor.getAllValues();
         assertEquals(lista, tuttiGliArgomenti);
-
     }
 
     @Test

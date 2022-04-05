@@ -9,6 +9,7 @@ package it.lule.cineteca.logic.prova01;
  * @author lele
  */
 public class NewClass1 {
+    //prova
     public int getValue1 = 1;
     public int getValue2 = 2;
     

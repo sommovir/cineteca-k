@@ -87,7 +87,7 @@ public class ManagementPassword {
             return isPasswordCorrect;
         }
 
-        isPasswordCorrect = isLength();
+        isPasswordCorrect = isTooLong();
         if (isPasswordCorrect != -1) {
             return isPasswordCorrect;
         }
@@ -123,9 +123,9 @@ public class ManagementPassword {
      *
      * @return int
      */
-    private int isLength() {
+    private int isTooLong() {
         if (jPasswordField.length <= passwordLeng) {
-            return ErrorCodeEnum.PASSWORD_IS_LENGTH.getCode();
+            return ErrorCodeEnum.PASSWORD_TOO_SHORT.getCode();
         }
         return -1;
     }
@@ -137,7 +137,7 @@ public class ManagementPassword {
      */
     private int isEqual() {
         if (!Arrays.equals(jPasswordField, jPasswordFieldConfirm)) {
-            return ErrorCodeEnum.PASSWORD_IS_EQUAL.getCode();
+            return ErrorCodeEnum.PASSWORD_IS_NOT_EQUAL.getCode();
         }
         return -1;
     }
@@ -149,7 +149,7 @@ public class ManagementPassword {
      */
     private int isUpperCase() {
         if (isUpperCase(jPasswordField) == false) {
-            return ErrorCodeEnum.PASSWORD_IS_UPPER_CASE.getCode();
+            return ErrorCodeEnum.PASSWORD_IS_NOT_UPPER_CASE.getCode();
         }
         return -1;
     }

@@ -26,6 +26,10 @@ public class DbManager {
     private static DbManager _instance = null;
     private SessionFactory sessionFactory;
 
+    /**
+     *
+     * @return
+     */
     public static DbManager getInstance() {
         if (_instance == null) {
             _instance = new DbManager();
@@ -37,6 +41,13 @@ public class DbManager {
         super();
     }
 
+    /**
+     *
+     * @param regista
+     * @return
+     * @throws DBUniqueViolationException
+     * @throws DBBadParamaterException
+     */
     public long createFilmDirector(FilmDirectorEntity regista) throws DBUniqueViolationException, DBBadParamaterException {
         if (regista == null) {
             return -1;
@@ -61,7 +72,13 @@ public class DbManager {
         return regista.getId();
     }
     
-     public long createMovie(MovieEntity movie) throws DBBadParamaterException {
+    /**
+     *
+     * @param movie
+     * @return
+     * @throws DBBadParamaterException
+     */
+    public long createMovie(MovieEntity movie) throws DBBadParamaterException {
         if (movie == null) {
             return -1;
         }
@@ -78,6 +95,10 @@ public class DbManager {
         return movie.getId();
     }
 
+    /**
+     *
+     * @param idRegista
+     */
     public void deleteFilmDirector(long idRegista) {
 
         Session session = sessionFactory.openSession();
@@ -91,6 +112,10 @@ public class DbManager {
         session.close();
     }
     
+    /**
+     *
+     * @param idMovie
+     */
     public void deleteMovie(long idMovie) {
 
         Session session = sessionFactory.openSession();
@@ -104,6 +129,11 @@ public class DbManager {
         session.close();
     }
 
+    /**
+     *
+     * @param filmDirectorToEdit
+     * @return
+     */
     public FilmDirectorEntity editFilmDirector(FilmDirectorEntity filmDirectorToEdit) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
@@ -115,6 +145,11 @@ public class DbManager {
         return mergedPerson;
     }
     
+    /**
+     *
+     * @param filmToEdit
+     * @return
+     */
     public MovieEntity editMovie(MovieEntity filmToEdit) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
@@ -126,6 +161,11 @@ public class DbManager {
         return mergedPerson;
     }
 
+    /**
+     *
+     * @param idFD
+     * @return
+     */
     public FilmDirectorEntity getFilmDirectorById(long idFD) {
         
         Session session = sessionFactory.openSession();
@@ -139,6 +179,11 @@ public class DbManager {
         return found;
     }
     
+    /**
+     *
+     * @param idm
+     * @return
+     */
     public MovieEntity getMovieById(long idm) {
         
         Session session = sessionFactory.openSession();
@@ -152,6 +197,10 @@ public class DbManager {
         return found;
     }
 
+    /**
+     *
+     * @return
+     */
     public List<FilmDirectorEntity> getAllFilmDirectors() {
         System.out.println("[DB]" + "fetching data.. [select * from filmdirector]");
         Session session = sessionFactory.openSession();
@@ -166,6 +215,10 @@ public class DbManager {
 
     }
     
+    /**
+     *
+     * @return
+     */
     public List<MovieEntity> getAllMovies() {
         System.out.println("[DB]" + "fetching data.. [select * from movie]");
         Session session = sessionFactory.openSession();

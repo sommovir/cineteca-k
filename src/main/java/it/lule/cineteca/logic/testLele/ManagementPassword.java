@@ -43,13 +43,16 @@ public class ManagementPassword {
             checkPassword();
         } catch (PasswordEmptyException ex) {
             Logger.getLogger(ManagementPassword.class.getName()).log(Level.SEVERE, null, ex);
+            return;
         } catch (PasswordTooShortException ex) {
             Logger.getLogger(ManagementPassword.class.getName()).log(Level.SEVERE, null, ex);
+            return;
         } catch (PasswordNotUpperCase ex) {
             Logger.getLogger(ManagementPassword.class.getName()).log(Level.SEVERE, null, ex);
+            return;
         }
-        
-//        isPasswordCorrect = true;
+
+        isPasswordCorrect = true;
     }
 
     /**
@@ -69,14 +72,18 @@ public class ManagementPassword {
             passwordNotEqual();
         } catch (PasswordEmptyException ex) {
             Logger.getLogger(ManagementPassword.class.getName()).log(Level.SEVERE, null, ex);
+            return;
         } catch (PasswordTooShortException ex) {
             Logger.getLogger(ManagementPassword.class.getName()).log(Level.SEVERE, null, ex);
+            return;
         } catch (PasswordNotUpperCase ex) {
             Logger.getLogger(ManagementPassword.class.getName()).log(Level.SEVERE, null, ex);
+            return;
         } catch (PasswordNotEqualException ex) {
             Logger.getLogger(ManagementPassword.class.getName()).log(Level.SEVERE, null, ex);
+            return;
         }
-        
+
         isPasswordCorrect = true;
     }
 
@@ -146,13 +153,14 @@ public class ManagementPassword {
                 return true;
             }
         }
-        
+
         return false;
     }
 
     /**
      * Get jPassword Field
-     * @return 
+     *
+     * @return
      */
     public char[] getjPasswordField() {
         return jPasswordField;

@@ -21,13 +21,41 @@ public class LeleTest {
     }
 
     @Test
-    public void test01() {
-        String value = "lele";
+    public void loginPasswordCorretta() {
+        String value = "Lele01";
         char[] password = value.toCharArray();
         ManagementPassword managementPassword = new ManagementPassword("lele", password);
         assertEquals(true, managementPassword.isPasswordCorrect(), "Password corretta");
     }
 
+    @Test
+    public void loginPasswordCorta() {
+        String value = "Lele0";
+        char[] password = value.toCharArray();
+        ManagementPassword managementPassword = new ManagementPassword("lele", password);
+        assertEquals(true, managementPassword.isPasswordCorrect(), "Password corretta");
+    }
+
+    @Test
+    public void loginPasswordSenzaMaiuscole() {
+        String value = "lele01";
+        char[] password = value.toCharArray();
+        ManagementPassword managementPassword = new ManagementPassword("lele", password);
+        assertEquals(true, managementPassword.isPasswordCorrect(), "Password corretta");
+    }
+
+    @Test
+    public void registrationPasswordUguali() {
+        String value01 = "Lele01";
+        char[] password = value01.toCharArray();
+        
+        String value02 = "Lele02";
+        char[] passwordConfirm = value02.toCharArray();
+        ManagementPassword managementPassword = new ManagementPassword("lele", password, passwordConfirm);
+        assertEquals(true, managementPassword.isPasswordCorrect(), "Password corretta");
+    }
+
+    
     @BeforeAll
     public static void setUpClass() {
     }

@@ -10,6 +10,8 @@ import it.lule.cineteca.logic.testLele.exceptions.PasswordNotEqualException;
 import it.lule.cineteca.logic.testLele.exceptions.PasswordNotUpperCase;
 import it.lule.cineteca.logic.testLele.exceptions.PasswordTooShortException;
 import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -17,8 +19,8 @@ import java.util.Arrays;
  */
 public class ManagementPassword {
 
-    private Integer isPasswordCorrect;
-    private int passwordLeng = 1;
+    private boolean isPasswordCorrect = false;
+    private int passwordLeng = 6;
     private String jTextFieldUser;
     private char[] jPasswordField;
     private char[] jPasswordFieldConfirm;
@@ -37,27 +39,58 @@ public class ManagementPassword {
         this.jPasswordField = jPasswordField;
         // Unused !!!!!
         jPasswordFieldConfirm = jPasswordField;
-//        checkPasswordlogin();
+        try {
+            checkPassword();
+        } catch (PasswordEmptyException ex) {
+            Logger.getLogger(ManagementPassword.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (PasswordTooShortException ex) {
+            Logger.getLogger(ManagementPassword.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (PasswordNotUpperCase ex) {
+            Logger.getLogger(ManagementPassword.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+//        isPasswordCorrect = true;
     }
 
     /**
-     * Check Password Registration
+     * User registration
      *
-     * @return int
+     * @param jTextFieldUser
+     * @param jPasswordField
+     * @param jPasswordFieldConfirm
      */
-    private void checkPasswordlogin() throws PasswordEmptyException, 
-            PasswordTooShortException, PasswordNotEqualException, 
-            PasswordNotUpperCase {
+    public ManagementPassword(String jTextFieldUser, char[] jPasswordField, char[] jPasswordFieldConfirm) {
+        this.jTextFieldUser = jTextFieldUser;
+        this.jPasswordField = jPasswordField;
+        this.jPasswordFieldConfirm = jPasswordFieldConfirm;
+
+        try {
+            checkPassword();
+            passwordNotEqual();
+        } catch (PasswordEmptyException ex) {
+            Logger.getLogger(ManagementPassword.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (PasswordTooShortException ex) {
+            Logger.getLogger(ManagementPassword.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (PasswordNotUpperCase ex) {
+            Logger.getLogger(ManagementPassword.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (PasswordNotEqualException ex) {
+            Logger.getLogger(ManagementPassword.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        isPasswordCorrect = true;
+    }
+
+    private void checkPassword() throws PasswordEmptyException,
+            PasswordTooShortException, PasswordNotUpperCase {
         passwordEmpty();
         PasswordTooShort();
-        passwordNotEqual();
         passwordNotUpperCase();
     }
 
     /**
      * Password or User are empty
      *
-     * @return int
+     * @throws PasswordEmptyException
      */
     private void passwordEmpty() throws PasswordEmptyException {
         if (jTextFieldUser.isEmpty() || jPasswordField.length == 0
@@ -68,19 +101,20 @@ public class ManagementPassword {
 
     /**
      * Password is too short
+     *
+     * @throws PasswordTooShortException
      */
     private void PasswordTooShort() throws PasswordTooShortException {
         if (jPasswordField.length < passwordLeng) {
             throw new PasswordTooShortException(
                     ErrorCodeEnum.PASSWORD_TOO_SHORT.getMessage());
         }
-
     }
 
     /**
      * Password is equal
      *
-     * @return int
+     * @throws PasswordNotEqualException
      */
     private void passwordNotEqual() throws PasswordNotEqualException {
         if (!Arrays.equals(jPasswordField, jPasswordFieldConfirm)) {
@@ -91,6 +125,8 @@ public class ManagementPassword {
 
     /**
      * Password is Upper Case
+     *
+     * @throws PasswordNotUpperCase
      */
     private void passwordNotUpperCase() throws PasswordNotUpperCase {
         if (checkUpperCase(jPasswordField) == false) {
@@ -98,15 +134,26 @@ public class ManagementPassword {
         }
     }
 
+    /**
+     * Check Upper Case
+     *
+     * @param jPasswordField
+     * @return
+     */
     private boolean checkUpperCase(char[] jPasswordField) {
         for (int i = 0; i < jPasswordField.length; i++) {
             if (Character.isUpperCase(jPasswordField[i])) {
                 return true;
             }
         }
+        
         return false;
     }
 
+    /**
+     * Get jPassword Field
+     * @return 
+     */
     public char[] getjPasswordField() {
         return jPasswordField;
     }
@@ -116,7 +163,7 @@ public class ManagementPassword {
      *
      * @return
      */
-    public Integer isPasswordCorrect() {
+    public boolean isPasswordCorrect() {
         return isPasswordCorrect;
     }
 }

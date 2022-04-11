@@ -8,12 +8,19 @@ import it.lule.cineteca.logic.enumname.ErrorCodeEnum;
 
 /**
  *
- * @author lele
+ * @author sommovir
  */
-public class PasswordEmptyException extends PasswordException{
+public class PasswordException extends Exception {
 
-    public PasswordEmptyException() {
-        super(ErrorCodeEnum.PASSWORD_IS_EMPTY);
+    private ErrorCodeEnum errorCode;
+
+    public PasswordException(ErrorCodeEnum errorCode) {
+        super(errorCode.getMessage());
+        this.errorCode = errorCode;
     }
-    
+
+    public ErrorCodeEnum getErrorCode() {
+        return errorCode;
+    }
+
 }

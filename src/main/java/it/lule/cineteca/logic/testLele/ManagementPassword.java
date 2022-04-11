@@ -102,7 +102,7 @@ public class ManagementPassword {
     private void passwordEmpty() throws PasswordEmptyException {
         if (jTextFieldUser.isEmpty() || jPasswordField.length == 0
                 || jPasswordFieldConfirm.length == 0) {
-            throw new PasswordEmptyException(ErrorCodeEnum.PASSWORD_IS_EMPTY.getMessage());
+            throw new PasswordEmptyException();
         }
     }
 

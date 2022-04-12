@@ -2,15 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package it.lule.cineteca.logic.testLele.exceptions;
+package it.lule.cineteca.logic.exceptions.password;
 
 /**
  *
  * @author lele
  */
-public class PasswordNotEqualException extends Exception{
+public class PasswordTooLongException extends Exception{
 
-    public PasswordNotEqualException(String message) {
+    public PasswordTooLongException(String message) {
         super(message);
     }
     

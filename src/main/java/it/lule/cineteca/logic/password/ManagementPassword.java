@@ -170,7 +170,7 @@ public class ManagementPassword {
     private void passwordNotEqual() throws PasswordNotEqualException {
         if (!Arrays.equals(jPasswordField, jPasswordFieldConfirm)) {
             throw new PasswordNotEqualException(
-                    ErrorCodeEnum.PASSWORD_IS_NOT_EQUAL.getMessage());
+                    ErrorCodeEnum.PASSWORD_HAS_NOT_EQUAL.getMessage());
         }
     }
 
@@ -181,7 +181,7 @@ public class ManagementPassword {
      */
     private void passwordNotUpperCase() throws PasswordNotUpperCase {
         if (checkUpperCase(jPasswordField) == false) {
-            throw new PasswordNotUpperCase(ErrorCodeEnum.PASSWORD_IS_NOT_UPPER_CASE.getMessage());
+            throw new PasswordNotUpperCase(ErrorCodeEnum.PASSWORD_HAS_NOT_UPPER_CASE.getMessage());
         }
     }
 

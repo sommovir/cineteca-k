@@ -57,7 +57,7 @@ public class ManagementPasswordTest {
         ManagementPassword managementPassword = new ManagementPassword("lele", password);
 
         assertEquals(false, managementPassword.isPasswordCorrect(),
-                ErrorCodeEnum.PASSWORD_IS_NOT_UPPER_CASE.getMessage());
+                ErrorCodeEnum.PASSWORD_HAS_NOT_UPPER_CASE.getMessage());
     }
 
     @Test
@@ -70,7 +70,7 @@ public class ManagementPasswordTest {
         ManagementPassword managementPassword = new ManagementPassword("lele", password, passwordConfirm);
 
         assertEquals(false, managementPassword.isPasswordCorrect(),
-                ErrorCodeEnum.PASSWORD_DO_NOT_MATCH.getMessage());
+                ErrorCodeEnum.PASSWORD_DOES_NOT_MATCH.getMessage());
     }
 
     public void userIsEmpty() {

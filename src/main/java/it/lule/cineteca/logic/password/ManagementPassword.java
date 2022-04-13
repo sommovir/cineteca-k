@@ -125,7 +125,7 @@ public class ManagementPassword {
      */
     private int isLength() {
         if (jPasswordField.length <= passwordLeng) {
-            return ErrorCodeEnum.PASSWORD_IS_LENGTH.getCode();
+            return ErrorCodeEnum.PASSWORD_TOO_LONG.getCode();
         }
         return -1;
     }

@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
-  <NonVisualComponents>
-    <Component class="it.lule.cineteca.logic.gui.logic.model.JComboBoxMovietModel" name="jComboBoxMovietModel1">
-    </Component>
-    <Component class="it.lule.cineteca.logic.gui.logic.renderer.JComboBoxMovieRenderer" name="jComboBoxMovieRenderer1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jComboBoxMovieRenderer1"/>
-      </Properties>
-    </Component>
-  </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>

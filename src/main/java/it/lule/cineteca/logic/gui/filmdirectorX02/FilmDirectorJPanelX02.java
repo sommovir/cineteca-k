@@ -5,9 +5,6 @@
  */
 package it.lule.cineteca.logic.gui.filmdirectorX02;
 
-import it.lule.cineteca.logic.fake.FakeDB;
-import it.lule.cineteca.logic.fake.FakeFilmDirector;
-import it.lule.cineteca.logic.fake.FakeMovie;
 import it.lule.cineteca.logic.gui.movie.add.AddMovieJFrame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,28 +15,12 @@ import java.util.List;
  * @author lele
  */
 public class FilmDirectorJPanelX02 extends javax.swing.JPanel implements ActionListener {
-
-    private List<FakeFilmDirector> fakeFilmDirectors = FakeDB.getInstance().getFakeFilmDirectors();
-
     /**
      * Creates new form FilmDirectorJPanel
      */
     public FilmDirectorJPanelX02() {
         initComponents();
 
-        for (FakeFilmDirector fakeFilmDirector : fakeFilmDirectors) {
-//            jlistFilmDirectorModelFake1.addElement(fakeFilmDirector);
-        }
-
-        FakeFilmDirector getFakeFilmDirector = fakeFilmDirectors.get(0);
-
-        List<FakeMovie> fakeMovies = getFakeFilmDirector.getFakeMovies();
-
-        for (FakeMovie fakeMovy : fakeMovies) {
-//            jComboBoxMovietModelFake1.addElement(fakeMovy);
-        }
-
-//        jComboBox1.addActionListener(this);
     }
 
     /**
@@ -51,10 +32,6 @@ public class FilmDirectorJPanelX02 extends javax.swing.JPanel implements ActionL
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jComboBoxMovietModelFake1 = new it.lule.cineteca.logic.fake.logic.model.JComboBoxMovietModelFake();
-        jlistFilmDirectorModelFake1 = new it.lule.cineteca.logic.fake.logic.model.JlistFilmDirectorModelFake();
-        jComboBoxMovieRendererFake1 = new it.lule.cineteca.logic.fake.logic.renderer.JComboBoxMovieRendererFake();
-        jlistFilmDirectorRendererFake1 = new it.lule.cineteca.logic.fake.logic.renderer.JlistFilmDirectorRendererFake();
         jPanel1 = new javax.swing.JPanel();
         jButtonAddMovie = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
@@ -69,10 +46,6 @@ public class FilmDirectorJPanelX02 extends javax.swing.JPanel implements ActionL
         jButtonAddFilmDirector = new javax.swing.JButton();
         jButtonRemoveFilmDirector = new javax.swing.JButton();
 
-        jComboBoxMovieRendererFake1.setText("jComboBoxMovieRendererFake1");
-
-        jlistFilmDirectorRendererFake1.setText("jlistFilmDirectorRendererFake1");
-
         jButtonAddMovie.setText("Add Movie");
         jButtonAddMovie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,11 +53,6 @@ public class FilmDirectorJPanelX02 extends javax.swing.JPanel implements ActionL
             }
         });
 
-        jComboBox1.setModel(jComboBoxMovietModelFake1);
-        jComboBox1.setRenderer(jComboBoxMovieRendererFake1);
-
-        jListFilmDIrector.setModel(jlistFilmDirectorModelFake1);
-        jListFilmDIrector.setCellRenderer(jlistFilmDirectorRendererFake1);
         jListFilmDIrector.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 jListFilmDIrectorMouseReleased(evt);
@@ -194,59 +162,17 @@ public class FilmDirectorJPanelX02 extends javax.swing.JPanel implements ActionL
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAddFilmDirectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddFilmDirectorActionPerformed
-        FakeFilmDirector fakeFilmDirector = new FakeFilmDirector();
-        fakeFilmDirector.setName(jTextFieldName.getText());
-        fakeFilmDirector.setSurname(jTextFieldSurname.getText());
-        
-//        jlistFilmDirectorModelFake1.addElement(fakeFilmDirector);
+
     }//GEN-LAST:event_jButtonAddFilmDirectorActionPerformed
 
     private void jButtonAddMovieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddMovieActionPerformed
-        AddMovieJFrame addFilmJFrame = new AddMovieJFrame();
 
-        addFilmJFrame.setLocationRelativeTo(null);
-        addFilmJFrame.setVisible(true);
     }//GEN-LAST:event_jButtonAddMovieActionPerformed
 
     private void jButtonRemoveFilmDirectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoveFilmDirectorActionPerformed
-        if (jListFilmDIrector.getSelectedIndex() == -1) {
-            return;
-        }
-
-        int selectedIndex = jListFilmDIrector.getSelectedIndex();
-
-//        jlistFilmDirectorModelFake1.remove(selectedIndex);
-
-        jListFilmDIrector.getSelectionForeground();
-
-        jListFilmDIrector.setSelectedIndex(selectedIndex - 1);
-//        jComboBoxMovietModelFake1.removeAllElements();
-
-        List<FakeMovie> fakeMovies = fakeFilmDirectors.get(selectedIndex - 1).getFakeMovies();
-
-        for (FakeMovie fakeMovy : fakeMovies) {
-//            jComboBoxMovietModelFake1.addElement(fakeMovy);
-        }
-
-
     }//GEN-LAST:event_jButtonRemoveFilmDirectorActionPerformed
 
     private void jListFilmDIrectorMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListFilmDIrectorMouseReleased
-
-        if (jComboBox1.getItemCount() != -1) {
-            jComboBox1.removeAllItems();
-        }
-
-        int selectedIndex = jListFilmDIrector.getSelectedIndex();
-
-        jListFilmDIrector.setSelectedIndex(selectedIndex);
-        FakeFilmDirector getFakeFilmDirector = fakeFilmDirectors.get(selectedIndex);
-
-        for (FakeMovie fakeMovy : getFakeFilmDirector.getFakeMovies()) {
-//            jComboBoxMovietModelFake1.addElement(fakeMovy);
-        }
-
-
     }//GEN-LAST:event_jListFilmDIrectorMouseReleased
 
 
@@ -254,27 +180,20 @@ public class FilmDirectorJPanelX02 extends javax.swing.JPanel implements ActionL
     private javax.swing.JButton jButtonAddFilmDirector;
     private javax.swing.JButton jButtonAddMovie;
     private javax.swing.JButton jButtonRemoveFilmDirector;
-    private javax.swing.JComboBox<FakeMovie> jComboBox1;
-    private it.lule.cineteca.logic.fake.logic.renderer.JComboBoxMovieRendererFake jComboBoxMovieRendererFake1;
-    private it.lule.cineteca.logic.fake.logic.model.JComboBoxMovietModelFake jComboBoxMovietModelFake1;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabelDateOfBirth;
     private javax.swing.JLabel jLabelName;
     private javax.swing.JLabel jLabelSurname;
-    private javax.swing.JList<FakeFilmDirector> jListFilmDIrector;
+    private javax.swing.JList<String> jListFilmDIrector;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private java.awt.TextField jTextFielDateOfBird;
     private java.awt.TextField jTextFieldName;
     private java.awt.TextField jTextFieldSurname;
-    private it.lule.cineteca.logic.fake.logic.model.JlistFilmDirectorModelFake jlistFilmDirectorModelFake1;
-    private it.lule.cineteca.logic.fake.logic.renderer.JlistFilmDirectorRendererFake jlistFilmDirectorRendererFake1;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-        System.out.println(jComboBox1.getSelectedIndex());
-        if (ae.getSource() == jComboBox1) {
 
-        }
     }
 }

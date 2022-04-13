@@ -16,9 +16,9 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * @author lele
  */
-public class LeleTest {
+public class ManagementPasswordTest {
 
-    public LeleTest() {
+    public ManagementPasswordTest() {
     }
 
     @Test

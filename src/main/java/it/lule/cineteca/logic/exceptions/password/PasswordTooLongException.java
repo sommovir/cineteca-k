@@ -4,14 +4,16 @@
  */
 package it.lule.cineteca.logic.exceptions.password;
 
+import it.lule.cineteca.logic.enumname.ErrorCodeEnum;
+
 /**
  *
  * @author lele
  */
-public class PasswordTooLongException extends Exception{
+public class PasswordTooLongException extends PasswordException{
 
-    public PasswordTooLongException(String message) {
-        super(message);
+    public PasswordTooLongException() {
+        super(ErrorCodeEnum.PASSWORD_TOO_LONG);
     }
     
 }

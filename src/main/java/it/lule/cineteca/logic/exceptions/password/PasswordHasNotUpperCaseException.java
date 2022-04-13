@@ -4,14 +4,16 @@
  */
 package it.lule.cineteca.logic.exceptions.password;
 
+import it.lule.cineteca.logic.enumname.ErrorCodeEnum;
+
 /**
  *
  * @author lele
  */
-public class PasswordNotUpperCase extends Exception{
+public class PasswordHasNotUpperCaseException extends PasswordException{
 
-    public PasswordNotUpperCase(String message) {
-        super(message);
+    public PasswordHasNotUpperCaseException() {
+        super(ErrorCodeEnum.PASSWORD_HAS_NOT_UPPER_CASE);
     }
     
 }

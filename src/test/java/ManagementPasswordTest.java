@@ -80,7 +80,7 @@ public class ManagementPasswordTest {
         ManagementPassword managementPassword = new ManagementPassword(
                 "", password);
         assertEquals(false, managementPassword.isPasswordCorrect(),
-                ErrorCodeEnum.USER_IS_EMPTY.getMessage());
+                ErrorCodeEnum.USER_EMPTY.getMessage());
     }
 
     @BeforeAll

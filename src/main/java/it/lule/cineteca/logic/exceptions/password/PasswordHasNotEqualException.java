@@ -4,14 +4,16 @@
  */
 package it.lule.cineteca.logic.exceptions.password;
 
+import it.lule.cineteca.logic.enumname.ErrorCodeEnum;
+
 /**
  *
  * @author lele
  */
-public class PasswordNotEqualException extends Exception{
+public class PasswordHasNotEqualException extends PasswordException{
 
-    public PasswordNotEqualException(String message) {
-        super(message);
+    public PasswordHasNotEqualException() {
+        super(ErrorCodeEnum.PASSWORD_HAS_NOT_EQUAL);
     }
     
 }

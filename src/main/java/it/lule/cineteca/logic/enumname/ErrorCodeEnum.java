@@ -22,7 +22,7 @@ public enum ErrorCodeEnum {
     PASSWORD_HAS_NOT_EQUAL(9,"PASSWORD_HAS_NOT_EQUAL"),
     PASSWORD_HAS_NOT_UPPER_CASE(10,"PASSWORD_HAS_NOT_UPPER_CASE"),
     
-    USER_IS_EMPTY(11,"USER_IS_EMPTY");
+    USER_EMPTY(11,"USER_IS_EMPTY");
 
     private int code;
     private String message;

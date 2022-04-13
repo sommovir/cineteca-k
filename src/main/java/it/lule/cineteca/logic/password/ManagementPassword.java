@@ -6,8 +6,8 @@ package it.lule.cineteca.logic.password;
 
 import it.lule.cineteca.logic.enumname.ErrorCodeEnum;
 import it.lule.cineteca.logic.exceptions.password.PasswordEmptyException;
-import it.lule.cineteca.logic.exceptions.password.PasswordNotEqualException;
-import it.lule.cineteca.logic.exceptions.password.PasswordNotUpperCase;
+import it.lule.cineteca.logic.exceptions.password.PasswordHasNotEqualException;
+import it.lule.cineteca.logic.exceptions.password.PasswordHasNotUpperCaseException;
 import it.lule.cineteca.logic.exceptions.password.PasswordTooLongException;
 import it.lule.cineteca.logic.exceptions.password.PasswordTooShortException;
 import it.lule.cineteca.logic.exceptions.password.UserEmptyException;
@@ -53,7 +53,7 @@ public class ManagementPassword {
         } catch (PasswordTooShortException ex) {
             Logger.getLogger(ManagementPassword.class.getName()).log(Level.SEVERE, null, ex);
             return;
-        } catch (PasswordNotUpperCase ex) {
+        } catch (PasswordHasNotUpperCaseException ex) {
             Logger.getLogger(ManagementPassword.class.getName()).log(Level.SEVERE, null, ex);
             return;
         } catch (UserEmptyException ex) {
@@ -78,7 +78,7 @@ public class ManagementPassword {
 
         try {
             checkPassword();
-            passwordNotEqual();
+            passwordHasNotEqual();
         } catch (PasswordEmptyException ex) {
             Logger.getLogger(ManagementPassword.class.getName()).log(Level.SEVERE, null, ex);
             return;
@@ -88,10 +88,10 @@ public class ManagementPassword {
         } catch (PasswordTooShortException ex) {
             Logger.getLogger(ManagementPassword.class.getName()).log(Level.SEVERE, null, ex);
             return;
-        } catch (PasswordNotUpperCase ex) {
+        } catch (PasswordHasNotUpperCaseException ex) {
             Logger.getLogger(ManagementPassword.class.getName()).log(Level.SEVERE, null, ex);
             return;
-        } catch (PasswordNotEqualException ex) {
+        } catch (PasswordHasNotEqualException ex) {
             Logger.getLogger(ManagementPassword.class.getName()).log(Level.SEVERE, null, ex);
             return;
         } catch (UserEmptyException ex) {
@@ -103,12 +103,12 @@ public class ManagementPassword {
     }
 
     private void checkPassword() throws PasswordEmptyException,
-            PasswordTooShortException, PasswordNotUpperCase, UserEmptyException, PasswordTooLongException {
-        userIsEmpty();
+            PasswordTooShortException, PasswordHasNotUpperCaseException, UserEmptyException, PasswordTooLongException {
+        userEmpty();
         passwordEmpty();
         passwordTooShort();
         passwordTooLong();
-        passwordNotUpperCase();
+        passwordHasNotUpperCase();
     }
 
     /**
@@ -133,8 +133,7 @@ public class ManagementPassword {
      */
     private void passwordTooShort() throws PasswordTooShortException {
         if (jPasswordField.length < passwordMinimumLength) {
-            throw new PasswordTooShortException(
-                    ErrorCodeEnum.PASSWORD_TOO_SHORT.getMessage());
+            throw new PasswordTooShortException();
         }
     }
 
@@ -145,8 +144,7 @@ public class ManagementPassword {
      */
     private void passwordTooLong() throws PasswordTooLongException {
         if (jPasswordField.length > passwordMaximumLength) {
-            throw new PasswordTooLongException(
-                    ErrorCodeEnum.PASSWORD_TOO_LONG.getMessage());
+            throw new PasswordTooLongException();
         }
     }
 
@@ -155,33 +153,31 @@ public class ManagementPassword {
      *
      * @throws UserEmptyException
      */
-    private void userIsEmpty() throws UserEmptyException {
+    private void userEmpty() throws UserEmptyException {
         if (jTextFieldUser.isEmpty()) {
-            throw new UserEmptyException(
-                    ErrorCodeEnum.USER_IS_EMPTY.getMessage());
+            throw new UserEmptyException();
         }
     }
 
     /**
      * Password is equal
      *
-     * @throws PasswordNotEqualException
+     * @throws PasswordHasNotEqualException
      */
-    private void passwordNotEqual() throws PasswordNotEqualException {
+    private void passwordHasNotEqual() throws PasswordHasNotEqualException {
         if (!Arrays.equals(jPasswordField, jPasswordFieldConfirm)) {
-            throw new PasswordNotEqualException(
-                    ErrorCodeEnum.PASSWORD_HAS_NOT_EQUAL.getMessage());
+            throw new PasswordHasNotEqualException();
         }
     }
 
     /**
      * Password is Upper Case
      *
-     * @throws PasswordNotUpperCase
+     * @throws PasswordHasNotUpperCaseException
      */
-    private void passwordNotUpperCase() throws PasswordNotUpperCase {
+    private void passwordHasNotUpperCase() throws PasswordHasNotUpperCaseException {
         if (checkUpperCase(jPasswordField) == false) {
-            throw new PasswordNotUpperCase(ErrorCodeEnum.PASSWORD_HAS_NOT_UPPER_CASE.getMessage());
+            throw new PasswordHasNotUpperCaseException();
         }
     }
 

@@ -4,14 +4,16 @@
  */
 package it.lule.cineteca.logic.exceptions.password;
 
+import it.lule.cineteca.logic.enumname.ErrorCodeEnum;
+
 /**
  *
  * @author lele
  */
-public class UserEmptyException extends Exception{
+public class UserEmptyException extends PasswordException{
 
-    public UserEmptyException(String message) {
-        super(message);
+    public UserEmptyException() {
+        super(ErrorCodeEnum.USER_EMPTY);
     }
     
 }

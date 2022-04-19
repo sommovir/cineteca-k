@@ -4,7 +4,6 @@
  */
 package it.lule.cineteca.logic.password;
 
-import it.lule.cineteca.logic.enumname.ErrorCodeEnum;
 import it.lule.cineteca.logic.exceptions.password.PasswordEmptyException;
 import it.lule.cineteca.logic.exceptions.password.PasswordHasNotEqualException;
 import it.lule.cineteca.logic.exceptions.password.PasswordHasNotUpperCaseException;
@@ -21,87 +20,70 @@ import java.util.logging.Logger;
  */
 public class ManagementPassword {
 
-    private boolean isPasswordCorrect = false;
+    private static ManagementPassword instance = null;
+//    private boolean isPasswordCorrect = false;
     private int passwordMinimumLength = 3;
     private int passwordMaximumLength = 6;
     private String jTextFieldUser;
     private char[] jPasswordField;
     private char[] jPasswordFieldConfirm;
 
-    public ManagementPassword() {
+    public static ManagementPassword getInstance() {
+        if (instance == null) {
+            instance = new ManagementPassword();
+        }
+        return instance;
     }
 
     /**
-     * Check login password
-     *
+     * Login
      * @param jTextFieldUser
      * @param jPasswordField
+     * @throws PasswordEmptyException
+     * @throws PasswordTooShortException
+     * @throws PasswordHasNotUpperCaseException
+     * @throws UserEmptyException
+     * @throws PasswordTooLongException
      */
-    public ManagementPassword(String jTextFieldUser, char[] jPasswordField) {
+    public void login(String jTextFieldUser, char[] jPasswordField)
+            throws PasswordEmptyException, PasswordTooShortException,
+            PasswordHasNotUpperCaseException, UserEmptyException,
+            PasswordTooLongException {
         this.jTextFieldUser = jTextFieldUser;
         this.jPasswordField = jPasswordField;
         // Unused !!!!!
         jPasswordFieldConfirm = jPasswordField;
-        try {
-            checkPassword();
-        } catch (PasswordEmptyException ex) {
-            Logger.getLogger(ManagementPassword.class.getName()).log(Level.SEVERE, null, ex);
-            return;
-        } catch (PasswordTooLongException ex) {
-            Logger.getLogger(ManagementPassword.class.getName()).log(Level.SEVERE, null, ex);
-            return;
-        } catch (PasswordTooShortException ex) {
-            Logger.getLogger(ManagementPassword.class.getName()).log(Level.SEVERE, null, ex);
-            return;
-        } catch (PasswordHasNotUpperCaseException ex) {
-            Logger.getLogger(ManagementPassword.class.getName()).log(Level.SEVERE, null, ex);
-            return;
-        } catch (UserEmptyException ex) {
-            Logger.getLogger(ManagementPassword.class.getName()).log(Level.SEVERE, null, ex);
-            return;
-        }
-
-        isPasswordCorrect = true;
+        checkPassword();
     }
 
     /**
-     * User registration
-     *
+     * Create User
      * @param jTextFieldUser
      * @param jPasswordField
      * @param jPasswordFieldConfirm
+     * @throws PasswordEmptyException
+     * @throws PasswordTooShortException
+     * @throws PasswordHasNotUpperCaseException
+     * @throws UserEmptyException
+     * @throws PasswordTooLongException
+     * @throws PasswordHasNotEqualException 
      */
-    public ManagementPassword(String jTextFieldUser, char[] jPasswordField, char[] jPasswordFieldConfirm) {
+    public void createUser(String jTextFieldUser, char[] jPasswordField,
+            char[] jPasswordFieldConfirm) throws PasswordEmptyException,
+            PasswordTooShortException, PasswordHasNotUpperCaseException,
+            UserEmptyException, PasswordTooLongException, 
+            PasswordHasNotEqualException {
         this.jTextFieldUser = jTextFieldUser;
         this.jPasswordField = jPasswordField;
         this.jPasswordFieldConfirm = jPasswordFieldConfirm;
 
-        try {
-            checkPassword();
-            passwordHasNotEqual();
-        } catch (PasswordEmptyException ex) {
-            Logger.getLogger(ManagementPassword.class.getName()).log(Level.SEVERE, null, ex);
-            return;
-        } catch (PasswordTooLongException ex) {
-            Logger.getLogger(ManagementPassword.class.getName()).log(Level.SEVERE, null, ex);
-            return;
-        } catch (PasswordTooShortException ex) {
-            Logger.getLogger(ManagementPassword.class.getName()).log(Level.SEVERE, null, ex);
-            return;
-        } catch (PasswordHasNotUpperCaseException ex) {
-            Logger.getLogger(ManagementPassword.class.getName()).log(Level.SEVERE, null, ex);
-            return;
-        } catch (PasswordHasNotEqualException ex) {
-            Logger.getLogger(ManagementPassword.class.getName()).log(Level.SEVERE, null, ex);
-            return;
-        } catch (UserEmptyException ex) {
-            Logger.getLogger(ManagementPassword.class.getName()).log(Level.SEVERE, null, ex);
-            return;
-        }
-
-        isPasswordCorrect = true;
+        checkPassword();
+        passwordHasNotEqual();
     }
 
+    public ManagementPassword() {
+    }
+    
     private void checkPassword() throws PasswordEmptyException,
             PasswordTooShortException, PasswordHasNotUpperCaseException, UserEmptyException, PasswordTooLongException {
         userEmpty();
@@ -117,10 +99,10 @@ public class ManagementPassword {
      * @throws PasswordEmptyException
      */
     private void passwordEmpty() throws PasswordEmptyException {
-        if (jPasswordField.length == 0 || 
-                jPasswordField == null ||
-                jPasswordFieldConfirm.length == 0 || 
-                jPasswordFieldConfirm == null) {
+        if (jPasswordField.length == 0
+                || jPasswordField == null
+                || jPasswordFieldConfirm.length == 0
+                || jPasswordFieldConfirm == null) {
             throw new PasswordEmptyException();
         }
 
@@ -197,21 +179,21 @@ public class ManagementPassword {
         return false;
     }
 
-    /**
-     * Get jPassword Field
-     *
-     * @return
-     */
-    public char[] getjPasswordField() {
-        return jPasswordField;
-    }
-
-    /**
-     * Return error code if password is wrong
-     *
-     * @return
-     */
-    public boolean isPasswordCorrect() {
-        return isPasswordCorrect;
-    }
+//    /**
+//     * Get jPassword Field
+//     *
+//     * @return
+//     */
+//    public char[] getjPasswordField() {
+//        return jPasswordField;
+//    }
+//
+//    /**
+//     * Return error code if password is wrong
+//     *
+//     * @return
+//     */
+//    public boolean isPasswordCorrect() {
+//        return isPasswordCorrect;
+//    }
 }

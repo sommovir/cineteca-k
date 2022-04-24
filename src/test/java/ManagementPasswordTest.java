@@ -37,16 +37,19 @@ public class ManagementPasswordTest {
 //    }
 
     @Test
-    @DisplayName(value = "[ManagementPassword] password too long.")
+//    @DisplayName(value = "[ManagementPassword] password too long.")
     public void loginPasswordLunga() {
-        String value = "Lele0ddfdfdfdfdfdfd";
+        String value = "Lele";
+//        String value = "Lele0ddfdfdfdfdfdfd";
         char[] password = value.toCharArray();
         PasswordTooLongException exception = assertThrows(PasswordTooLongException.class, new Executable() {
+        
             @Override
             public void execute() throws Throwable {
                 ManagementPassword.getInstance().login("lele", password);
             }
         }, "mi aspettavo che lanciasse un'eccezione");
+        
         assertEquals(ErrorCodeEnum.PASSWORD_TOO_LONG, exception.getErrorCode(),"Mi aspettavo l'errore: "+ErrorCodeEnum.PASSWORD_TOO_LONG);
         passed = true;
     }

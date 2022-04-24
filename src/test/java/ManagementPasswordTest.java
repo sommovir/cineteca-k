@@ -4,7 +4,11 @@
  */
 
 import it.lule.cineteca.logic.enumname.ErrorCodeEnum;
+import it.lule.cineteca.logic.exceptions.password.PasswordDoesNotMatchException;
+import it.lule.cineteca.logic.exceptions.password.PasswordEmptyException;
+import it.lule.cineteca.logic.exceptions.password.PasswordHasNotUpperCaseException;
 import it.lule.cineteca.logic.exceptions.password.PasswordTooLongException;
+import it.lule.cineteca.logic.exceptions.password.PasswordTooShortException;
 import it.lule.cineteca.logic.password.ManagementPassword;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
@@ -22,7 +26,7 @@ import org.junit.jupiter.api.function.Executable;
  * @author lele
  */
 public class ManagementPasswordTest {
-    
+
     private boolean passed = false;
 
     public ManagementPasswordTest() {
@@ -35,68 +39,103 @@ public class ManagementPasswordTest {
 //        ManagementPassword managementPassword = new ManagementPassword("lele", password);
 //        assertEquals(true, managementPassword.isPasswordCorrect(), "Password corretta");
 //    }
+    @Test
+    @DisplayName(value = "[ManagementPassword] PASSWORD_TOO_LONG")
+    public void loginPasswordLunga() {
+        String value = "Lele0ddfdfdfdfdfdfd";
+        char[] password = value.toCharArray();
+        
+        PasswordTooLongException exception = 
+                assertThrows(PasswordTooLongException.class, new Executable() {
+
+            @Override
+            public void execute() throws Throwable {
+                ManagementPassword.getInstance().login("lele", password);
+            }
+        }, "mi aspettavo che lanciasse un'eccezione");
+
+        assertEquals(ErrorCodeEnum.PASSWORD_TOO_LONG, exception.getErrorCode(), 
+                "Mi aspettavo l'errore: " + ErrorCodeEnum.PASSWORD_TOO_LONG);
+        passed = true;
+    }
 
     @Test
-//    @DisplayName(value = "[ManagementPassword] password too long.")
-    public void loginPasswordLunga() {
-        String value = "Lele";
-//        String value = "Lele0ddfdfdfdfdfdfd";
+    @DisplayName( value = "[ManagementPassword] PASSWORD_TOO_SHORT") 
+    public void loginPasswordTooShort() {
+        String value = "Le";
         char[] password = value.toCharArray();
-        PasswordTooLongException exception = assertThrows(PasswordTooLongException.class, new Executable() {
         
+        PasswordTooShortException exception = 
+                assertThrows(PasswordTooShortException.class, new Executable() {
             @Override
             public void execute() throws Throwable {
                 ManagementPassword.getInstance().login("lele", password);
             }
         }, "mi aspettavo che lanciasse un'eccezione");
         
-        assertEquals(ErrorCodeEnum.PASSWORD_TOO_LONG, exception.getErrorCode(),"Mi aspettavo l'errore: "+ErrorCodeEnum.PASSWORD_TOO_LONG);
+        assertEquals(ErrorCodeEnum.PASSWORD_TOO_SHORT , exception.getErrorCode(), 
+                "Mi aspettavo l'errore: " + ErrorCodeEnum.PASSWORD_TOO_SHORT);
         passed = true;
     }
 
-//    @Test
-//    public void loginPasswordCorta() {
-//        String value = "Le";
-//        char[] password = value.toCharArray();
-//        ManagementPassword managementPassword
-//                = new ManagementPassword("lele", password);
-//
-//        assertEquals(false, managementPassword.isPasswordCorrect(),
-//                ErrorCodeEnum.PASSWORD_TOO_SHORT.getMessage());
-//    }
-//
-//    @Test
-//    public void loginPasswordSenzaMaiuscole() {
-//        String value = "lele01";
-//        char[] password = value.toCharArray();
-//        ManagementPassword managementPassword = new ManagementPassword("lele", password);
-//
-//        assertEquals(false, managementPassword.isPasswordCorrect(),
-//                ErrorCodeEnum.PASSWORD_HAS_NOT_UPPER_CASE.getMessage());
-//    }
-//
-//    @Test
-//    public void registrationPasswordUguali() {
-//        String value01 = "Lele01";
-//        char[] password = value01.toCharArray();
-//
-//        String value02 = "Lele02";
-//        char[] passwordConfirm = value02.toCharArray();
-//        ManagementPassword managementPassword = new ManagementPassword("lele", password, passwordConfirm);
-//
-//        assertEquals(false, managementPassword.isPasswordCorrect(),
-//                ErrorCodeEnum.PASSWORD_DOES_NOT_MATCH.getMessage());
-//    }
-//
-//    public void userIsEmpty() {
-//        String value = "Lele01";
-//        char[] password = value.toCharArray();
-//
-//        ManagementPassword managementPassword = new ManagementPassword(
-//                "", password);
-//        assertEquals(false, managementPassword.isPasswordCorrect(),
-//                ErrorCodeEnum.USER_EMPTY.getMessage());
-//    }
+    @Test
+    @DisplayName ( value = "[ManagementPassword] PASSWORD_HAS_NOT_UPPER_CASE" )
+    public void loginPasswordHasNotUpperCase(){
+        String value = "lele01";
+        char[] password = value.toCharArray();
+        
+        PasswordHasNotUpperCaseException exception = 
+                assertThrows(PasswordHasNotUpperCaseException.class, new Executable() {
+            @Override
+            public void execute() throws Throwable {
+                ManagementPassword.getInstance().login("lele", password);
+            }
+        }, "mi aspettavo che lanciasse un'eccezione: ");
+        
+        assertEquals(ErrorCodeEnum.PASSWORD_HAS_NOT_UPPER_CASE, 
+                "Mi aspettavo l'errore: " + ErrorCodeEnum.PASSWORD_HAS_NOT_UPPER_CASE);
+        passed = true;
+    }
+
+    @Test
+    @DisplayName ( value = "[ManagementPassword] PASSWORD_DOES_NOT_MATCH")
+    public void passwordDoesNotMatch(){
+        String value = "Lele01";
+        char[] password = value.toCharArray();
+        
+        String value2 = "Lele02";
+        char[] password2 = value2.toCharArray();
+        
+        PasswordDoesNotMatchException exception = 
+                assertThrows(PasswordDoesNotMatchException.class, new Executable() {
+            @Override
+            public void execute() throws Throwable {
+                ManagementPassword.getInstance().createUser("lele", password, password2);
+            }
+        }, "mi aspettavo che lanciasse un'eccezione: ");
+        
+        assertEquals(ErrorCodeEnum.PASSWORD_DOES_NOT_MATCH, 
+                "Mi aspettavo l'errore: " + ErrorCodeEnum.PASSWORD_DOES_NOT_MATCH);
+        passed = true;
+    }
+
+    public void userIsEmpty() {
+        String value = "Lele01";
+        char[] password = value.toCharArray();
+        
+        PasswordEmptyException exception = 
+                assertThrows(PasswordEmptyException.class, new Executable() {
+            
+            @Override
+            public void execute() throws Throwable {
+                ManagementPassword.getInstance().login("", password);
+            }
+        },"Mi aspettavo l'errore: " + ErrorCodeEnum.USER_EMPTY );
+        
+        assertEquals( ErrorCodeEnum.USER_EMPTY, 
+                "Mi aspettavo l'errore: " + ErrorCodeEnum.USER_EMPTY);
+        passed = true;
+    }
 
     @BeforeAll
     public static void setUpClass() {
@@ -114,7 +153,7 @@ public class ManagementPasswordTest {
     @AfterEach
     public void tearDown(TestInfo info) {
         String result = passed ? "[PASSED]" : "[FAIL]";
-        System.out.println(result+ ">> Test: "+info.getDisplayName());
+        System.out.println(result + ">> Test: " + info.getDisplayName());
     }
 
     // TODO add test methods here.

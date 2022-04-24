@@ -5,7 +5,7 @@
 package it.lule.cineteca.logic.password;
 
 import it.lule.cineteca.logic.exceptions.password.PasswordEmptyException;
-import it.lule.cineteca.logic.exceptions.password.PasswordHasNotEqualException;
+import it.lule.cineteca.logic.exceptions.password.PasswordDoesNotMatchException;
 import it.lule.cineteca.logic.exceptions.password.PasswordHasNotUpperCaseException;
 import it.lule.cineteca.logic.exceptions.password.PasswordTooLongException;
 import it.lule.cineteca.logic.exceptions.password.PasswordTooShortException;
@@ -60,13 +60,13 @@ public class ManagementPassword {
      * @throws PasswordHasNotUpperCaseException
      * @throws UserEmptyException
      * @throws PasswordTooLongException
-     * @throws PasswordHasNotEqualException
+     * @throws PasswordDoesNotMatchException
      */
     public void createUser(String jTextFieldUser, char[] jPasswordField,
             char[] jPasswordFieldConfirm) throws PasswordEmptyException,
             PasswordTooShortException, PasswordHasNotUpperCaseException,
             UserEmptyException, PasswordTooLongException,
-            PasswordHasNotEqualException {
+            PasswordDoesNotMatchException {
 
         checkPassword(jTextFieldUser, jPasswordField, jPasswordFieldConfirm);
         passwordHasNotEqual(jPasswordField, jPasswordFieldConfirm);
@@ -156,13 +156,13 @@ public class ManagementPassword {
      * 
      * @param jPasswordField
      * @param jPasswordFieldConfirm
-     * @throws PasswordHasNotEqualException 
+     * @throws PasswordDoesNotMatchException 
      */
     private void passwordHasNotEqual(char[] jPasswordField,
-            char[] jPasswordFieldConfirm) throws PasswordHasNotEqualException {
+            char[] jPasswordFieldConfirm) throws PasswordDoesNotMatchException {
 
         if (!Arrays.equals(jPasswordField, jPasswordFieldConfirm)) {
-            throw new PasswordHasNotEqualException();
+            throw new PasswordDoesNotMatchException();
         }
     }
 

@@ -5,6 +5,8 @@
  */
 package it.lule.cineteca.logic.gui.user;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -27,6 +29,9 @@ public class UserDialog extends javax.swing.JDialog {
 
         jTextFieldUser.setText("gino");
         jPasswordField.setText("password");
+        
+        jLabelError.setForeground(Color.red);
+        jLabelError.setFont(new Font(Font.DIALOG, Font.BOLD, 24));
     }
 
     /**
@@ -45,10 +50,11 @@ public class UserDialog extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButtonLogin = new javax.swing.JButton();
+        jLabelError = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 0, 0));
+        jPanel1.setBackground(new java.awt.Color(102, 153, 255));
 
         jButtonRegister.setText("Register");
         jButtonRegister.addActionListener(new java.awt.event.ActionListener() {
@@ -92,16 +98,20 @@ public class UserDialog extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jPasswordField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
-                        .addComponent(jTextFieldUser, javax.swing.GroupLayout.Alignment.LEADING))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
+                    .addComponent(jLabelError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButtonLogin)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonRegister)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jPasswordField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+                                .addComponent(jTextFieldUser, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jButtonLogin)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonRegister)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,7 +128,9 @@ public class UserDialog extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonLogin)
                     .addComponent(jButtonRegister))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabelError, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -224,6 +236,7 @@ public class UserDialog extends javax.swing.JDialog {
     private javax.swing.JButton jButtonRegister;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabelError;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordField;
     private javax.swing.JTextField jTextFieldUser;

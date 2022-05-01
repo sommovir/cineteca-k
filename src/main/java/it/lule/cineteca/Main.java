@@ -5,6 +5,9 @@
  */
 package it.lule.cineteca;
 
+import it.lule.cineteca.logic.gui.user.UserDialog;
+import javax.swing.JFrame;
+
 /**
  *
  * @author sommovir
@@ -12,7 +15,15 @@ package it.lule.cineteca;
 public class Main {
     
     public static void main(String[] args) {
-        System.out.println("this is the main");
+        UserDialog dialog = new UserDialog(new JFrame(), true);
+        
+        /* io ricordavo JFrame.EXIT_ON_CLOSE */
+        dialog.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        
+        dialog.dispose();
+        dialog.setLocationRelativeTo(dialog);
+        dialog.setVisible(true);
+        
     }
     
 }

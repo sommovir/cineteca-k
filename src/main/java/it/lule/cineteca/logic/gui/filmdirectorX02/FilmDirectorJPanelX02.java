@@ -8,7 +8,6 @@ package it.lule.cineteca.logic.gui.filmdirectorX02;
 import it.lule.cineteca.logic.gui.movie.add.AddMovieJFrame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 
 /**
  *

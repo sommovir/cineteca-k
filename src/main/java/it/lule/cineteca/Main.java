@@ -9,7 +9,7 @@ import it.lule.cineteca.logic.gui.user.UserDialog;
 import javax.swing.JFrame;
 
 /**
- *
+ * https://app.gitkraken.com/glo/board/YfUy5R128ABI_uSA
  * @author sommovir
  */
 public class Main {

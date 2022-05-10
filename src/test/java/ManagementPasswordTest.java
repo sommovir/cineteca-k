@@ -16,8 +16,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.TestInfo;
 import org.junit.jupiter.api.function.Executable;
 
@@ -25,6 +25,7 @@ import org.junit.jupiter.api.function.Executable;
  *
  * @author lele
  */
+//@Disabled
 public class ManagementPasswordTest {
 
     private boolean passed = false;
@@ -92,7 +93,7 @@ public class ManagementPasswordTest {
             }
         }, "mi aspettavo che lanciasse un'eccezione: ");
         
-        assertEquals(ErrorCodeEnum.PASSWORD_HAS_NOT_UPPER_CASE, 
+        assertEquals(ErrorCodeEnum.PASSWORD_HAS_NOT_UPPER_CASE, exception.getErrorCode(), 
                 "Mi aspettavo l'errore: " + ErrorCodeEnum.PASSWORD_HAS_NOT_UPPER_CASE);
         passed = true;
     }
@@ -114,7 +115,7 @@ public class ManagementPasswordTest {
             }
         }, "mi aspettavo che lanciasse un'eccezione: ");
         
-        assertEquals(ErrorCodeEnum.PASSWORD_DOES_NOT_MATCH, 
+        assertEquals(ErrorCodeEnum.PASSWORD_DOES_NOT_MATCH, exception.getErrorCode(), 
                 "Mi aspettavo l'errore: " + ErrorCodeEnum.PASSWORD_DOES_NOT_MATCH);
         passed = true;
     }

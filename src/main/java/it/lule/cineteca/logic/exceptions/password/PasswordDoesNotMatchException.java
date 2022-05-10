@@ -13,7 +13,7 @@ import it.lule.cineteca.logic.enumname.ErrorCodeEnum;
 public class PasswordDoesNotMatchException extends PasswordException{
 
     public PasswordDoesNotMatchException() {
-        super(ErrorCodeEnum.PASSWORD_IS_NOT_EQUAL);
+        super(ErrorCodeEnum.PASSWORD_DOES_NOT_MATCH);
     }
     
 }

@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package it.lule.cineteca.logic.gui.filmdirectorX02;
+package it.lule.cineteca.gui.filmdirectorX02;
 
-import it.lule.cineteca.logic.gui.movie.add.AddMovieJFrame;
+import it.lule.cineteca.gui.movie.add.AddMovieJFrame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 

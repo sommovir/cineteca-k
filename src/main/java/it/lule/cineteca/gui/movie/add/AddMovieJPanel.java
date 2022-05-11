@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package it.lule.cineteca.logic.gui.movie.add;
+package it.lule.cineteca.gui.movie.add;
 
 import it.lule.cineteca.logic.entities.MovieEntity;
 

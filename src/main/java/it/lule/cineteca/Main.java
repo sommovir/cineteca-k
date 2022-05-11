@@ -5,7 +5,7 @@
  */
 package it.lule.cineteca;
 
-import it.lule.cineteca.logic.gui.user.UserDialog;
+import it.lule.cineteca.gui.user.UserDialog;
 import javax.swing.JFrame;
 
 /**

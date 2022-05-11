@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package it.lule.cineteca.logic.gui.user;
+package it.lule.cineteca.gui.user;
 
 import java.awt.Color;
 import java.awt.Font;

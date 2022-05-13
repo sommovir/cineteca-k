@@ -5,6 +5,14 @@
  */
 package it.lule.cineteca.gui.user;
 
+import it.lule.cineteca.logic.exceptions.password.PasswordDoesNotMatchException;
+import it.lule.cineteca.logic.exceptions.password.PasswordEmptyException;
+import it.lule.cineteca.logic.exceptions.password.PasswordException;
+import it.lule.cineteca.logic.exceptions.password.PasswordHasNotUpperCaseException;
+import it.lule.cineteca.logic.exceptions.password.PasswordTooLongException;
+import it.lule.cineteca.logic.exceptions.password.PasswordTooShortException;
+import it.lule.cineteca.logic.exceptions.password.UserEmptyException;
+import it.lule.cineteca.logic.password.ManagementPassword;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -25,9 +33,9 @@ public class RegisterDialog extends javax.swing.JDialog {
         jTextFieldUser.selectAll();
 //        jButtonRegister.setEnabled(false);
 
-        jTextFieldUser.setText("gino");
-        jPasswordField.setText("password");
-        jPasswordFieldConfirm.setText("password");
+        jTextFieldUser.setText("");
+        jPasswordField.setText("A12345");
+        jPasswordFieldConfirm.setText("A12345");
     }
 
     /**
@@ -47,6 +55,7 @@ public class RegisterDialog extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabelPasswordException = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -102,7 +111,8 @@ public class RegisterDialog extends javax.swing.JDialog {
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3)
-                    .addComponent(jButtonRegister))
+                    .addComponent(jButtonRegister)
+                    .addComponent(jLabelPasswordException, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -122,7 +132,9 @@ public class RegisterDialog extends javax.swing.JDialog {
                 .addComponent(jPasswordFieldConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(jButtonRegister)
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addGap(27, 27, 27)
+                .addComponent(jLabelPasswordException)
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -144,9 +156,30 @@ public class RegisterDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextFieldUserActionPerformed
 
     private void jButtonRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegisterActionPerformed
-
-
-        this.dispose();
+        try {
+        ManagementPassword.getInstance().createUser(jTextFieldUser.getText(),
+                    jPasswordField.getPassword(), jPasswordFieldConfirm.getPassword());
+        } catch (PasswordException ex) {
+            jLabelPasswordException.setText( ex.getErrorCode() + " " + ex.getMessage());
+        }
+         
+//        try {
+//            ManagementPassword.getInstance().createUser(jTextFieldUser.getText(),
+//                    jPasswordField.getPassword(), jPasswordFieldConfirm.getPassword());
+//        } catch (PasswordEmptyException ex) {
+//            Logger.getLogger(RegisterDialog.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (PasswordTooShortException ex) {
+//            Logger.getLogger(RegisterDialog.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (PasswordHasNotUpperCaseException ex) {
+//            Logger.getLogger(RegisterDialog.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (UserEmptyException ex) {
+//            Logger.getLogger(RegisterDialog.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (PasswordTooLongException ex) {
+//            Logger.getLogger(RegisterDialog.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (PasswordDoesNotMatchException ex) {
+//            Logger.getLogger(RegisterDialog.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        this.dispose();
     }//GEN-LAST:event_jButtonRegisterActionPerformed
 
     private void jPasswordFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordFieldKeyReleased
@@ -220,6 +253,7 @@ public class RegisterDialog extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabelPasswordException;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordField;
     private javax.swing.JPasswordField jPasswordFieldConfirm;

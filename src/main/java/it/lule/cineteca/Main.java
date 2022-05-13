@@ -24,6 +24,7 @@ public class Main {
         dialog.setLocationRelativeTo(dialog);
         dialog.setVisible(true);
         
+        /* commit di creazione del branch registration */
     }
     
 }

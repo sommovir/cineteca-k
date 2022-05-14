@@ -31,9 +31,8 @@ public class RegisterDialog extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         jTextFieldUser.selectAll();
-//        jButtonRegister.setEnabled(false);
 
-        jTextFieldUser.setText("");
+        jTextFieldUser.setText("gino");
         jPasswordField.setText("A12345");
         jPasswordFieldConfirm.setText("A12345");
     }
@@ -55,7 +54,7 @@ public class RegisterDialog extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabelPasswordException = new javax.swing.JLabel();
+        jLabelError = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -112,7 +111,7 @@ public class RegisterDialog extends javax.swing.JDialog {
                     .addComponent(jLabel2)
                     .addComponent(jLabel3)
                     .addComponent(jButtonRegister)
-                    .addComponent(jLabelPasswordException, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelError, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -133,8 +132,8 @@ public class RegisterDialog extends javax.swing.JDialog {
                 .addGap(27, 27, 27)
                 .addComponent(jButtonRegister)
                 .addGap(27, 27, 27)
-                .addComponent(jLabelPasswordException)
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addComponent(jLabelError, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -160,43 +159,25 @@ public class RegisterDialog extends javax.swing.JDialog {
         ManagementPassword.getInstance().createUser(jTextFieldUser.getText(),
                     jPasswordField.getPassword(), jPasswordFieldConfirm.getPassword());
         } catch (PasswordException ex) {
-            jLabelPasswordException.setText( ex.getErrorCode() + " " + ex.getMessage());
+            jLabelError.setText( ex.getErrorCode() + " " + ex.getMessage());
         }
-         
-//        try {
-//            ManagementPassword.getInstance().createUser(jTextFieldUser.getText(),
-//                    jPasswordField.getPassword(), jPasswordFieldConfirm.getPassword());
-//        } catch (PasswordEmptyException ex) {
-//            Logger.getLogger(RegisterDialog.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (PasswordTooShortException ex) {
-//            Logger.getLogger(RegisterDialog.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (PasswordHasNotUpperCaseException ex) {
-//            Logger.getLogger(RegisterDialog.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (UserEmptyException ex) {
-//            Logger.getLogger(RegisterDialog.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (PasswordTooLongException ex) {
-//            Logger.getLogger(RegisterDialog.class.getName()).log(Level.SEVERE, null, ex);
-//        } catch (PasswordDoesNotMatchException ex) {
-//            Logger.getLogger(RegisterDialog.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        this.dispose();
+        
+        /* aggiungere il salvataggio dell USER */ 
+        
+        this.dispose();
     }//GEN-LAST:event_jButtonRegisterActionPerformed
 
     private void jPasswordFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordFieldKeyReleased
-        enableButton();
+
     }//GEN-LAST:event_jPasswordFieldKeyReleased
 
     private void jPasswordFieldConfirmKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordFieldConfirmKeyReleased
-        enableButton();
+
     }//GEN-LAST:event_jPasswordFieldConfirmKeyReleased
 
     private void jTextFieldUserKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldUserKeyReleased
-        enableButton();
+
     }//GEN-LAST:event_jTextFieldUserKeyReleased
-
-    private void enableButton() {
-
-    }
 
     /**
      * @param args the command line arguments
@@ -253,7 +234,7 @@ public class RegisterDialog extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabelPasswordException;
+    private javax.swing.JLabel jLabelError;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordField;
     private javax.swing.JPasswordField jPasswordFieldConfirm;

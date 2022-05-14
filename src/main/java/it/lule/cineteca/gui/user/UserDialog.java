@@ -5,10 +5,13 @@
  */
 package it.lule.cineteca.gui.user;
 
+import it.lule.cineteca.logic.exceptions.password.PasswordException;
+import it.lule.cineteca.logic.password.ManagementPassword;
 import java.awt.Color;
 import java.awt.Font;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 
@@ -152,9 +155,10 @@ public class UserDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextFieldUserActionPerformed
 
     private void jButtonRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegisterActionPerformed
-
-
-        this.dispose();
+        RegisterDialog dialog = new RegisterDialog(new JFrame(),true);
+        dialog.dispose();
+        dialog.setLocationRelativeTo(dialog);
+        dialog.setVisible(true);
     }//GEN-LAST:event_jButtonRegisterActionPerformed
 
     private void jPasswordFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordFieldKeyReleased
@@ -166,7 +170,14 @@ public class UserDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextFieldUserKeyReleased
 
     private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
-        // TODO add your handling code here:
+        try {
+            ManagementPassword.getInstance().login(jTextFieldUser.getText(), 
+                    jPasswordField.getPassword());
+        } catch (PasswordException ex) {
+            jLabelError.setText( ex.getErrorCode() + " " + ex.getMessage());
+        }        
+
+        this.dispose();
     }//GEN-LAST:event_jButtonLoginActionPerformed
 
     private void enableButton() {

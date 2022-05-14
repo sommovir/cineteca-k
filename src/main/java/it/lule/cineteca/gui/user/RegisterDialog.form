@@ -55,7 +55,7 @@
                       <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jButtonRegister" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelPasswordException" alignment="0" min="-2" pref="133" max="-2" attributes="0"/>
+                      <Component id="jLabelError" alignment="0" min="-2" pref="133" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -79,8 +79,8 @@
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   <Component id="jButtonRegister" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                  <Component id="jLabelPasswordException" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="59" max="32767" attributes="0"/>
+                  <Component id="jLabelError" min="-2" pref="23" max="-2" attributes="0"/>
+                  <EmptySpace pref="36" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -125,7 +125,7 @@
             <Property name="text" type="java.lang.String" value="Password"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabelPasswordException">
+        <Component class="javax.swing.JLabel" name="jLabelError">
         </Component>
       </SubComponents>
     </Container>

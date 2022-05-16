@@ -31,7 +31,7 @@ public class UserDialog extends javax.swing.JDialog {
 //        jButtonRegister.setEnabled(false);
 
         jTextFieldUser.setText("gino");
-        jPasswordField.setText("password");
+        jPasswordField.setText("A12345");
         
         jLabelError.setForeground(Color.red);
         jLabelError.setFont(new Font(Font.DIALOG, Font.BOLD, 24));
@@ -173,11 +173,12 @@ public class UserDialog extends javax.swing.JDialog {
         try {
             ManagementPassword.getInstance().login(jTextFieldUser.getText(), 
                     jPasswordField.getPassword());
+            this.dispose();
         } catch (PasswordException ex) {
             jLabelError.setText( ex.getErrorCode() + " " + ex.getMessage());
         }        
 
-        this.dispose();
+        
     }//GEN-LAST:event_jButtonLoginActionPerformed
 
     private void enableButton() {

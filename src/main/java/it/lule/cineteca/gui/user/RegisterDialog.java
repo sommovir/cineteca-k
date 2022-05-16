@@ -17,7 +17,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-
 /**
  *
  * @author lele
@@ -156,15 +155,15 @@ public class RegisterDialog extends javax.swing.JDialog {
 
     private void jButtonRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegisterActionPerformed
         try {
-        ManagementPassword.getInstance().createUser(jTextFieldUser.getText(),
+            ManagementPassword.getInstance().createUser(jTextFieldUser.getText(),
                     jPasswordField.getPassword(), jPasswordFieldConfirm.getPassword());
+            this.dispose();
         } catch (PasswordException ex) {
-            jLabelError.setText( ex.getErrorCode() + " " + ex.getMessage());
+            jLabelError.setText(ex.getErrorCode() + " " + ex.getMessage());
         }
-        
-        /* aggiungere il salvataggio dell USER */ 
-        
-        this.dispose();
+
+        /* aggiungere il salvataggio dell USER */
+
     }//GEN-LAST:event_jButtonRegisterActionPerformed
 
     private void jPasswordFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordFieldKeyReleased

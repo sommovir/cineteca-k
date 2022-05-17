@@ -30,6 +30,7 @@ public class RegisterDialog extends javax.swing.JDialog {
     public RegisterDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setTitle("Registration");
         jTextFieldUser.selectAll();
 
         jTextFieldUser.setText("gino");

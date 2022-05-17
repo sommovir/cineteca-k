@@ -24,6 +24,7 @@ public class UserDialog extends javax.swing.JDialog {
     public UserDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setTitle("Login");
         jTextFieldUser.selectAll();
 //        jButtonRegister.setEnabled(false);
 

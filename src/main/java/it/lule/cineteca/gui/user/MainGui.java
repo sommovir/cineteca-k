@@ -15,6 +15,7 @@ public class MainGui extends javax.swing.JFrame {
      */
     public MainGui() {
         initComponents();
+        this.setTitle("MainGui");
     }
 
     /**

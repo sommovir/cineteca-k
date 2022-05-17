@@ -152,6 +152,7 @@ public class UserDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextFieldUserActionPerformed
 
     private void jButtonRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegisterActionPerformed
+        this.dispose();
         RegisterDialog dialog = new RegisterDialog(new JFrame(),true);
         dialog.dispose();
         dialog.setLocationRelativeTo(dialog);

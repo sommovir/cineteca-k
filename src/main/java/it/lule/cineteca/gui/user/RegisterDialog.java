@@ -12,7 +12,7 @@ import it.lule.cineteca.logic.exceptions.password.PasswordHasNotUpperCaseExcepti
 import it.lule.cineteca.logic.exceptions.password.PasswordTooLongException;
 import it.lule.cineteca.logic.exceptions.password.PasswordTooShortException;
 import it.lule.cineteca.logic.exceptions.password.UserEmptyException;
-import it.lule.cineteca.logic.password.ManagementPassword;
+import it.lule.cineteca.logic.management.password.ManagementPassword;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;

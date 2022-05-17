@@ -6,7 +6,7 @@
 package it.lule.cineteca.gui.user;
 
 import it.lule.cineteca.logic.exceptions.password.PasswordException;
-import it.lule.cineteca.logic.password.ManagementPassword;
+import it.lule.cineteca.logic.management.password.ManagementPassword;
 import java.awt.Color;
 import java.awt.Font;
 import java.util.logging.Level;

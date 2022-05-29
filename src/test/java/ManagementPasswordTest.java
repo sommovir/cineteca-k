@@ -9,6 +9,7 @@ import it.lule.cineteca.logic.exceptions.password.PasswordEmptyException;
 import it.lule.cineteca.logic.exceptions.password.PasswordHasNotUpperCaseException;
 import it.lule.cineteca.logic.exceptions.password.PasswordTooLongException;
 import it.lule.cineteca.logic.exceptions.password.PasswordTooShortException;
+import it.lule.cineteca.logic.exceptions.password.UserEmptyException;
 import it.lule.cineteca.logic.management.password.ManagementPassword;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
@@ -119,17 +120,17 @@ public class ManagementPasswordTest {
                 "Mi aspettavo l'errore: " + ErrorCodeEnum.PASSWORD_DOES_NOT_MATCH);
         passed = true;
     }
-
+        
     public void userIsEmpty() {
         String value = "Lele01";
         char[] password = value.toCharArray();
         
-        PasswordEmptyException exception = 
-                assertThrows(PasswordEmptyException.class, new Executable() {
+        UserEmptyException exception = 
+                assertThrows(UserEmptyException.class, new Executable() {
             
             @Override
             public void execute() throws Throwable {
-                ManagementPassword.getInstance().login("", password);
+                ManagementPassword.getInstance().login("lele", password);
             }
         },"Mi aspettavo l'errore: " + ErrorCodeEnum.USER_EMPTY );
         

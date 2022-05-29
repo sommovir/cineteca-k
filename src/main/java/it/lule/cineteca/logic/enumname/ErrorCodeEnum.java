@@ -10,19 +10,19 @@ package it.lule.cineteca.logic.enumname;
  * @author lele
  */
 public enum ErrorCodeEnum {
-    DB_USER_NOT_EXISTS(1,"DB_USER_NOT_EXISTS"),
-    DB_USER_ALREADY_EXISTS(2,"DB_USER_ALREADY_EXISTS"),
-    DB_USER_ALREADY_CONNECTED(3,"DB_USER_ALREADY_CONNECTED"),
-    DB_WRONG_PASSWORD(4,"DB_WRONG_PASSWORD"),
+    DB_USER_NOT_EXISTS(1,"User not exists"),
+    DB_USER_ALREADY_EXISTS(2,"User already exists"),
+    DB_USER_ALREADY_CONNECTED(3,"User already connected"),
+//    DB_WRONG_PASSWORD(4,"DB_WRONG_PASSWORD"),
     
-    PASSWORD_DOES_NOT_MATCH(5,"PASSWORD_DOES_NOT_MATCH"),
-    PASSWORD_IS_EMPTY(6,"PASSWORD_IS_EMPTY"),
-    PASSWORD_TOO_SHORT(7,"PASSWORD_IS_TOO_SHORT"),
-    PASSWORD_TOO_LONG(8,"PASSWORD_IS_TOO_LONG"),
-    PASSWORD_IS_NOT_EQUAL(9,"PASSWORD_HAS_NOT_EQUAL"),
-    PASSWORD_HAS_NOT_UPPER_CASE(10,"PASSWORD_HAS_NOT_UPPER_CASE"),
+    PASSWORD_DOES_NOT_MATCH(5,"Password does not match"),
+    PASSWORD_IS_EMPTY(6,"Password is empty"),
+    PASSWORD_TOO_SHORT(7,"Password is too short"),
+    PASSWORD_TOO_LONG(8,"Password is too long"),
+    PASSWORD_IS_NOT_EQUAL(9,"Password has not equal"),
+    PASSWORD_HAS_NOT_UPPER_CASE(10,"Password has not upper case"),
     
-    USER_EMPTY(11,"USER_IS_EMPTY");
+    USER_EMPTY(11,"user is empty");
 
     private int code;
     private String message;

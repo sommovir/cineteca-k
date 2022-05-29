@@ -181,8 +181,15 @@ public class RegisterDialog extends javax.swing.JDialog {
             ManagementPassword.getInstance().createUser(jTextFieldUser.getText(),
                     jPasswordField.getPassword(), jPasswordFieldConfirm.getPassword());
             this.dispose();
+            
+            /* non è un errore è solo a titolo dimostrativo verrà modificata con la finestra vera di registrazione */
+            MainGui mainGui = new MainGui();
+            mainGui.dispose();
+            mainGui.setLocationRelativeTo(mainGui);
+            mainGui.setVisible(true);            
+            
         } catch (PasswordException ex) {
-            jLabelError.setText(ex.getErrorCode() + " " + ex.getMessage());
+            jLabelError.setText(ex.getMessage());
         }
 
         /* aggiungere il salvataggio dell USER */

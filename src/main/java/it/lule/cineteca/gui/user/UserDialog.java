@@ -11,7 +11,6 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JFrame;
 
-
 /**
  *
  * @author lele
@@ -30,7 +29,7 @@ public class UserDialog extends javax.swing.JDialog {
 
         jTextFieldUser.setText("gino");
         jPasswordField.setText("A12345");
-        
+
         jLabelError.setForeground(Color.red);
         jLabelError.setFont(new Font(Font.DIALOG, Font.BOLD, 24));
     }
@@ -154,7 +153,7 @@ public class UserDialog extends javax.swing.JDialog {
 
     private void jButtonRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegisterActionPerformed
         this.dispose();
-        RegisterDialog dialog = new RegisterDialog(new JFrame(),true);
+        RegisterDialog dialog = new RegisterDialog(new JFrame(), true);
         dialog.dispose();
         dialog.setLocationRelativeTo(dialog);
         dialog.setVisible(true);
@@ -170,18 +169,19 @@ public class UserDialog extends javax.swing.JDialog {
 
     private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
         try {
-            ManagementPassword.getInstance().login(jTextFieldUser.getText(), 
+            ManagementPassword.getInstance().login(jTextFieldUser.getText(),
                     jPasswordField.getPassword());
             this.dispose();
-        } catch (PasswordException ex) {
-            jLabelError.setText( ex.getErrorCode() + " " + ex.getMessage());
-        }        
+            MainGui mainGui = new MainGui();
+            mainGui.dispose();
+            mainGui.setLocationRelativeTo(mainGui);
+            mainGui.setVisible(true);
 
-        MainGui mainGui = new MainGui();
-        mainGui.dispose();
-        mainGui.setLocationRelativeTo(mainGui);
-        mainGui.setVisible(true);
-        
+        } catch (PasswordException ex) {
+            jLabelError.setText(ex.getMessage());
+        }
+
+
     }//GEN-LAST:event_jButtonLoginActionPerformed
 
     private void enableButton() {

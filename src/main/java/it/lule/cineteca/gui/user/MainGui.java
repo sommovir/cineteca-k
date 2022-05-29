@@ -4,6 +4,10 @@
  */
 package it.lule.cineteca.gui.user;
 
+import java.awt.Image;
+import java.net.URL;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author lele
@@ -14,8 +18,15 @@ public class MainGui extends javax.swing.JFrame {
      * Creates new form MainGui
      */
     public MainGui() {
-        initComponents();
+        initComponents(); 
         this.setTitle("MainGui");
+        String path ="/icons/02.jpeg";
+//        String path ="/icons/01.svg";
+//        String path ="/icons/netbeans.png";
+        ImageIcon imageIcon = new ImageIcon(path);
+        this.setIconImage(imageIcon.getImage());
+        
+//        this.setIconImage(new javax.swing.ImageIcon(getClass().getResource(path)).getImage());
     }
 
     /**

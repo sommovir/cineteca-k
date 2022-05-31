@@ -121,6 +121,7 @@ public class ManagementPasswordTest {
         passed = true;
     }
         
+    @Test
     public void userIsEmpty() {
         String value = "Lele01";
         char[] password = value.toCharArray();
@@ -130,11 +131,11 @@ public class ManagementPasswordTest {
             
             @Override
             public void execute() throws Throwable {
-                ManagementPassword.getInstance().login("lele", password);
+                ManagementPassword.getInstance().login("", password);
             }
         },"Mi aspettavo l'errore: " + ErrorCodeEnum.USER_EMPTY );
         
-        assertEquals( ErrorCodeEnum.USER_EMPTY, 
+        assertEquals( ErrorCodeEnum.USER_EMPTY, exception.getErrorCode(),
                 "Mi aspettavo l'errore: " + ErrorCodeEnum.USER_EMPTY);
         passed = true;
     }

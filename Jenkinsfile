@@ -1,5 +1,11 @@
 pipeline {
-  agent none
+  agent {
+    docker {
+      args '-v /root/.m2:/root/.m2'
+      image 'maven:3.8.5-openjdk-17'
+    }
+
+  }
   stages {
     stage('INIT') {
       steps {

@@ -9,8 +9,7 @@ pipeline {
 
     stage('Clean') {
       steps {
-        sh '''echo $JAVA_HOME
-echo $MAVEN_HOME
+        sh '''java -version
 mvn clean'''
       }
     }

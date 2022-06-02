@@ -13,12 +13,5 @@ pipeline {
       }
     }
 
-    stage('Clean') {
-      steps {
-        sh '''java -version
-mvn clean'''
-      }
-    }
-
   }
 }

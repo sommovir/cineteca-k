@@ -7,5 +7,13 @@ pipeline {
       }
     }
 
+    stage('Clean') {
+      steps {
+        sh '''echo $JAVA_HOME
+echo $MAVEN_HOME
+mvn clean'''
+      }
+    }
+
   }
 }

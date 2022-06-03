@@ -27,7 +27,8 @@ mvn clean'''
 
     stage('BUILD') {
       steps {
-        sh 'mvn compile'
+        sh '''export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+mvn compile'''
       }
     }
 

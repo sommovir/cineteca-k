@@ -50,7 +50,7 @@ mvn package'''
     stage('Prepare Release') {
       steps {
         sh '''mv ./target/cineteca-*dependencies.jar ./target/cineteca-1.0-build"""${BUILD_NUMBER}""".jar
-mkdir ../freezer
+mkdir -p ../freezer
 cp ./target/cineteca-1.0-build"""${BUILD_NUMBER}""".jar ../freezer/cineteca-1.0-build"""${BUILD_NUMBER}""".jar'''
       }
     }

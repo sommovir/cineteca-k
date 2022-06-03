@@ -29,19 +29,19 @@ pipeline {
 
         stage('N3') {
           steps {
-            sh 'echo Build number is ${currentBuild.number}'
+            sh 'echo Build number is """${BUILD_NUMBER}"""'
           }
         }
 
         stage('N4') {
           steps {
-            sh '"""${currentBuild.number}"""'
+            sh '"""${env.BUILD_NUMBER}"""'
           }
         }
 
         stage('N5') {
           steps {
-            sh '\'\'\'${currentBuild.number}\'\'\''
+            sh '\'\'\'${env.BUILD_NUMBER}\'\'\''
           }
         }
 

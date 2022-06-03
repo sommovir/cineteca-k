@@ -20,7 +20,8 @@ pipeline {
 
     stage('CLEAN') {
       steps {
-        sh '''mvn -version
+        sh '''export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+mvn -version
 mvn clean'''
       }
     }
@@ -36,6 +37,13 @@ mvn compile'''
       steps {
         sh '''export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 mvn test'''
+      }
+    }
+
+    stage('PACKAGE') {
+      steps {
+        sh '''export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+mvn package'''
       }
     }
 

@@ -15,18 +15,6 @@ pipeline {
           }
         }
 
-        stage('N2') {
-          steps {
-            sh '''echo "Build number is \\${currentBuild.number}"'''
-          }
-        }
-
-        stage('N3') {
-          steps {
-            sh 'echo Build number is """${BUILD_NUMBER}"""'
-          }
-        }
-
       }
     }
 
@@ -61,8 +49,9 @@ mvn package'''
 
     stage('Prepare Release') {
       steps {
-        sh '''mv ./target/cineteca-*dependencies.jar ./target/cineteca-1.0-"""${BUILD_NUMBER}""".jar
-cp ./target/cineteca-1.0-"""${BUILD_NUMBER}""".jar ./freezer/'''
+        sh '''mv ./target/cineteca-*dependencies.jar ./target/cineteca-1.0-build"""${BUILD_NUMBER}""".jar
+mkdir ./freezer
+cp ./target/cineteca-1.0-build"""${BUILD_NUMBER}""".jar ./freezer/cineteca-1.0-build"""${BUILD_NUMBER}""".jar'''
       }
     }
 

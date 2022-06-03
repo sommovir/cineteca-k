@@ -34,7 +34,8 @@ mvn compile'''
 
     stage('TEST') {
       steps {
-        sh 'mvn test'
+        sh '''export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+mvn test'''
       }
     }
 

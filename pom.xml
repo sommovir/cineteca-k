@@ -84,7 +84,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>it.cnr.istc.mw.mqtt.Main</mainClass>
+                            <mainClass>it.lule.cineteca.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

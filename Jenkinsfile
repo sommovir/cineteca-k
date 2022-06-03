@@ -41,7 +41,9 @@ pipeline {
 
         stage('N5') {
           steps {
-            sh '\'\'\'${BUILD_NUMBER}\'\'\''
+            sh '''sh """#!/usr/bin/env bash
+      echo ${env.BUILD_NUMBER} 
+    """'''
           }
         }
 

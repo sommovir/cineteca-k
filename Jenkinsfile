@@ -41,7 +41,7 @@ pipeline {
 
         stage('N5') {
           steps {
-            sh '\'\'\'${env.BUILD_NUMBER}\'\'\''
+            sh '\'\'\'${BUILD_NUMBER}\'\'\''
           }
         }
 

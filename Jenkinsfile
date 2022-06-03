@@ -15,18 +15,6 @@ pipeline {
           }
         }
 
-        stage('N2') {
-          steps {
-            sh 'echo "Build number is \\${currentBuild.number}"'
-          }
-        }
-
-        stage('N3') {
-          steps {
-            sh 'echo Build number is """${BUILD_NUMBER}"""'
-          }
-        }
-
       }
     }
 

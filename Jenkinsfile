@@ -2,14 +2,45 @@ pipeline {
   agent any
   stages {
     stage('INIT') {
-      steps {
-        echo 'init pipeline for cineteka'
+      parallel {
+        stage('INIT') {
+          steps {
+            echo 'init pipeline for cineteka'
+          }
+        }
+
+        stage('Check pom.xml') {
+          steps {
+            fileExists 'pom.xml'
+          }
+        }
+
       }
     }
 
-    stage('version mvn') {
+    stage('CLEAN') {
       steps {
-        sh 'mvn -version'
+        sh '''mvn -version
+mvn clean'''
+      }
+    }
+
+    stage('BUILD') {
+      steps {
+        sh 'mvn compile'
+      }
+    }
+
+    stage('TEST') {
+      steps {
+        sh 'mvn test'
+      }
+    }
+
+    stage('Prepare Release') {
+      steps {
+        sh '''mv ./target/cineteva-*dependencies.jar ./target/cineteva-1.0-${currentBuild.number}.jar
+cp ./target/cineteva-1.0-${currentBuild.number}.jar ./freezer/'''
       }
     }
 

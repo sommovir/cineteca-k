@@ -17,13 +17,13 @@ pipeline {
 
         stage('echo build number') {
           steps {
-            sh '\'\'\'echo Build number is ${currentBuild.number}\'\'\''
+            sh '''echo Build number is ${currentBuild.number}'''
           }
         }
 
         stage('N2') {
           steps {
-            sh 'echo "Build number is \\${currentBuild.number}"'
+            sh '''echo "Build number is \\${currentBuild.number}"'''
           }
         }
 
@@ -35,15 +35,13 @@ pipeline {
 
         stage('N4') {
           steps {
-            sh '"""${env.BUILD_NUMBER}"""'
+            sh '''"""${env.BUILD_NUMBER}"""'''
           }
         }
 
         stage('N5') {
           steps {
-            sh '''sh """#!/usr/bin/env bash
-      echo ${env.BUILD_NUMBER} 
-    """'''
+            sh '''echo "${env.BUILD_NUMBER} sono stanco"'''
           }
         }
 
@@ -81,7 +79,7 @@ mvn package'''
 
     stage('Prepare Release') {
       steps {
-        sh '''mv ./target/cineteca-*dependencies.jar ./target/cineteca-1.0-${BUILD_NUMBER }.jar
+        sh '''mv ./target/cineteca-*dependencies.jar ./target/cineteca-1.0-${BUILD_NUMBER}.jar
 cp ./target/cineteca-1.0-${BUILD_NUMBER}.jar ./freezer/'''
       }
     }

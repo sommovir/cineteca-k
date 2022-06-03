@@ -41,8 +41,8 @@ mvn test'''
 
     stage('Prepare Release') {
       steps {
-        sh '''mv ./target/cineteca-*dependencies.jar ./target/cineteca-1.0-${currentBuild.number}.jar
-cp ./target/cineteca-1.0-${currentBuild.number}.jar ./freezer/'''
+        sh '''mv ./target/cineteca-*dependencies.jar ./target/cineteca-1.0-${BUILD_NUMBER }.jar
+cp ./target/cineteca-1.0-${BUILD_NUMBER}.jar ./freezer/'''
       }
     }
 

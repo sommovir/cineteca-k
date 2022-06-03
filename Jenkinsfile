@@ -5,7 +5,7 @@ pipeline {
       parallel {
         stage('INIT') {
           steps {
-            echo 'init pipeline for cineteka , build version =  currentBuild.number'
+            echo 'init pipeline for cineteka , build version =  $currentBuild.number'
           }
         }
 

@@ -5,13 +5,19 @@ pipeline {
       parallel {
         stage('INIT') {
           steps {
-            echo 'init pipeline for cineteka , build version =  $BUILD_NUMBER   o ${BUILD_NUMBER }'
+            echo 'init pipeline for cineteka , build version =  $BUILD_NUMBER   o ${BUILD_NUMBER} o ${currentBuild.number}'
           }
         }
 
         stage('Check pom.xml') {
           steps {
             fileExists 'pom.xml'
+          }
+        }
+
+        stage('echo build number') {
+          steps {
+            sh 'echo "Build number is ${currentBuild.number}"'
           }
         }
 

@@ -17,9 +17,31 @@ pipeline {
 
         stage('echo build number') {
           steps {
-            sh '''\'\'\'echo Build number is ${currentBuild.number}\'\'\'
-echo "Build number is \\${currentBuild.number}"
-echo Build number is ${currentBuild.number}'''
+            sh '\'\'\'echo Build number is ${currentBuild.number}\'\'\''
+          }
+        }
+
+        stage('N2') {
+          steps {
+            sh 'echo "Build number is \\${currentBuild.number}"'
+          }
+        }
+
+        stage('N3') {
+          steps {
+            sh 'echo Build number is ${currentBuild.number}'
+          }
+        }
+
+        stage('N4') {
+          steps {
+            sh '"""${currentBuild.number}"""'
+          }
+        }
+
+        stage('N5') {
+          steps {
+            sh '\'\'\'${currentBuild.number}\'\'\''
           }
         }
 

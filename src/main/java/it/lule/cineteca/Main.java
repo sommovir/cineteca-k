@@ -15,6 +15,7 @@ import javax.swing.JFrame;
 public class Main {
     
     public static void main(String[] args) {
+        System.out.println("[Cineteka-k] Welcome !")
         UserDialog dialog = new UserDialog(new JFrame(), true);
         
         /* io ricordavo JFrame.EXIT_ON_CLOSE */

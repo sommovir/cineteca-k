@@ -106,10 +106,9 @@ public class ManagementPassword {
      * @throws PasswordEmptyException 
      */
     private void passwordEmpty(char[] jPasswordField, char[] jPasswordFieldConfirm) throws PasswordEmptyException {
-        if (jPasswordField.length == 0
-                || jPasswordField == null
-                || jPasswordFieldConfirm.length == 0
-                || jPasswordFieldConfirm == null) {
+       
+        if (jPasswordField == null || jPasswordFieldConfirm == null ||
+              jPasswordField.length == 0 || jPasswordFieldConfirm.length == 0  ){
             throw new PasswordEmptyException();
         }
 

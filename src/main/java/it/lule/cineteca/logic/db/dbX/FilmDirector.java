@@ -5,13 +5,39 @@
 package it.lule.cineteca.logic.db.dbX;
 
 import it.lule.cineteca.logic.entities.FilmDirectorEntity;
+import java.util.List;
 
 /**
  *
  * @author lele
+ * @param <FilmDirectorEntity>
  */
-public class FilmDirector {
-    public void createFilmDirector(FilmDirectorEntity filmDirector){
-        
+public class FilmDirector <FilmDirectorEntity> implements IGenericQualcosa<FilmDirectorEntity>{
+
+    @Override
+    public void create(FilmDirectorEntity directorEntity) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+    @Override
+    public void edit(FilmDirectorEntity directorEntity) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void delete(FilmDirectorEntity directorEntity) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public FilmDirectorEntity getById(FilmDirectorEntity directorEntity) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public List<FilmDirectorEntity> getAll(FilmDirectorEntity directorEntity) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    
 }

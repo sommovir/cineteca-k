@@ -5,6 +5,7 @@
 package it.lule.cineteca.logic.db.dbX;
 
 import it.lule.cineteca.logic.entities.UserEntity;
+import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -12,11 +13,15 @@ import org.hibernate.SessionFactory;
  *
  * @author lele
  */
-public class User {
-
+public class User <UserEntity> implements IGenericQualcosa<UserEntity>{
     private SessionFactory sessionFactory;
-
-    public void createUser(UserEntity userEntity) {
+    
+    /**
+     * Create user
+     * @param userEntity 
+     */
+    @Override
+    public void create(UserEntity userEntity) {
         if (userEntity == null) {
             return;
         }
@@ -28,7 +33,12 @@ public class User {
         session.close();
     }
 
-    public void editUser(UserEntity userEntity) {
+    /**
+     * Edit User
+     * @param userEntity 
+     */
+    @Override
+    public void edit(UserEntity userEntity) {
         if (userEntity == null) {
             return;
         }
@@ -39,7 +49,12 @@ public class User {
         session.close();
     }
 
-    public void deleteUser(UserEntity userEntity) {
+    /**
+     * Delete User
+     * @param userEntity 
+     */
+    @Override
+    public void delete(UserEntity userEntity) {
         if (userEntity == null) {
             return;
         }
@@ -49,4 +64,25 @@ public class User {
         session.delete(userEntity);
         session.close();
     }
+
+    /**
+     * Get User by ID
+     * @param userEntity
+     * @return 
+     */
+    @Override
+    public UserEntity getById(UserEntity userEntity) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    /**
+     * Get All Users
+     * @param userEntity
+     * @return 
+     */
+    @Override
+    public List<UserEntity> getAll(UserEntity userEntity) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
 }

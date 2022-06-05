@@ -13,20 +13,23 @@ import it.lule.cineteca.logic.entities.UserEntity;
  * @author lele
  */
 public class NewClass {
-
-    public NewClass() {
-        UserEntity userEntity = new UserEntity();
-        FilmDirectorEntity director = new FilmDirectorEntity();
-        MovieEntity movieEntity = new MovieEntity();
-        
+    private static UserEntity userEntity;
+    private static FilmDirectorEntity filmDirector;
+    private static MovieEntity movie;
+    
+    public static void main(String[] args) {
         DbManager dbManager = new DbManager();
-        dbManager.user().createUser(userEntity);
-        dbManager.user().deleteUser(userEntity);
-        dbManager.user().editUser(userEntity);
+        dbManager.filmDirector().create(filmDirector);
+        dbManager.filmDirector().edit(filmDirector);
+        dbManager.filmDirector().delete(filmDirector);
+                
+        dbManager.movie().create(movie);
+        dbManager.movie().edit(movie);
+        dbManager.movie().delete(movie);
+                
+        dbManager.user().create(userEntity);
+        dbManager.user().edit(userEntity);
+        dbManager.user().delete(userEntity);
 
-        dbManager.filmDirector().createFilmDirector(director);
-
-        dbManager.movie().deleteMovie(movieEntity);
     }
-
 }

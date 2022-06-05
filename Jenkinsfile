@@ -51,7 +51,7 @@ mvn compile'''
     stage('PACKAGE') {
       steps {
         sh '''export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
-mvn package'''
+mvn package -DskipTests -Dmaven.main.skip'''
       }
     }
 

@@ -13,7 +13,7 @@ import org.hibernate.SessionFactory;
  *
  * @author lele
  */
-public class User <UserEntity> implements IGenericQualcosa<UserEntity>{
+public class User implements IGenericQualcosa<UserEntity>{
     private SessionFactory sessionFactory;
     
     /**

@@ -27,7 +27,6 @@ import org.junit.jupiter.api.Disabled;
  */
 @TestMethodOrder(MethodOrderer.Alphanumeric.class)
 @ConditionToExecute(classToCheck = DbManager.class)
-@Disabled
 public class DBEngineTest {
 
     private String message;

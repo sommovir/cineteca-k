@@ -4,7 +4,9 @@
  */
 
 import it.lule.cineteca.logic.db.DbManager;
+import it.lule.cineteca.logic.entities.FilmDirectorEntity;
 import it.lule.cineteca.logic.exceptions.DBBadParamaterException;
+import it.lule.cineteca.logic.exceptions.DBUniqueViolationException;
 import it.lule.cineteca.utils.test.ConditionToExecute;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -50,15 +52,35 @@ public class DBEngineTest {
     @AfterEach
     public void tearDown() {
     }
-    
+
     @Test
     @DisplayName("[DBEngineTest][method = createFilmDirector")
-    public void testCreateFilmDirector(){
+    public void testCreateFilmDirector() {
         try {
             long id = DbManager.getInstance().createMovie(null);
-            assertEquals(-1, id,"L'id dovrebbe essere -1 se il parametro è null.");
+            assertEquals(-1, id, "L'id dovrebbe essere -1 se il parametro è null.");
         } catch (DBBadParamaterException ex) {
             Logger.getLogger(DBEngineTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Test
+    @DisplayName("[DBEngineTest][method = createFilmDirector")
+    public void testConnection() {
+        try {
+            FilmDirectorEntity f = new FilmDirectorEntity();
+            f.setName("Steven");
+            f.setSurname("Spielger");
+            assertNull(f.getId(),"l'id deve essere nullone");
+            DbManager.getInstance().createFilmDirector(f);
+            assertNotNull(f.getId(), "l'd non deve essere null dopo la creazione dell'utente");
+            
+            System.out.println("-- rimozione utente");
+            DbManager.getInstance().deleteFilmDirector(f.getId());
+
+        } catch (DBBadParamaterException | DBUniqueViolationException ex) {
+            Logger.getLogger(DBEngineTest.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
     }
 

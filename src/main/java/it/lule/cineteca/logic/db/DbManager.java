@@ -15,6 +15,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.exception.ConstraintViolationException;
 import it.lule.cineteca.utils.test.Tested;
+import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.registry.StandardServiceRegistry;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 /**
  *
@@ -25,7 +28,7 @@ public class DbManager {
 
     private static DbManager _instance = null;
     private SessionFactory sessionFactory;
-
+    private boolean installed = false;
     /**
      *
      * @return
@@ -39,6 +42,23 @@ public class DbManager {
 
     private DbManager() {
         super();
+        initConnection();
+    }
+    
+    
+       private void initConnection() {
+    
+        // configures settings from hibernate.cfg.xml 
+        StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure().build();
+        try {
+            sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
+            installed = true;
+//             SessionFactory sessionFactory = new Configuration()
+//    .configure("/org/nitish/caller/hibernate.cfg.xml").buildSessionFactory();
+        } catch (Exception e) {
+            // handle the exception
+            e.printStackTrace();
+        }
     }
 
     /**

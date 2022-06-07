@@ -9,6 +9,20 @@ package it.lule.cineteca.logic.db.dbX2;
  * @author lele
  */
 public class DbManager {
+//    private static DbManager instance = null;
+//    
+//    public static DbManager getInstance(){
+//        if ( instance == null ){
+//            instance = new DbManager();
+//        }
+//        return instance;
+//    }
+
+    public DbManager() {
+        
+    }
+    
+    
     public FilmDirector filmDirector(){
         FilmDirector filmDirector = new FilmDirector();
         return filmDirector;

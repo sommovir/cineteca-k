@@ -58,7 +58,7 @@ public class DBEngineTest {
         try {
             long id = DbManager.getInstance().createMovie(null);
             assertEquals(-1, id, "L'id dovrebbe essere -1 se il parametro è null.");
-        } catch (DBBadParamaterException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(DBEngineTest.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

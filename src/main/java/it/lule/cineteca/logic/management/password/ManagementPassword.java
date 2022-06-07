@@ -5,7 +5,7 @@
 package it.lule.cineteca.logic.management.password;
 
 import it.lule.cineteca.logic.exceptions.password.PasswordEmptyException;
-import it.lule.cineteca.logic.exceptions.password.PasswordDoesNotMatchException;
+import it.lule.cineteca.logic.exceptions.password.PasswordsAreNotEqualsException;
 import it.lule.cineteca.logic.exceptions.password.PasswordHasNotUpperCaseException;
 import it.lule.cineteca.logic.exceptions.password.PasswordTooLongException;
 import it.lule.cineteca.logic.exceptions.password.PasswordTooShortException;
@@ -60,16 +60,16 @@ public class ManagementPassword {
      * @throws PasswordHasNotUpperCaseException
      * @throws UserEmptyException
      * @throws PasswordTooLongException
-     * @throws PasswordDoesNotMatchException
+     * @throws PasswordsAreNotEqualsException
      */
     public void createUser(String jTextFieldUser, char[] jPasswordField,
             char[] jPasswordFieldConfirm) throws PasswordEmptyException,
             PasswordTooShortException, PasswordHasNotUpperCaseException,
             UserEmptyException, PasswordTooLongException,
-            PasswordDoesNotMatchException {
+            PasswordsAreNotEqualsException {
 
         checkPassword(jTextFieldUser, jPasswordField, jPasswordFieldConfirm);
-        passwordHasNotEqual(jPasswordField, jPasswordFieldConfirm);
+        passwordsAreNotEquals(jPasswordField, jPasswordFieldConfirm);
     }
 
     public ManagementPassword() {
@@ -155,13 +155,13 @@ public class ManagementPassword {
      * 
      * @param jPasswordField
      * @param jPasswordFieldConfirm
-     * @throws PasswordDoesNotMatchException 
+     * @throws PasswordsAreNotEqualsException 
      */
-    private void passwordHasNotEqual(char[] jPasswordField,
-            char[] jPasswordFieldConfirm) throws PasswordDoesNotMatchException {
+    private void passwordsAreNotEquals(char[] jPasswordField,
+            char[] jPasswordFieldConfirm) throws PasswordsAreNotEqualsException {
 
         if (!Arrays.equals(jPasswordField, jPasswordFieldConfirm)) {
-            throw new PasswordDoesNotMatchException();
+            throw new PasswordsAreNotEqualsException();
         }
     }
 

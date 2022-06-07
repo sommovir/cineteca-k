@@ -10,10 +10,10 @@ import it.lule.cineteca.logic.enumname.ErrorCodeEnum;
  *
  * @author lele
  */
-public class PasswordDoesNotMatchException extends PasswordException{
+public class PasswordsAreNotEqualsException extends PasswordException{
 
-    public PasswordDoesNotMatchException() {
-        super(ErrorCodeEnum.PASSWORD_DOES_NOT_MATCH);
+    public PasswordsAreNotEqualsException() {
+        super(ErrorCodeEnum.PASSWORD_ARE_NOT_EQUALS);
     }
     
 }

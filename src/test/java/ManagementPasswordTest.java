@@ -4,7 +4,7 @@
  */
 
 import it.lule.cineteca.logic.enumname.ErrorCodeEnum;
-import it.lule.cineteca.logic.exceptions.password.PasswordDoesNotMatchException;
+import it.lule.cineteca.logic.exceptions.password.PasswordsAreNotEqualsException;
 import it.lule.cineteca.logic.exceptions.password.PasswordEmptyException;
 import it.lule.cineteca.logic.exceptions.password.PasswordHasNotUpperCaseException;
 import it.lule.cineteca.logic.exceptions.password.PasswordTooLongException;
@@ -108,16 +108,16 @@ public class ManagementPasswordTest {
         String value2 = "Lele02";
         char[] password2 = value2.toCharArray();
         
-        PasswordDoesNotMatchException exception = 
-                assertThrows(PasswordDoesNotMatchException.class, new Executable() {
+        PasswordsAreNotEqualsException exception = 
+                assertThrows(PasswordsAreNotEqualsException.class, new Executable() {
             @Override
             public void execute() throws Throwable {
                 ManagementPassword.getInstance().createUser("lele", password, password2);
             }
         }, "mi aspettavo che lanciasse un'eccezione: ");
         
-        assertEquals(ErrorCodeEnum.PASSWORD_DOES_NOT_MATCH, exception.getErrorCode(), 
-                "Mi aspettavo l'errore: " + ErrorCodeEnum.PASSWORD_DOES_NOT_MATCH);
+        assertEquals(ErrorCodeEnum.PASSWORD_ARE_NOT_EQUALS, exception.getErrorCode(), 
+                "Mi aspettavo l'errore: " + ErrorCodeEnum.PASSWORD_ARE_NOT_EQUALS);
         passed = true;
     }
         

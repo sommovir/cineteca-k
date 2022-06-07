@@ -15,7 +15,7 @@ public enum ErrorCodeEnum {
     DB_USER_ALREADY_CONNECTED(3,"User already connected"),
 //    DB_WRONG_PASSWORD(4,"DB_WRONG_PASSWORD"),
     
-    PASSWORD_DOES_NOT_MATCH(5,"Password does not match"),
+    PASSWORD_ARE_NOT_EQUALS(5,"Password are not equals"),
     PASSWORD_IS_EMPTY(6,"Password is empty"),
     PASSWORD_TOO_SHORT(7,"Password is too short"),
     PASSWORD_TOO_LONG(8,"Password is too long"),

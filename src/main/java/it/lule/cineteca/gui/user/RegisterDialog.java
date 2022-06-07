@@ -5,7 +5,7 @@
  */
 package it.lule.cineteca.gui.user;
 
-import it.lule.cineteca.logic.exceptions.password.PasswordDoesNotMatchException;
+import it.lule.cineteca.logic.exceptions.password.PasswordsAreNotEqualsException;
 import it.lule.cineteca.logic.exceptions.password.PasswordEmptyException;
 import it.lule.cineteca.logic.exceptions.password.PasswordException;
 import it.lule.cineteca.logic.exceptions.password.PasswordHasNotUpperCaseException;

@@ -43,10 +43,18 @@ public class DbManager {
 
     private DbManager() {
         super();
+        System.out.println("costruttore di DbManager");
         initConnection();
+        System.out.println("è installato ? "+installed);
+        if(sessionFactory == null){
+            System.out.println("session nullone");
+        }else{
+            System.out.println("Session ok.");
+        }
     }
 
     private void initConnection() {
+        System.out.println("provo a costruire la connessione..");
 
         // configures settings from hibernate.cfg.xml 
         StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure().build();

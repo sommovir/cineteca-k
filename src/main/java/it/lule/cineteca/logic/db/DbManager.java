@@ -29,6 +29,7 @@ public class DbManager {
     private static DbManager _instance = null;
     private SessionFactory sessionFactory;
     private boolean installed = false;
+
     /**
      *
      * @return
@@ -44,10 +45,9 @@ public class DbManager {
         super();
         initConnection();
     }
-    
-    
-       private void initConnection() {
-    
+
+    private void initConnection() {
+
         // configures settings from hibernate.cfg.xml 
         StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure().build();
         try {
@@ -69,29 +69,33 @@ public class DbManager {
      * @throws DBBadParamaterException
      */
     public long createFilmDirector(FilmDirectorEntity regista) throws DBUniqueViolationException, DBBadParamaterException {
-        if (regista == null) {
-            return -1;
-        }
-        if (regista.getName().isEmpty()) {
-            throw new DBBadParamaterException("nome", DBBadParamaterException.ErrorType.EMPTY);
-        }
-        Session session = sessionFactory.openSession();
-        session.beginTransaction();
-
         try {
-            session.persist(regista);
-        } catch (PersistenceException ex) {
-            if (ex.getCause() instanceof ConstraintViolationException) {
-                throw new DBUniqueViolationException("Regista.nome");
+            if (regista == null) {
+                return -1;
             }
-            System.out.println("EXCEPTION CAUSE = " + ex.getCause().getClass().getCanonicalName());
+            if (regista.getName().isEmpty()) {
+                throw new DBBadParamaterException("nome", DBBadParamaterException.ErrorType.EMPTY);
+            }
+            Session session = sessionFactory.openSession();
+            session.beginTransaction();
+
+            try {
+                session.persist(regista);
+            } catch (PersistenceException ex) {
+                if (ex.getCause() instanceof ConstraintViolationException) {
+                    throw new DBUniqueViolationException("Regista.nome");
+                }
+                System.out.println("EXCEPTION CAUSE = " + ex.getCause().getClass().getCanonicalName());
+                ex.printStackTrace();
+            }
+            session.getTransaction().commit();
+            session.close();
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
-        session.getTransaction().commit();
-        session.close();
         return regista.getId();
     }
-    
+
     /**
      *
      * @param movie
@@ -107,7 +111,7 @@ public class DbManager {
         }
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        
+
         session.persist(movie);
 
         session.getTransaction().commit();
@@ -131,7 +135,7 @@ public class DbManager {
         session.getTransaction().commit();
         session.close();
     }
-    
+
     /**
      *
      * @param idMovie
@@ -164,7 +168,7 @@ public class DbManager {
         session.close();
         return mergedPerson;
     }
-    
+
     /**
      *
      * @param filmToEdit
@@ -187,7 +191,7 @@ public class DbManager {
      * @return
      */
     public FilmDirectorEntity getFilmDirectorById(long idFD) {
-        
+
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
@@ -195,17 +199,17 @@ public class DbManager {
 
         session.getTransaction().commit();
         session.close();
-        
+
         return found;
     }
-    
+
     /**
      *
      * @param idm
      * @return
      */
     public MovieEntity getMovieById(long idm) {
-        
+
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
@@ -213,7 +217,7 @@ public class DbManager {
 
         session.getTransaction().commit();
         session.close();
-        
+
         return found;
     }
 
@@ -234,7 +238,7 @@ public class DbManager {
         return result;
 
     }
-    
+
     /**
      *
      * @return

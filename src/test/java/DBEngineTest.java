@@ -68,10 +68,12 @@ public class DBEngineTest {
     public void testConnection() {
         try {
             FilmDirectorEntity f = new FilmDirectorEntity();
-            f.setName("Steven");
-            f.setSurname("Spielger");
+            f.setName("Steven2");
+            f.setSurname("Spielger1");
+            System.out.println("ID prima della creazione: "+f.getId());
             assertNull(f.getId(),"l'id deve essere nullone");
             DbManager.getInstance().createFilmDirector(f);
+            System.out.println("ID DOPO la creazione: "+f.getId());
             assertNotNull(f.getId(), "l'd non deve essere null dopo la creazione dell'utente");
             
             System.out.println("-- rimozione utente");

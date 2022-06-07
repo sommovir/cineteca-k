@@ -71,13 +71,16 @@ public class DbManager {
     public long createFilmDirector(FilmDirectorEntity regista) throws DBUniqueViolationException, DBBadParamaterException {
         try {
             if (regista == null) {
+                System.out.println("Regista NULLONE");
                 return -1;
             }
+            System.out.println("[DB][INFO] regista not null");
             if (regista.getName().isEmpty()) {
                 throw new DBBadParamaterException("nome", DBBadParamaterException.ErrorType.EMPTY);
             }
             Session session = sessionFactory.openSession();
             session.beginTransaction();
+            System.out.println("[DB][INFO] Begin Transnaction");
 
             try {
                 session.persist(regista);
@@ -90,7 +93,9 @@ public class DbManager {
             }
             session.getTransaction().commit();
             session.close();
+            System.out.println("[DB][INFO] End Transnaction");
         } catch (Exception ex) {
+            System.out.println("[DB][ERROR] Gigachad errors: "+ex.getMessage());
             ex.printStackTrace();
         }
         return regista.getId();

@@ -4,38 +4,10 @@
  */
 package it.lule.cineteca.logic.db.dbX;
 
-import it.lule.cineteca.logic.entities.MovieEntity;
-import java.util.List;
-
 /**
  *
  * @author lele
  */
-public class Movie <MovieEntity> implements IGenericQualcosa<MovieEntity>{
-
-    @Override
-    public void create(MovieEntity movie) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public void edit(MovieEntity movie) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public void delete(MovieEntity movie) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public MovieEntity getById(MovieEntity movie) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public List<MovieEntity> getAll(MovieEntity movie) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+public class Movie extends AGenericQualcosa {
     
 }

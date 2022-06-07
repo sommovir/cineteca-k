@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package it.lule.cineteca.logic.db.dbX2;
+package it.lule.cineteca.logic.db.dbX;
 
 import java.util.List;
 import org.hibernate.Session;
@@ -19,7 +19,7 @@ public abstract class AGenericQualcosa<A> {
 
     private SessionFactory sessionFactory;
     private boolean installed = false;
-    
+
     public AGenericQualcosa() {
         super();
         initConnection();
@@ -48,7 +48,7 @@ public abstract class AGenericQualcosa<A> {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         session.persist(entity);
-        session.getTransaction();
+        session.getTransaction().commit();
         session.close();
     }
 
@@ -72,6 +72,7 @@ public abstract class AGenericQualcosa<A> {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         session.delete(entity);
+        session.getTransaction().commit();
         session.close();
     }
 
@@ -83,12 +84,15 @@ public abstract class AGenericQualcosa<A> {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         session.find((Class<A>) entity, entity);
-        session.getTransaction();
+        session.getTransaction().commit();
         session.close();
         return entity;
     }
 
     @Deprecated
+    /**
+     * Da testare
+     */
     public List<A> getAll(A entity) {
         if (entity == null) {
             return null;
@@ -97,8 +101,16 @@ public abstract class AGenericQualcosa<A> {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
-//        List<A> list = session.createQuery((Class<A>) entity, entity.getClass());
-        session.getTransaction();
+        /*public List<Student> findAllStudentsWithJpql() {
+            return session.createQuery(
+        "SELECT a FROM Student a", Student.class).getResultList();
+        }
+         */
+        
+        List<A> findAll = (List<A>) session.createQuery(
+                "SELECT a FROM"+ entity + "a", entity.getClass() ).getSingleResult();
+        
+        session.getTransaction().commit();
         session.close();
 //        return list;
 

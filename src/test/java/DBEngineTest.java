@@ -77,7 +77,7 @@ public class DBEngineTest {
             System.out.println("-- rimozione utente");
             DbManager.getInstance().deleteFilmDirector(f.getId());
 
-        } catch (DBBadParamaterException | DBUniqueViolationException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(DBEngineTest.class.getName()).log(Level.SEVERE, null, ex);
             ex.printStackTrace();
         }

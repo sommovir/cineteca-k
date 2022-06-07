@@ -6,9 +6,9 @@ pipeline {
   stages {
     stage('INIT') {
       parallel {
-        stage('INIT') {
+        stage('Start Message') {
           steps {
-            echo 'init pipeline for cineteka , build version =  $BUILD_NUMBER   o ${BUILD_NUMBER} o ${currentBuild.number}'
+            echo '''init pipeline for cineteka , build version =  """${BUILD_NUMBER}"""'''
           }
         }
 
@@ -17,6 +17,18 @@ pipeline {
             fileExists 'pom.xml'
           }
         }
+
+        stage('Check MySQL connection') { 
+            def dockerfile = 'Dockerfile.test'
+            docker.build("rds-test", "-f ${dockerfile} .")
+            def rds_test_image = docker.image('rds-test')
+
+            docker.image('mysql:5.6').withRun('-e MYSQL_ALLOW_EMPTY_PASSWORD=yes') { container ->
+            rds_test_image.inside("--link ${container.id}:mysql") {
+            sh 'echo "Inside Container"'
+    }
+  }
+}
 
       }
     }

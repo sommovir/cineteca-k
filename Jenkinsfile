@@ -15,10 +15,10 @@ pipeline {
           }
         }
 
-        stage('') {
+        stage('error') {
           steps {
             sh '''docker --version
-docker network ls'''
+netstat -an'''
           }
         }
 
@@ -45,13 +45,13 @@ mvn compile'''
         sh '''export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
         mvn --batch-mode clover:setup test clover:aggregate clover:clover -s mvn-settings.xml'''
         step([
-                   $class: 'CloverPublisher',
-                  cloverReportDir: 'target/site',
-                  cloverReportFileName: 'clover.xml',
-                  healthyTarget: [methodCoverage: 70, conditionalCoverage: 80, statementCoverage: 80],
-                  unhealthyTarget: [methodCoverage: 50, conditionalCoverage: 50, statementCoverage: 50],
-                  failingTarget: [methodCoverage: 0, conditionalCoverage: 0, statementCoverage: 0]
-                  ])
+                             $class: 'CloverPublisher',
+                            cloverReportDir: 'target/site',
+                            cloverReportFileName: 'clover.xml',
+                            healthyTarget: [methodCoverage: 70, conditionalCoverage: 80, statementCoverage: 80],
+                            unhealthyTarget: [methodCoverage: 50, conditionalCoverage: 50, statementCoverage: 50],
+                            failingTarget: [methodCoverage: 0, conditionalCoverage: 0, statementCoverage: 0]
+                            ])
         }
       }
 

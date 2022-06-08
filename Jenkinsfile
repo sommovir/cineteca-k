@@ -1,8 +1,5 @@
 pipeline {
   agent any
-  environment {
-      mysqlContainer = "0e03ea1ddb44"
-  }
   stages {
     stage('INIT') {
       parallel {

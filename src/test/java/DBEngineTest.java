@@ -73,8 +73,10 @@ public class DBEngineTest {
             f.setSurname("Spielger1");
             System.out.println("ID prima della creazione: "+f.getId());
             assertNull(f.getId(),"l'id deve essere nullone");
+            System.out.println("STEP >> "+DbManager.getStep());
             DbManager.getInstance().createFilmDirector(f);
             System.out.println("ID DOPO la creazione: "+f.getId());
+            System.out.println("STEP AFTER >> "+DbManager.getStep());
             String status = DbManager.getInstance().getStatus();
             System.out.println(status);
                     

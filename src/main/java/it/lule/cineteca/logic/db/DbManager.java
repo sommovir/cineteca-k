@@ -41,6 +41,7 @@ public class DbManager {
             step = -100;
             _instance = new DbManager();
         }
+        step = -220022;
         return _instance;
     }
 

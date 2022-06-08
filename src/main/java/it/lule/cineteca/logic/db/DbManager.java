@@ -174,14 +174,26 @@ public class DbManager {
     public FilmDirectorEntity editFilmDirector(FilmDirectorEntity filmDirectorToEdit) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-
+        String ciao =";";
         FilmDirectorEntity mergedPerson = (FilmDirectorEntity) session.merge(filmDirectorToEdit);
+        String aa = (String) session.merge(ciao);
 
         session.getTransaction().commit();
         session.close();
         return mergedPerson;
     }
-
+    
+    
+     public <T> T edit(T entity) {
+         
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        T mergedEntity = (T) session.merge(entity);
+        session.getTransaction().commit();
+        session.close();
+        return mergedEntity;
+    }
+    
     /**
      *
      * @param filmToEdit

@@ -36,13 +36,6 @@ mvn compile'''
     }
 
     stage('CLOVER & TEST') {
-        agent {
-                docker {
-                image 'mysql/8'
-                args '--name mydb -e MYSQL_ROOT_PASSWORD=sommocapo -d'
-                reuseNode true
-                }
-            }
       steps {
         sh '''export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
         mvn --batch-mode clover:setup test clover:aggregate clover:clover -s mvn-settings.xml'''

@@ -40,21 +40,28 @@ public class DbManager {
         }
         return _instance;
     }
-    
-    public void status(){
-        System.out.println("SessionFactory: "+(this.sessionFactory == null ? "FAIL" : "OPERATIVE"));
-        System.out.println("DB Installed: "+(!installed ? "FAIL" : "OPERATIVE"));
-        System.out.println("SessionFactory: "+(this.sessionFactory == null ? "FAIL" : "OPERATIVE"));
+
+    public void status() {
+        System.out.println("SessionFactory: " + (this.sessionFactory == null ? "FAIL" : "OPERATIVE"));
+        System.out.println("DB Installed: " + (!installed ? "FAIL" : "OPERATIVE"));
+    }
+
+    public String getStatus() {
+        String status = "=================== STATUS =================\n";
+        status += ("SessionFactory: " + (this.sessionFactory == null ? "FAIL" : "OPERATIVE")) + "\n";
+        status += ("DB Installed: " + (!installed ? "FAIL" : "OPERATIVE")) + "\n";
+        status+=        "============================================\n";
+        return status;
     }
 
     private DbManager() {
         super();
         System.out.println("costruttore di DbManager");
         initConnection();
-        System.out.println("è installato ? "+installed);
-        if(sessionFactory == null){
+        System.out.println("è installato ? " + installed);
+        if (sessionFactory == null) {
             System.out.println("session nullone");
-        }else{
+        } else {
             System.out.println("Session ok.");
         }
     }
@@ -109,7 +116,7 @@ public class DbManager {
             session.close();
             System.out.println("[DB][INFO] End Transnaction");
         } catch (Throwable ex) {
-            System.out.println("[DB][ERROR] Gigachad errors: "+ex.getMessage());
+            System.out.println("[DB][ERROR] Gigachad errors: " + ex.getMessage());
             ex.printStackTrace();
         }
         return regista.getId();
@@ -180,7 +187,7 @@ public class DbManager {
     public FilmDirectorEntity editFilmDirector(FilmDirectorEntity filmDirectorToEdit) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        String ciao =";";
+        String ciao = ";";
         FilmDirectorEntity mergedPerson = (FilmDirectorEntity) session.merge(filmDirectorToEdit);
         String aa = (String) session.merge(ciao);
 
@@ -188,10 +195,9 @@ public class DbManager {
         session.close();
         return mergedPerson;
     }
-    
-    
-     public <T> T edit(T entity) {
-         
+
+    public <T> T edit(T entity) {
+
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         T mergedEntity = (T) session.merge(entity);
@@ -199,7 +205,7 @@ public class DbManager {
         session.close();
         return mergedEntity;
     }
-    
+
     /**
      *
      * @param filmToEdit

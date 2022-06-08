@@ -57,7 +57,12 @@ public class DbManager {
     private DbManager() {
         super();
         System.out.println("costruttore di DbManager");
-        initConnection();
+        try{
+            initConnection();
+        }catch(Throwable t){
+            t.printStackTrace();
+            System.out.println("AZZO PAONAZZO");
+        }
         System.out.println("è installato ? " + installed);
         if (sessionFactory == null) {
             System.out.println("session nullone");

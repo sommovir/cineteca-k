@@ -75,6 +75,8 @@ public class DBEngineTest {
             assertNull(f.getId(),"l'id deve essere nullone");
             DbManager.getInstance().createFilmDirector(f);
             System.out.println("ID DOPO la creazione: "+f.getId());
+            DbManager.getInstance().status();
+                    
 //            assertNotNull(f.getId(), "l'd non deve essere null dopo la creazione dell'utente");
             assertTrue(true);
 //            System.out.println("-- rimozione utente");

@@ -40,6 +40,12 @@ public class DbManager {
         }
         return _instance;
     }
+    
+    public void status(){
+        System.out.println("SessionFactory: "+(this.sessionFactory == null ? "FAIL" : "OPERATIVE"));
+        System.out.println("DB Installed: "+(!installed ? "FAIL" : "OPERATIVE"));
+        System.out.println("SessionFactory: "+(this.sessionFactory == null ? "FAIL" : "OPERATIVE"));
+    }
 
     private DbManager() {
         super();
@@ -92,7 +98,7 @@ public class DbManager {
 
             try {
                 session.persist(regista);
-            } catch (PersistenceException ex) {
+            } catch (Throwable ex) {
                 if (ex.getCause() instanceof ConstraintViolationException) {
                     throw new DBUniqueViolationException("Regista.nome");
                 }
@@ -102,7 +108,7 @@ public class DbManager {
             session.getTransaction().commit();
             session.close();
             System.out.println("[DB][INFO] End Transnaction");
-        } catch (Exception ex) {
+        } catch (Throwable ex) {
             System.out.println("[DB][ERROR] Gigachad errors: "+ex.getMessage());
             ex.printStackTrace();
         }

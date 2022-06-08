@@ -36,7 +36,9 @@ public class DbManager {
      * @return
      */
     public static DbManager getInstance() {
+        step = -444;
         if (_instance == null) {
+            step = -100;
             _instance = new DbManager();
         }
         return _instance;

@@ -4,11 +4,11 @@
  */
 
 import it.lule.cineteca.logic.db.DbManager;
-import it.lule.cineteca.logic.db.Inconcepibile;
 import it.lule.cineteca.logic.entities.FilmDirectorEntity;
 import it.lule.cineteca.logic.exceptions.DBBadParamaterException;
 import it.lule.cineteca.logic.exceptions.DBUniqueViolationException;
 import it.lule.cineteca.utils.test.ConditionToExecute;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.junit.jupiter.api.AfterEach;
@@ -69,24 +69,23 @@ public class DBEngineTest {
     @DisplayName("[DBEngineTest][method = createFilmDirector")
     public void testConnection() {
         try {
-            String strano = Inconcepibile.getInstance().strano();
-            System.out.println("STRANO: "+strano);
-            FilmDirectorEntity f = new FilmDirectorEntity();
-            f.setName("Steven2");
-            f.setSurname("Spielger1");
+              FilmDirectorEntity f = new FilmDirectorEntity();
+            f.setName("Steven"+(new Date().getTime()));
+            f.setSurname("Spielger1"+(new Date().getTime()));
             System.out.println("ID prima della creazione: "+f.getId());
             assertNull(f.getId(),"l'id deve essere nullone");
-            System.out.println("STEP >> "+DbManager.getStep());
             DbManager.getInstance().createFilmDirector(f);
             System.out.println("ID DOPO la creazione: "+f.getId());
-            System.out.println("STEP AFTER >> "+DbManager.getStep());
             String status = DbManager.getInstance().getStatus();
             System.out.println(status);
                     
-//            assertNotNull(f.getId(), "l'd non deve essere null dopo la creazione dell'utente");
+            Long id = f.getId();
+            assertNotNull(id, "l'd non deve essere null dopo la creazione dell'utente");
             assertTrue(true);
-//            System.out.println("-- rimozione utente");
-//            DbManager.getInstance().deleteFilmDirector(f.getId());
+            System.out.println("-- rimozione utente");
+            DbManager.getInstance().deleteFilmDirector(f.getId());
+            FilmDirectorEntity filmDirectorById = DbManager.getInstance().getFilmDirectorById(id);
+            assertNull(filmDirectorById, "dovrebbe essere stato cancellato: "+id);
 
         } catch (Exception ex) {
             Logger.getLogger(DBEngineTest.class.getName()).log(Level.SEVERE, null, ex);

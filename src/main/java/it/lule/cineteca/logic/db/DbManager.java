@@ -50,19 +50,14 @@ public class DbManager {
         String status = "=================== STATUS =================\n";
         status += ("SessionFactory: " + (this.sessionFactory == null ? "FAIL" : "OPERATIVE")) + "\n";
         status += ("DB Installed: " + (!installed ? "FAIL" : "OPERATIVE")) + "\n";
-        status+=        "============================================\n";
+        status += "============================================\n";
         return status;
     }
 
     private DbManager() {
         super();
         System.out.println("costruttore di DbManager");
-        try{
-            initConnection();
-        }catch(Throwable t){
-            t.printStackTrace();
-            System.out.println("AZZO PAONAZZO");
-        }
+        initConnection();
         System.out.println("è installato ? " + installed);
         if (sessionFactory == null) {
             System.out.println("session nullone");
@@ -72,17 +67,16 @@ public class DbManager {
     }
 
     private void initConnection() {
-        System.out.println("provo a costruire la connessione..");
-        // configures settings from hibernate.cfg.xml 
-        StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure().build();
         try {
+            System.out.println("provo a costruire la connessione..");
+            // configures settings from hibernate.cfg.xml 
+            StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure().build();
+
             sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
             installed = true;
-//             SessionFactory sessionFactory = new Configuration()
-//    .configure("/org/nitish/caller/hibernate.cfg.xml").buildSessionFactory();
         } catch (Exception e) {
             // handle the exception
-            e.printStackTrace();
+            throw e;
         }
     }
 
@@ -94,35 +88,30 @@ public class DbManager {
      * @throws DBBadParamaterException
      */
     public long createFilmDirector(FilmDirectorEntity regista) throws DBUniqueViolationException, DBBadParamaterException {
-        try {
-            if (regista == null) {
-                System.out.println("Regista NULLONE");
-                return -1;
-            }
-            System.out.println("[DB][INFO] regista not null");
-            if (regista.getName().isEmpty()) {
-                throw new DBBadParamaterException("nome", DBBadParamaterException.ErrorType.EMPTY);
-            }
-            Session session = sessionFactory.openSession();
-            session.beginTransaction();
-            System.out.println("[DB][INFO] Begin Transnaction");
+        if (regista == null) {
+            System.out.println("Regista NULLONE");
+            return -1;
+        }
+        System.out.println("[DB][INFO] regista not null");
+        if (regista.getName().isEmpty()) {
+            throw new DBBadParamaterException("nome", DBBadParamaterException.ErrorType.EMPTY);
+        }
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        System.out.println("[DB][INFO] Begin Transnaction");
 
-            try {
-                session.persist(regista);
-            } catch (Throwable ex) {
-                if (ex.getCause() instanceof ConstraintViolationException) {
-                    throw new DBUniqueViolationException("Regista.nome");
-                }
-                System.out.println("EXCEPTION CAUSE = " + ex.getCause().getClass().getCanonicalName());
-                ex.printStackTrace();
-            }
-            session.getTransaction().commit();
-            session.close();
-            System.out.println("[DB][INFO] End Transnaction");
+        try {
+            session.persist(regista);
         } catch (Throwable ex) {
-            System.out.println("[DB][ERROR] Gigachad errors: " + ex.getMessage());
+            if (ex.getCause() instanceof ConstraintViolationException) {
+                throw new DBUniqueViolationException("Regista.nome");
+            }
+            System.out.println("EXCEPTION CAUSE = " + ex.getCause().getClass().getCanonicalName());
             ex.printStackTrace();
         }
+        session.getTransaction().commit();
+        session.close();
+        System.out.println("[DB][INFO] End Transnaction");
         return regista.getId();
     }
 

@@ -23,24 +23,24 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 public class Main {
 
     public static void main(String[] args) {
-        if (args.length == 1) {
-            if ("-tdb".equals(args[0])) {
-                System.out.println("[INFO] testing database.. ");
-                FilmDirectorEntity f = new FilmDirectorEntity();
-                f.setName("Steven");
-                f.setSurname("Spielger");
-                try {
-                    DbManager.getInstance().createFilmDirector(f);
-                    System.out.println("[INFO]  film director saved with id: " + f.getId());
-                } catch (DBUniqueViolationException | DBBadParamaterException ex) {
-                    System.out.println("[FAIL] error in database..");
-                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-                    ex.printStackTrace();
-                }
-            }else{
-                System.out.println("comando sconosciuto: "+args[0]);
-            }
-        } else {
+//        if (args.length == 1) {
+//            if ("-tdb".equals(args[0])) {
+//                System.out.println("[INFO] testing database.. ");
+//                FilmDirectorEntity f = new FilmDirectorEntity();
+//                f.setName("Steven");
+//                f.setSurname("Spielger");
+//                try {
+//                    DbManager.getInstance().createFilmDirector(f);
+//                    System.out.println("[INFO]  film director saved with id: " + f.getId());
+//                } catch (DBUniqueViolationException | DBBadParamaterException ex) {
+//                    System.out.println("[FAIL] error in database..");
+//                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+//                    ex.printStackTrace();
+//                }
+//            }else{
+//                System.out.println("comando sconosciuto: "+args[0]);
+//            }
+//        } else {
             System.out.println("[Cineteka-k] Welcome !");
             UserDialog dialog = new UserDialog(new JFrame(), true);
 
@@ -50,7 +50,7 @@ public class Main {
             dialog.dispose();
             dialog.setLocationRelativeTo(dialog);
             dialog.setVisible(true);
-        }
+//        }
 
     }
 

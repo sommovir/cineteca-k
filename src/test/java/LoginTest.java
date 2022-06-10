@@ -55,14 +55,14 @@ public class LoginTest {
         }
     }
 
-    @Test
-    public void testMock() {
-        DbManager manager = mock(DbManager.class);
-        setMock(manager);
-        when(manager.getAllMovies()).thenReturn(null);
-        List<MovieEntity> prova = DbManager.getInstance().getAllMovies();
-        assertNull(prova);
-        //https://stackoverflow.com/questions/38914433/mocking-a-singleton-with-mockito
-    }
+//    @Test
+//    public void testMock() {
+//        DbManager manager = mock(DbManager.class);
+//        setMock(manager);
+//        when(manager.getAllMovies()).thenReturn(null);
+//        List<MovieEntity> prova = DbManager.getInstance().getAllMovies();
+//        assertNull(prova);
+//        //https://stackoverflow.com/questions/38914433/mocking-a-singleton-with-mockito
+//    }
 
 }

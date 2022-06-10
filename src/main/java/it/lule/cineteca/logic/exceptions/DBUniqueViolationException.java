@@ -5,11 +5,13 @@
  */
 package it.lule.cineteca.logic.exceptions;
 
+import it.lule.cineteca.logic.db.ValidationException;
+
 /**
  *
  * @author sommovir
  */
-public class DBUniqueViolationException extends Exception implements GuiPrintableException{
+public class DBUniqueViolationException extends ValidationException implements GuiPrintableException{
 
     public DBUniqueViolationException() {
         super("Unique-constraint violation detected. [parameter=unknown]");

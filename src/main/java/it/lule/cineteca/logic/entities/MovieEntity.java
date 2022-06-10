@@ -5,6 +5,7 @@
  */
 package it.lule.cineteca.logic.entities;
 
+import it.lule.cineteca.logic.db.WithID;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
@@ -20,7 +21,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "movie")
-public class MovieEntity implements Serializable {
+public class MovieEntity implements Serializable, WithID {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -33,6 +34,7 @@ public class MovieEntity implements Serializable {
     @OneToOne
     private FilmDirectorEntity filmDirectorEntity;
 
+    @Override
     public Long getId() {
         return id;
     }

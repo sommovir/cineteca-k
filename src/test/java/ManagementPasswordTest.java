@@ -124,15 +124,16 @@ public class ManagementPasswordTest {
     @Test
     @DisplayName ( value = "[ManagementPassword] USER IS EMPTY")
     public void userIsEmpty() {
-        String value = "";
-        char[] password = value.toCharArray();
+        String user = "";
+        String passwordStr = "Lele01";
+        char[] password = passwordStr.toCharArray();
         
         UserEmptyException exception = 
                 assertThrows(UserEmptyException.class, new Executable() {
             
             @Override
             public void execute() throws Throwable {
-                ManagementPassword.getInstance().login(value, password);
+                ManagementPassword.getInstance().login(user, password);
             }
         },"Mi aspettavo l'errore: " + ErrorCodeEnum.USER_EMPTY );
         
@@ -141,6 +142,12 @@ public class ManagementPasswordTest {
         passed = true;
     }
 
+    @Test
+    @DisplayName ( value = "[ManagementPassword] PASSWORD IS EMPTY")
+    public void passwordIsEmpty(){
+    
+    }
+    
     @BeforeAll
     public static void setUpClass() {
     }

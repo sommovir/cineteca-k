@@ -5,7 +5,7 @@
 package it.lule.cineteca.logic.db.dbX;
 
 import it.lule.cineteca.logic.entities.FilmDirectorEntity;
-import it.lule.cineteca.logic.entities.UserEntity;
+import it.lule.cineteca.logic.entities.CUserEntity;
 
 /**
  *
@@ -17,7 +17,7 @@ public class Main001 {
 //    private static MovieEntity movie;
 
     public static void main(String[] args) {
-        UserEntity userEntity = new UserEntity();
+        CUserEntity userEntity = new CUserEntity();
         userEntity.setUser("lele");
         userEntity.getPassword();
         createUser(userEntity);
@@ -35,7 +35,7 @@ public class Main001 {
         dbManager.filmDirector().create(directorEntity);
     }
 
-    public static void createUser(UserEntity userEntity) {
+    public static void createUser(CUserEntity userEntity) {
 //        DbManager.getInstance().user().create(userEntity);
         DbManager dbManager = new DbManager();
         dbManager.user().create(userEntity);

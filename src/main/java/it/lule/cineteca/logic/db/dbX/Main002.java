@@ -6,7 +6,7 @@ package it.lule.cineteca.logic.db.dbX;
 
 import it.lule.cineteca.logic.entities.FilmDirectorEntity;
 import it.lule.cineteca.logic.entities.MovieEntity;
-import it.lule.cineteca.logic.entities.UserEntity;
+import it.lule.cineteca.logic.entities.CUserEntity;
 import it.lule.cineteca.logic.exceptions.DBBadParamaterException;
 import it.lule.cineteca.logic.exceptions.DBUniqueViolationException;
 

@@ -4,7 +4,7 @@
  */
 package it.lule.cineteca.logic.management.registration;
 
-import it.lule.cineteca.logic.entities.UserEntity;
+import it.lule.cineteca.logic.entities.CUserEntity;
 import it.lule.cineteca.logic.exceptions.registration.RegistrationException;
 
 /**
@@ -25,7 +25,7 @@ public class ManagementRegistration {
      * @param user
      * @throws RegistrationException 
      */
-    public void register(UserEntity user) throws RegistrationException {
+    public void register(CUserEntity user) throws RegistrationException {
         
     }
     

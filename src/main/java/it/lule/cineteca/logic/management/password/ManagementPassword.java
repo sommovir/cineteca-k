@@ -96,6 +96,7 @@ public class ManagementPassword {
         passwordTooShort(jPasswordField);
         passwordTooLong(jPasswordField);
         passwordHasNotUpperCase(jPasswordField);
+        userEmpty(jTextFieldUser);
     }
 
     /**
@@ -105,8 +106,7 @@ public class ManagementPassword {
      * @param jPasswordFieldConfirm
      * @throws PasswordEmptyException 
      */
-    private void passwordEmpty(char[] jPasswordField, char[] jPasswordFieldConfirm) throws PasswordEmptyException {
-       
+    private void passwordEmpty(char[] jPasswordField, char[] jPasswordFieldConfirm) throws PasswordEmptyException {      
         if (jPasswordField == null || jPasswordFieldConfirm == null ||
               jPasswordField.length == 0 || jPasswordFieldConfirm.length == 0  ){
             throw new PasswordEmptyException();

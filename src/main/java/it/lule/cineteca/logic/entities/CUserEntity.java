@@ -5,21 +5,33 @@
  */
 package it.lule.cineteca.logic.entities;
 
+import it.lule.cineteca.logic.leleDB.logicDb.QueryEnum;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import org.hibernate.annotations.NamedQueries;
+import org.hibernate.annotations.NamedQuery;
+
+
+        
 
 /**
  *
  * @author Luca Coraci <luca.coraci@istc.cnr.it> ISTC-CNR
  */
-@Entity
-public class CUserEntity implements Serializable {
 
+@Entity
+
+@NamedQueries({   
+@NamedQuery(name= "User", query = "SELECT a FROM CUserEntity a WHERE a.user=:user"),
+})
+
+public class CUserEntity implements Serializable {
+   
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,6 +40,7 @@ public class CUserEntity implements Serializable {
     private String user;
     private String password;    
 
+    
     public Long getId() {
         return id;
     }

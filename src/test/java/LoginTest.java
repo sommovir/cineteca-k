@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
  */
 
-import it.lule.cineteca.logic.db.DbManager;
+import it.lule.cineteca.logic.db.daValutareLuca.DbManager;
 import it.lule.cineteca.logic.entities.FilmDirectorEntity;
 import it.lule.cineteca.logic.entities.MovieEntity;
 import java.lang.reflect.Field;

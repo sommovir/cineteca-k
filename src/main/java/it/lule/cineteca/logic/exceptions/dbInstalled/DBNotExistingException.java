@@ -3,16 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package it.lule.cineteca.logic.exceptions;
+package it.lule.cineteca.logic.exceptions.dbInstalled;
 
 /**
  *
  * @author sommovir
  */
-public class DBAlreadyInstalledException extends Exception implements GuiPrintableException{
+public class DBNotExistingException extends Exception implements GuiPrintableException{
 
-    public DBAlreadyInstalledException() {
-        super("Installazione fallita. Database già installato");
+    public DBNotExistingException() {
+        super("Installazione fallita. Database non esistente. Creare il database via console mysql");
     }
 
     @Override

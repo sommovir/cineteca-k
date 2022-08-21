@@ -3,10 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
  */
 
-import it.lule.cineteca.logic.db.DbManager;
+import it.lule.cineteca.logic.db.daValutareLuca.DbManager;
 import it.lule.cineteca.logic.entities.FilmDirectorEntity;
-import it.lule.cineteca.logic.exceptions.DBBadParamaterException;
-import it.lule.cineteca.logic.exceptions.DBUniqueViolationException;
+import it.lule.cineteca.logic.exceptions.dbInstalled.DBBadParamaterException;
+import it.lule.cineteca.logic.exceptions.dbInstalled.DBUniqueViolationException;
 import it.lule.cineteca.utils.test.ConditionToExecute;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -51,7 +51,6 @@ public class DBEngineTest {
     public void tearDown() {
     }
 
-    @Test
     @DisplayName("[DBEngineTest][method = createFilmDirector")
     public void testCreateFilmDirector() {
         try {
@@ -62,17 +61,16 @@ public class DBEngineTest {
         }
     }
 
-    @Test
     @DisplayName("[DBEngineTest][method = createFilmDirector")
     public void testConnection() {
         try {
             FilmDirectorEntity f = new FilmDirectorEntity();
             f.setName("Steven");
             f.setSurname("Spielger");
-            assertNull(f.getId(),"l'id deve essere nullone");
+            assertNull(f.getId(), "l'id deve essere nullone");
             DbManager.getInstance().createFilmDirector(f);
             assertNotNull(f.getId(), "l'd non deve essere null dopo la creazione dell'utente");
-            
+
             System.out.println("-- rimozione utente");
             DbManager.getInstance().deleteFilmDirector(f.getId());
 

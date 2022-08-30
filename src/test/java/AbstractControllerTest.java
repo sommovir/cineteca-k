@@ -5,9 +5,9 @@
 
 import it.lule.cineteca.logic.entities.CUserEntity;
 import it.lule.cineteca.logic.enumname.ErrorCodeEnum;
-import it.lule.cineteca.logic.exceptions.abstractController.CreateException;
-import it.lule.cineteca.logic.exceptions.abstractController.FindException;
-import it.lule.cineteca.logic.exceptions.abstractController.IsNullException;
+import it.lule.cineteca.logic.exceptions.abstractControllerException.CreateException;
+import it.lule.cineteca.logic.exceptions.abstractControllerException.FindException;
+import it.lule.cineteca.logic.exceptions.abstractControllerException.IsNullException;
 import it.lule.cineteca.logic.leleDB.controller.CUserController;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
@@ -53,12 +53,13 @@ public class AbstractControllerTest {
     }
 
 //    @Test
+    @Deprecated
     @DisplayName(abstractControllerTest + " FindEntity")
     public void FindEntity() throws IsNullException, FindException {
         String value = "Lele";
         CUserController userController = new CUserController();
         CUserEntity userEntity = new CUserEntity();
-        userEntity = userController.getFind(value);
+//        userEntity = userController.getFind(value);
         assertEquals(value, userEntity.getUser(), "Valore inaspettato ");
     }
 

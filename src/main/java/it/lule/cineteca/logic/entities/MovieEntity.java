@@ -26,7 +26,7 @@ public class MovieEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String titoloTradotto;
+    private String translatedTitle;
     private String originalTitle;    
     private Date releaseDate;
     private String mainActor;
@@ -41,12 +41,12 @@ public class MovieEntity implements Serializable {
         this.id = id;
     }
 
-    public String getTitoloTradotto() {
-        return titoloTradotto;
+    public String getTranslatedTitle() {
+        return translatedTitle;
     }
 
-    public void setTitoloTradotto(String titoloTradotto) {
-        this.titoloTradotto = titoloTradotto;
+    public void setTranslatedTitle(String translatedTitle) {
+        this.translatedTitle = translatedTitle;
     }
 
     public String getOriginalTitle() {

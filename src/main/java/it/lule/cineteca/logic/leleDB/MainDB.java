@@ -7,12 +7,14 @@ package it.lule.cineteca.logic.leleDB;
 import it.lule.cineteca.logic.entities.CUserEntity;
 import it.lule.cineteca.logic.entities.FilmDirectorEntity;
 import it.lule.cineteca.logic.entities.MovieEntity;
-import it.lule.cineteca.logic.exceptions.abstractController.CreateException;
-import it.lule.cineteca.logic.exceptions.abstractController.FindException;
+import it.lule.cineteca.logic.enumname.QueryEnum;
+import it.lule.cineteca.logic.exceptions.abstractControllerException.CreateException;
+import it.lule.cineteca.logic.exceptions.abstractControllerException.FindException;
 import it.lule.cineteca.logic.leleDB.controller.CUserController;
 import it.lule.cineteca.logic.leleDB.controller.FilmDirectorController;
 import it.lule.cineteca.logic.leleDB.controller.MovieController;
-import it.lule.cineteca.logic.exceptions.abstractController.IsNullException;
+import it.lule.cineteca.logic.exceptions.abstractControllerException.IsNullException;
+import it.lule.cineteca.logic.leleDB.controller.Search;
 
 /**
  *
@@ -25,6 +27,9 @@ public class MainDB {
         read();
 //        directorEntity()
 //        movieEntity();
+//        Search.byUserName(value);
+//        String userName = QueryEnum.BY_USER_NAME.byUserName(value);
+//        System.out.println("QueryEnum "+userName);
     }
 
     public static void create() throws IsNullException, CreateException {
@@ -32,13 +37,13 @@ public class MainDB {
         userEntity.setPassword("password");
         userEntity.setUser(value);
         
-        CUserController.getInstance().create(userEntity);
+        CUserController.getInstance().createEntity(userEntity);
     }
 
     public static void read() throws IsNullException, FindException {
         CUserEntity userEntity = new CUserEntity();
         
-        userEntity = CUserController.getInstance().getFind(value);
+        userEntity = CUserController.getInstance().getUserName(value);
 
         System.out.println("User: " + userEntity.getUser()
                 + "\nPassword: " + userEntity.getPassword());

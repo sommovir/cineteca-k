@@ -2,20 +2,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package it.lule.cineteca.logic.exceptions.abstractController;
+package it.lule.cineteca.logic.leleDB.logicDb.prova;
 
 /**
  *
  * @author lele
  */
-public class IsNullException extends Exception{
-    public IsNullException() {
-        super();
+public class Classe3 extends Classe0{
+
+    public Classe3() {
+        super(null, null);
     }
 
-    public IsNullException(String message) {
-        super(message);
+    public void metodo1(){
+        generico(new Classe3());
     }
-    
     
 }

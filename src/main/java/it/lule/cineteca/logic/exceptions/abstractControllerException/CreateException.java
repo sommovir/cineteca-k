@@ -2,19 +2,25 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package it.lule.cineteca.logic.exceptions.abstractController;
+package it.lule.cineteca.logic.exceptions.abstractControllerException;
 
 import it.lule.cineteca.logic.enumname.ErrorCodeEnum;
-import it.lule.cineteca.logic.exceptions.FatherException;
 
 /**
  *
  * @author lele
  */
-public class CreateException extends FatherException{   
+public class CreateException extends AbstractControllerException{   
 
     public CreateException() {
-        super(null);
     }
- 
+
+    public CreateException(String message) {
+        super(message);
+    }
+
+    public CreateException(ErrorCodeEnum errorCode) {
+        super(errorCode);
+    }
+  
 }

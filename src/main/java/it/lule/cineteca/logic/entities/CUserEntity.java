@@ -5,11 +5,9 @@
  */
 package it.lule.cineteca.logic.entities;
 
-import it.lule.cineteca.logic.leleDB.logicDb.QueryEnum;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;

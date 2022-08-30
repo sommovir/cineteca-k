@@ -4,20 +4,23 @@
  */
 package it.lule.cineteca.logic.leleDB.logicDb;
 
+import it.lule.cineteca.logic.enumname.QueryEnum;
 import it.lule.cineteca.logic.entities.CUserEntity;
-import it.lule.cineteca.logic.exceptions.abstractController.CreateException;
-import it.lule.cineteca.logic.exceptions.abstractController.DeleteException;
-import it.lule.cineteca.logic.exceptions.abstractController.FindException;
-import it.lule.cineteca.logic.exceptions.abstractController.IsNullException;
-import java.util.List;
+import it.lule.cineteca.logic.exceptions.abstractControllerException.CreateException;
+import it.lule.cineteca.logic.exceptions.abstractControllerException.DeleteException;
+import it.lule.cineteca.logic.exceptions.abstractControllerException.FindException;
+import it.lule.cineteca.logic.exceptions.abstractControllerException.IsNullException;
+import it.lule.cineteca.logic.leleDB.controller.CUserController;
+import it.lule.cineteca.logic.leleDB.controller.Search;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
 /**
- * //        throw new UnsupportedOperationException();
+ * // throw new UnsupportedOperationException();
+ *
  * @author lele
  */
-public class AbstractController<E> {
+public class AbstractController<E,D> {
 
     private Session session = null;
 
@@ -26,14 +29,13 @@ public class AbstractController<E> {
         session = DbManager.getInstance().getSessionFactory().openSession();
     }
 
-    public void isNull(E entity) throws IsNullException {
+    private void isNull(E entity) throws IsNullException {
         if (entity == null) {
             throw new IsNullException();
         }
     }
 
-    public void create(E entity) throws IsNullException, CreateException{
-
+    public void createEntity(E entity) throws IsNullException, CreateException {
         isNull(entity);
         try {
             session.beginTransaction();
@@ -43,11 +45,9 @@ public class AbstractController<E> {
         } catch (Exception e) {
             throw new CreateException();
         }
-
     }
 
-
-    public void delete(E entity) throws IsNullException, DeleteException {
+    public void deleteEntity(E entity) throws IsNullException, DeleteException {
         isNull(entity);
 
         try {
@@ -58,10 +58,9 @@ public class AbstractController<E> {
         } catch (Exception e) {
             throw new DeleteException();
         }
-
     }
 
-    public void edit(E entity) throws IsNullException {
+    public void editEntity(E entity) throws IsNullException {
         isNull(entity);
 
         session.beginTransaction();
@@ -70,23 +69,37 @@ public class AbstractController<E> {
         session.close();
     }
 
-    public CUserEntity getFind(String value) throws IsNullException, FindException {
+    @Deprecated
+    public <E> Query getByQuery(String query, E entity) {
         session.beginTransaction();
 
-        Query<CUserEntity> createQuery = 
-                session.createQuery(QueryEnum.QUERY_USER.getQuery(value), CUserEntity.class);
-        
-        CUserEntity cUserEntity = createQuery.getSingleResult();
-        session.close();
-        return cUserEntity;
+        /* Controlalre */
+//        Query<E> createQuery = 
+//                session.createQuery(query, entity.getClass());
+//        session.close();
+//         return createQuery;
+        // return (Query) createQuery.getSingleResult();
 
-
+        throw new UnsupportedOperationException();
     }
+    
+//    public CUserEntity getByQueryX01(String value) throws IsNullException, FindException {
+//        session.beginTransaction();
+//
+////        Query<CUserEntity> createQuery = 
+////                session.createQuery(QueryEnum.BY_USER_NAME.byUserName(value), CUserEntity.class);
+//        Query<CUserEntity> createQuery
+//                = session.createQuery(Search.byUserName(value), CUserEntity.class);
+//
+//        CUserEntity cUserEntity = createQuery.getSingleResult();
+//        session.close();
+//        return cUserEntity;
+//
+//    }
 
-    public Long getId(E entity) throws IsNullException {
+    public E getById(E entity) throws IsNullException {
         isNull(entity);
         session.beginTransaction();
-
         session.getTransaction().commit();
         session.close();
         throw new UnsupportedOperationException();

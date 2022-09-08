@@ -13,7 +13,7 @@ import it.lule.cineteca.logic.leleDB.logicDb.AbstractController;
  *
  * @author lele
  */
-public class MovieController extends AbstractController{
+public class MovieController extends AbstractController<MovieEntity>{
     private static MovieController instance = null;
     
     public static MovieController getInstance(){
@@ -22,4 +22,13 @@ public class MovieController extends AbstractController{
         }
         return instance;
     }        
+    
+//    @Override
+//    public MovieController getEntityByQuery(String query) {
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//    }
+
+    private MovieController() {
+        super(MovieEntity.class);
+    }
 }

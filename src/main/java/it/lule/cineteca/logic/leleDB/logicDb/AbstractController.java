@@ -4,14 +4,9 @@
  */
 package it.lule.cineteca.logic.leleDB.logicDb;
 
-import it.lule.cineteca.logic.enumname.QueryEnum;
-import it.lule.cineteca.logic.entities.CUserEntity;
 import it.lule.cineteca.logic.exceptions.abstractControllerException.CreateException;
 import it.lule.cineteca.logic.exceptions.abstractControllerException.DeleteException;
-import it.lule.cineteca.logic.exceptions.abstractControllerException.FindException;
 import it.lule.cineteca.logic.exceptions.abstractControllerException.IsNullException;
-import it.lule.cineteca.logic.leleDB.controller.CUserController;
-import it.lule.cineteca.logic.leleDB.controller.Search;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
@@ -20,12 +15,16 @@ import org.hibernate.query.Query;
  *
  * @author lele
  */
-public class AbstractController<E,D> {
+public abstract class AbstractController<E> {
 
-    private Session session = null;
-
-    public AbstractController() {
+    protected Session session = null;
+    private Class<E> clazz;
+    
+    
+    public AbstractController(Class<E> clazz) {
         super();
+        this.clazz = clazz;
+        
         session = DbManager.getInstance().getSessionFactory().openSession();
     }
 
@@ -69,33 +68,18 @@ public class AbstractController<E,D> {
         session.close();
     }
 
-    @Deprecated
-    public <E> Query getByQuery(String query, E entity) {
-        session.beginTransaction();
+    public E getEntityByQuery(String query){
+                session.beginTransaction();
 
         /* Controlalre */
-//        Query<E> createQuery = 
-//                session.createQuery(query, entity.getClass());
-//        session.close();
-//         return createQuery;
-        // return (Query) createQuery.getSingleResult();
-
-        throw new UnsupportedOperationException();
+        Query<E> createQuery
+                = session.createQuery(query, this.clazz );
+        E singleResult = createQuery.getSingleResult();
+        session.close();
+        return (E) singleResult;
     }
     
-//    public CUserEntity getByQueryX01(String value) throws IsNullException, FindException {
-//        session.beginTransaction();
-//
-////        Query<CUserEntity> createQuery = 
-////                session.createQuery(QueryEnum.BY_USER_NAME.byUserName(value), CUserEntity.class);
-//        Query<CUserEntity> createQuery
-//                = session.createQuery(Search.byUserName(value), CUserEntity.class);
-//
-//        CUserEntity cUserEntity = createQuery.getSingleResult();
-//        session.close();
-//        return cUserEntity;
-//
-//    }
+//    public abstract E getEntityByQuery(String query);
 
     public E getById(E entity) throws IsNullException {
         isNull(entity);

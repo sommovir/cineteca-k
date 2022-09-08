@@ -5,16 +5,10 @@
 package it.lule.cineteca.logic.leleDB;
 
 import it.lule.cineteca.logic.entities.CUserEntity;
-import it.lule.cineteca.logic.entities.FilmDirectorEntity;
-import it.lule.cineteca.logic.entities.MovieEntity;
-import it.lule.cineteca.logic.enumname.QueryEnum;
 import it.lule.cineteca.logic.exceptions.abstractControllerException.CreateException;
 import it.lule.cineteca.logic.exceptions.abstractControllerException.FindException;
 import it.lule.cineteca.logic.leleDB.controller.CUserController;
-import it.lule.cineteca.logic.leleDB.controller.FilmDirectorController;
-import it.lule.cineteca.logic.leleDB.controller.MovieController;
 import it.lule.cineteca.logic.exceptions.abstractControllerException.IsNullException;
-import it.lule.cineteca.logic.leleDB.controller.Search;
 
 /**
  *

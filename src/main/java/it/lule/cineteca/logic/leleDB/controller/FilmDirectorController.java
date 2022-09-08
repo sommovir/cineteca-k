@@ -4,13 +4,14 @@
  */
 package it.lule.cineteca.logic.leleDB.controller;
 
+import it.lule.cineteca.logic.entities.FilmDirectorEntity;
 import it.lule.cineteca.logic.leleDB.logicDb.AbstractController;
 
 /**
  *
  * @author lele
  */
-public class FilmDirectorController extends AbstractController{
+public class FilmDirectorController extends AbstractController<FilmDirectorEntity>{
     private static FilmDirectorController instance = null;
     
     public static FilmDirectorController getInstance(){
@@ -19,4 +20,16 @@ public class FilmDirectorController extends AbstractController{
         }
         return instance;
     }    
+
+    
+//    @Override
+//    public FilmDirectorController getEntityByQuery(String query) {
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//    }
+
+    private FilmDirectorController() {
+        super(FilmDirectorEntity.class);
+    }
+
+
 }

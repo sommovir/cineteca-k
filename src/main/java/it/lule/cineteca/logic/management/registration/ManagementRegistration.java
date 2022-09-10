@@ -4,7 +4,7 @@
  */
 package it.lule.cineteca.logic.management.registration;
 
-import it.lule.cineteca.logic.entities.CUserEntity;
+import it.lule.cineteca.logic.db.entities.CUserEntity;
 import it.lule.cineteca.logic.exceptions.registration.RegistrationException;
 
 /**

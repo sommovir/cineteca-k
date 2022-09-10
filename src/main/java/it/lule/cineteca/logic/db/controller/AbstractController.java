@@ -2,11 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package it.lule.cineteca.logic.leleDB.logicDb;
+package it.lule.cineteca.logic.db.controller;
 
 import it.lule.cineteca.logic.exceptions.abstractControllerException.CreateException;
 import it.lule.cineteca.logic.exceptions.abstractControllerException.DeleteException;
 import it.lule.cineteca.logic.exceptions.abstractControllerException.IsNullException;
+import it.lule.cineteca.logic.db.DbManager;
+import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
@@ -69,17 +71,13 @@ public abstract class AbstractController<E> {
     }
 
     public E getEntityByQuery(String query){
-                session.beginTransaction();
-
-        /* Controlalre */
+        session.beginTransaction();
         Query<E> createQuery
                 = session.createQuery(query, this.clazz );
         E singleResult = createQuery.getSingleResult();
         session.close();
         return (E) singleResult;
     }
-    
-//    public abstract E getEntityByQuery(String query);
 
     public E getById(E entity) throws IsNullException {
         isNull(entity);
@@ -89,4 +87,12 @@ public abstract class AbstractController<E> {
         throw new UnsupportedOperationException();
     }
 
+    public List<E> getAllEntites(String query){
+        session.beginTransaction();
+        Query<E> createQuery = 
+                session.createQuery(query, this.clazz);
+        List<E> resultList = createQuery.getResultList();
+        session.close();
+        return resultList;
+    }
 }

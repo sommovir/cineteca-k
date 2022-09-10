@@ -4,8 +4,8 @@
  */
 
 import it.lule.cineteca.logic.db.daValutareLuca.DbManager;
-import it.lule.cineteca.logic.entities.FilmDirectorEntity;
-import it.lule.cineteca.logic.entities.MovieEntity;
+import it.lule.cineteca.logic.db.entities.FilmDirectorEntity;
+import it.lule.cineteca.logic.db.entities.MovieEntity;
 import java.lang.reflect.Field;
 import java.util.List;
 import org.junit.jupiter.api.AfterEach;

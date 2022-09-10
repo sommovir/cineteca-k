@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package it.lule.cineteca.logic.entities;
+package it.lule.cineteca.logic.db.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,19 +20,22 @@ import javax.persistence.Table;
  * @author Luca Coraci <luca.coraci@istc.cnr.it> ISTC-CNR
  */
 @Entity
-@Table(name = "movie")
-public class MovieEntity implements Serializable {
+@Table(name = "filmdirector")
+public class FilmDirectorEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String translatedTitle;
-    private String originalTitle;    
-    private Date releaseDate;
-    private String mainActor;
+    
+    @Column(unique = true,length = 256)
+    private String name;
+    
+    private String surname;
+    private Date dateOfBirth;
+    
     @OneToOne
-    private FilmDirectorEntity filmDirectorEntity;
+    private MovieEntity movieEntity;  
 
     public Long getId() {
         return id;
@@ -41,62 +45,52 @@ public class MovieEntity implements Serializable {
         this.id = id;
     }
 
-    public String getTranslatedTitle() {
-        return translatedTitle;
+    public String getName() {
+        return name;
     }
 
-    public void setTranslatedTitle(String translatedTitle) {
-        this.translatedTitle = translatedTitle;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getOriginalTitle() {
-        return originalTitle;
+    public String getSurname() {
+        return surname;
     }
 
-    public void setOriginalTitle(String originalTitle) {
-        this.originalTitle = originalTitle;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
-    public Date getReleaseDate() {
-        return releaseDate;
+    public Date getDateOfBirth() {
+        return dateOfBirth;
     }
 
-    public void setReleaseDate(Date releaseDate) {
-        this.releaseDate = releaseDate;
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
-    public String getMainActor() {
-        return mainActor;
+    public MovieEntity getMovieEntity() {
+        return movieEntity;
     }
 
-    public void setMainActor(String mainActor) {
-        this.mainActor = mainActor;
-    }
-
-    public FilmDirectorEntity getFilmDirectorEntity() {
-        return filmDirectorEntity;
-    }
-
-    public void setFilmDirectorEntity(FilmDirectorEntity filmDirectorEntity) {
-        this.filmDirectorEntity = filmDirectorEntity;
+    public void setMovieEntity(MovieEntity movieEntity) {
+        this.movieEntity = movieEntity;
     }
     
-    
-
     @Override
     public int hashCode() {
         int hash = 0;
         hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
-
+        
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof MovieEntity)) {
+        if (!(object instanceof FilmDirectorEntity)) {
             return false;
         }
-        MovieEntity other = (MovieEntity) object;
+        FilmDirectorEntity other = (FilmDirectorEntity) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -105,7 +99,7 @@ public class MovieEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "videoteca.Film[ id=" + id + " ]";
+        return "videoteca.Regista[ id=" + id + " ]";
     }
     
 }

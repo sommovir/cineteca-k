@@ -3,12 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
  */
 
-import it.lule.cineteca.logic.entities.CUserEntity;
+import it.lule.cineteca.logic.db.entities.CUserEntity;
 import it.lule.cineteca.logic.enumname.ErrorCodeEnum;
 import it.lule.cineteca.logic.exceptions.abstractControllerException.CreateException;
 import it.lule.cineteca.logic.exceptions.abstractControllerException.FindException;
 import it.lule.cineteca.logic.exceptions.abstractControllerException.IsNullException;
-import it.lule.cineteca.logic.leleDB.controller.CUserController;
+import it.lule.cineteca.logic.db.controller.CUserController;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;

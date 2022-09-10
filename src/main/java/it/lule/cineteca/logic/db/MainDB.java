@@ -2,12 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package it.lule.cineteca.logic.leleDB;
+package it.lule.cineteca.logic.db;
 
-import it.lule.cineteca.logic.entities.CUserEntity;
+import it.lule.cineteca.logic.db.entities.CUserEntity;
 import it.lule.cineteca.logic.exceptions.abstractControllerException.CreateException;
 import it.lule.cineteca.logic.exceptions.abstractControllerException.FindException;
-import it.lule.cineteca.logic.leleDB.controller.CUserController;
+import it.lule.cineteca.logic.db.controller.CUserController;
 import it.lule.cineteca.logic.exceptions.abstractControllerException.IsNullException;
 
 /**

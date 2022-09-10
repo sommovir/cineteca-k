@@ -5,7 +5,7 @@
  */
 package it.lule.cineteca.gui.movie.add;
 
-import it.lule.cineteca.logic.entities.MovieEntity;
+import it.lule.cineteca.logic.db.entities.MovieEntity;
 
 
 /**

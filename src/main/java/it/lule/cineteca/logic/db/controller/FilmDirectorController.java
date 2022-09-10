@@ -2,10 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package it.lule.cineteca.logic.leleDB.controller;
+package it.lule.cineteca.logic.db.controller;
 
-import it.lule.cineteca.logic.entities.FilmDirectorEntity;
-import it.lule.cineteca.logic.leleDB.logicDb.AbstractController;
+import it.lule.cineteca.logic.db.entities.FilmDirectorEntity;
 
 /**
  *

@@ -5,10 +5,17 @@
  */
 package it.lule.cineteca.gui.user;
 
+import it.lule.cineteca.logic.db.controller.CUserController;
+import it.lule.cineteca.logic.db.entities.CUserEntity;
+import it.lule.cineteca.logic.exceptions.abstractControllerException.CreateException;
+import it.lule.cineteca.logic.exceptions.abstractControllerException.FindException;
+import it.lule.cineteca.logic.exceptions.abstractControllerException.IsNullException;
 import it.lule.cineteca.logic.exceptions.password.PasswordException;
 import it.lule.cineteca.logic.management.password.ManagementPassword;
 import java.awt.Color;
 import java.awt.Font;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 /**
@@ -160,32 +167,50 @@ public class UserDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonRegisterActionPerformed
 
     private void jPasswordFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordFieldKeyReleased
-        enableButton();
+
     }//GEN-LAST:event_jPasswordFieldKeyReleased
 
     private void jTextFieldUserKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldUserKeyReleased
-        enableButton();
+
     }//GEN-LAST:event_jTextFieldUserKeyReleased
 
     private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
         try {
             ManagementPassword.getInstance().login(jTextFieldUser.getText(),
                     jPasswordField.getPassword());
-            this.dispose();
-            MainGui mainGui = new MainGui();
-            mainGui.dispose();
-            mainGui.setLocationRelativeTo(mainGui);
-            mainGui.setVisible(true);
-
+            login();
+            disposeGui();
         } catch (PasswordException ex) {
             jLabelError.setText(ex.getMessage());
+        } catch (IsNullException ex) {
+            Logger.getLogger(UserDialog.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (CreateException ex) {
+            Logger.getLogger(UserDialog.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (FindException ex) {
+            Logger.getLogger(UserDialog.class.getName()).log(Level.SEVERE, null, ex);
         }
-
 
     }//GEN-LAST:event_jButtonLoginActionPerformed
 
-    private void enableButton() {
+    private void login() throws IsNullException, CreateException, FindException {
+        char[] password = jPasswordField.getPassword();
+        String passwordStr = new String(password);
 
+        CUserEntity userEntity = new CUserEntity();
+
+        userEntity.setUser(jTextFieldUser.getText());
+        userEntity.setPassword(passwordStr);
+
+        userEntity = CUserController.getInstance().getUserName(jTextFieldUser.getText());
+        System.out.println(""+ userEntity.getUser());
+    }
+
+    private void disposeGui() {
+        this.dispose();
+        MainGui mainGui = new MainGui();
+        mainGui.dispose();
+        mainGui.setLocationRelativeTo(mainGui);
+        mainGui.setVisible(true);
     }
 
     /**

@@ -5,18 +5,13 @@
  */
 package it.lule.cineteca.gui.user;
 
-import it.lule.cineteca.logic.exceptions.password.PasswordsAreNotEqualsException;
-import it.lule.cineteca.logic.exceptions.password.PasswordEmptyException;
+import it.lule.cineteca.logic.db.controller.CUserController;
+import it.lule.cineteca.logic.db.entities.CUserEntity;
+import it.lule.cineteca.logic.exceptions.abstractControllerException.CreateException;
+import it.lule.cineteca.logic.exceptions.abstractControllerException.IsNullException;
 import it.lule.cineteca.logic.exceptions.password.PasswordException;
-import it.lule.cineteca.logic.exceptions.password.PasswordHasNotUpperCaseException;
-import it.lule.cineteca.logic.exceptions.password.PasswordTooLongException;
-import it.lule.cineteca.logic.exceptions.password.PasswordTooShortException;
-import it.lule.cineteca.logic.exceptions.password.UserEmptyException;
 import it.lule.cineteca.logic.management.password.ManagementPassword;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -180,13 +175,7 @@ public class RegisterDialog extends javax.swing.JDialog {
         try {
             ManagementPassword.getInstance().createUser(jTextFieldUser.getText(),
                     jPasswordField.getPassword(), jPasswordFieldConfirm.getPassword());
-            this.dispose();
-            
-            /* non è un errore è solo a titolo dimostrativo verrà modificata con la finestra vera di registrazione */
-            MainGui mainGui = new MainGui();
-            mainGui.dispose();
-            mainGui.setLocationRelativeTo(mainGui);
-            mainGui.setVisible(true);            
+    
             
         } catch (PasswordException ex) {
             jLabelError.setText(ex.getMessage());
@@ -195,6 +184,27 @@ public class RegisterDialog extends javax.swing.JDialog {
         /* aggiungere il salvataggio dell USER */
 
     }//GEN-LAST:event_jButtonRegisterActionPerformed
+
+    private void login() throws IsNullException, CreateException {
+        char[] password = jPasswordField.getPassword();
+        String passwordStr = new String(password);
+
+        CUserEntity userEntity = new CUserEntity();
+
+        userEntity.setUser(jTextFieldUser.getText());
+        userEntity.setPassword(passwordStr);
+
+        CUserController.getInstance().createEntity(userEntity);
+    }    
+    
+    /* non è un errore è solo a titolo dimostrativo verrà modificata con la finestra vera di registrazione */
+    private void disposeGui() {
+        this.dispose();
+        MainGui mainGui = new MainGui();
+        mainGui.dispose();
+        mainGui.setLocationRelativeTo(mainGui);
+        mainGui.setVisible(true);
+    }
 
     private void jPasswordFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordFieldKeyReleased
 

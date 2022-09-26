@@ -21,7 +21,7 @@ public class ManagementPassword {
     private static ManagementPassword instance = null;
 //    private boolean isPasswordCorrect = false;
     private int passwordMinimumLength = 3;
-    private int passwordMaximumLength = 6;
+    private int passwordMaximumLength = 8;
 
     public static ManagementPassword getInstance() {
         if (instance == null) {

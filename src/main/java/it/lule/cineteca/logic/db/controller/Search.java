@@ -16,7 +16,7 @@ public class Search {
         return query;
     }
 
-    public static String userAllUsers(String user) {
+    public static String userAllUsers() {
         String query = "SELECT a FROM CUserEntity a WHERE a";
         return query;
     }

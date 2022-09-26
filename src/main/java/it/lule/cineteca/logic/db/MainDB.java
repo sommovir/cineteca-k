@@ -30,8 +30,8 @@ public class MainDB {
         CUserEntity userEntity = new CUserEntity();
         userEntity.setPassword("password");
         userEntity.setUser(value);
-        
         CUserController.getInstance().createEntity(userEntity);
+
     }
 
     public static void read() throws IsNullException, FindException {

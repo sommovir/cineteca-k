@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package it.lule.cineteca.logic.exceptions.dbInstalled;
+package it.lule.cineteca.logic.exceptions.dbException.dbInstalled;
 
 /**
  *

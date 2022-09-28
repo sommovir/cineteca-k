@@ -7,8 +7,8 @@ package it.lule.cineteca.logic.db.daValutareLuca;
 
 import it.lule.cineteca.logic.db.entities.FilmDirectorEntity;
 import it.lule.cineteca.logic.db.entities.MovieEntity;
-import it.lule.cineteca.logic.exceptions.dbInstalled.DBBadParamaterException;
-import it.lule.cineteca.logic.exceptions.dbInstalled.DBUniqueViolationException;
+import it.lule.cineteca.logic.exceptions.dbException.dbInstalled.DBBadParamaterException;
+import it.lule.cineteca.logic.exceptions.dbException.dbInstalled.DBUniqueViolationException;
 import java.util.List;
 import javax.persistence.PersistenceException;
 import org.hibernate.Session;

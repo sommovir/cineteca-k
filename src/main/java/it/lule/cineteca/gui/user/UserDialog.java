@@ -5,11 +5,12 @@
  */
 package it.lule.cineteca.gui.user;
 
-import it.lule.cineteca.logic.db.controller.CUserController;
+import it.lule.cineteca.logic.db.controller.DBCUserController;
 import it.lule.cineteca.logic.db.entities.CUserEntity;
-import it.lule.cineteca.logic.exceptions.abstractControllerException.CreateException;
-import it.lule.cineteca.logic.exceptions.abstractControllerException.FindException;
-import it.lule.cineteca.logic.exceptions.abstractControllerException.IsNullException;
+import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBAbstractControllerException;
+import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBCreateException;
+import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBFindException;
+import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBIsNullException;
 import it.lule.cineteca.logic.exceptions.password.PasswordException;
 import it.lule.cineteca.logic.management.password.ManagementPassword;
 import java.awt.Color;
@@ -178,21 +179,15 @@ public class UserDialog extends javax.swing.JDialog {
         try {
             ManagementPassword.getInstance().login(jTextFieldUser.getText(),
                     jPasswordField.getPassword());
-            login();
-            disposeGui();
+//            login();
+//            disposeGui();
         } catch (PasswordException ex) {
             jLabelError.setText(ex.getMessage());
-        } catch (IsNullException ex) {
-            Logger.getLogger(UserDialog.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (CreateException ex) {
-            Logger.getLogger(UserDialog.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (FindException ex) {
-            Logger.getLogger(UserDialog.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } 
 
     }//GEN-LAST:event_jButtonLoginActionPerformed
 
-    private void login() throws IsNullException, CreateException, FindException {
+    private void login() throws DBIsNullException, DBCreateException, DBFindException {
         char[] password = jPasswordField.getPassword();
         String passwordStr = new String(password);
 
@@ -201,7 +196,7 @@ public class UserDialog extends javax.swing.JDialog {
         userEntity.setUser(jTextFieldUser.getText());
         userEntity.setPassword(passwordStr);
 
-        userEntity = CUserController.getInstance().getUserName(jTextFieldUser.getText());
+        userEntity = DBCUserController.getInstance().getUserName(jTextFieldUser.getText());
         System.out.println(""+ userEntity.getUser());
     }
 

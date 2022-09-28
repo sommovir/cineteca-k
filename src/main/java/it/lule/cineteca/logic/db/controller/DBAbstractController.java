@@ -4,9 +4,9 @@
  */
 package it.lule.cineteca.logic.db.controller;
 
-import it.lule.cineteca.logic.exceptions.abstractControllerException.CreateException;
-import it.lule.cineteca.logic.exceptions.abstractControllerException.DeleteException;
-import it.lule.cineteca.logic.exceptions.abstractControllerException.IsNullException;
+import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBCreateException;
+import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBDeleteException;
+import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBIsNullException;
 import it.lule.cineteca.logic.db.DbManager;
 import java.util.List;
 import org.hibernate.Session;
@@ -17,26 +17,26 @@ import org.hibernate.query.Query;
  *
  * @author lele
  */
-public abstract class AbstractController<E> {
+public abstract class DBAbstractController<E> {
 
     protected Session session = null;
     private Class<E> clazz;
     
     
-    public AbstractController(Class<E> clazz) {
+    public DBAbstractController(Class<E> clazz) {
         super();
         this.clazz = clazz;
         
         session = DbManager.getInstance().getSessionFactory().openSession();
     }
 
-    private void isNull(E entity) throws IsNullException {
+    private void isNull(E entity) throws DBIsNullException {
         if (entity == null) {
-            throw new IsNullException();
+            throw new DBIsNullException();
         }
     }
 
-    public void createEntity(E entity) throws IsNullException, CreateException {
+    public void createEntity(E entity) throws DBIsNullException, DBCreateException {
         isNull(entity);
         try {
             session.beginTransaction();
@@ -44,11 +44,11 @@ public abstract class AbstractController<E> {
             session.getTransaction().commit();
             session.close();
         } catch (Exception e) {
-            throw new CreateException();
+            throw new DBCreateException();
         }
     }
 
-    public void deleteEntity(E entity) throws IsNullException, DeleteException {
+    public void deleteEntity(E entity) throws DBIsNullException, DBDeleteException {
         isNull(entity);
 
         try {
@@ -57,11 +57,11 @@ public abstract class AbstractController<E> {
             session.getTransaction().commit();
             session.close();
         } catch (Exception e) {
-            throw new DeleteException();
+            throw new DBDeleteException();
         }
     }
 
-    public void editEntity(E entity) throws IsNullException {
+    public void editEntity(E entity) throws DBIsNullException {
         isNull(entity);
 
         session.beginTransaction();
@@ -79,7 +79,7 @@ public abstract class AbstractController<E> {
         return (E) singleResult;
     }
 
-    public E getById(E entity) throws IsNullException {
+    public E getById(E entity) throws DBIsNullException {
         isNull(entity);
         session.beginTransaction();
         session.getTransaction().commit();

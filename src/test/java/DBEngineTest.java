@@ -5,8 +5,8 @@
 
 import it.lule.cineteca.logic.db.daValutareLuca.DbManager;
 import it.lule.cineteca.logic.db.entities.FilmDirectorEntity;
-import it.lule.cineteca.logic.exceptions.dbInstalled.DBBadParamaterException;
-import it.lule.cineteca.logic.exceptions.dbInstalled.DBUniqueViolationException;
+import it.lule.cineteca.logic.exceptions.dbException.dbInstalled.DBBadParamaterException;
+import it.lule.cineteca.logic.exceptions.dbException.dbInstalled.DBUniqueViolationException;
 import it.lule.cineteca.utils.test.ConditionToExecute;
 import java.util.logging.Level;
 import java.util.logging.Logger;

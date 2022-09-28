@@ -5,10 +5,10 @@
 package it.lule.cineteca.logic.db;
 
 import it.lule.cineteca.logic.db.entities.CUserEntity;
-import it.lule.cineteca.logic.exceptions.abstractControllerException.CreateException;
-import it.lule.cineteca.logic.exceptions.abstractControllerException.FindException;
-import it.lule.cineteca.logic.db.controller.CUserController;
-import it.lule.cineteca.logic.exceptions.abstractControllerException.IsNullException;
+import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBCreateException;
+import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBFindException;
+import it.lule.cineteca.logic.db.controller.DBCUserController;
+import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBIsNullException;
 
 /**
  *
@@ -16,7 +16,7 @@ import it.lule.cineteca.logic.exceptions.abstractControllerException.IsNullExcep
  */
 public class MainDB {
     private static String value = "lele";
-    public static void main(String[] args) throws IsNullException, CreateException, FindException {
+    public static void main(String[] args) throws DBIsNullException, DBCreateException, DBFindException {
 //        create();
         read();
 //        directorEntity()
@@ -26,18 +26,18 @@ public class MainDB {
 //        System.out.println("QueryEnum "+userName);
     }
 
-    public static void create() throws IsNullException, CreateException {
+    public static void create() throws DBIsNullException, DBCreateException {
         CUserEntity userEntity = new CUserEntity();
         userEntity.setPassword("password");
         userEntity.setUser(value);
-        CUserController.getInstance().createEntity(userEntity);
+        DBCUserController.getInstance().createEntity(userEntity);
 
     }
 
-    public static void read() throws IsNullException, FindException {
+    public static void read() throws DBIsNullException, DBFindException {
         CUserEntity userEntity = new CUserEntity();
         
-        userEntity = CUserController.getInstance().getUserName(value);
+        userEntity = DBCUserController.getInstance().getUserName(value);
 
         System.out.println("User: " + userEntity.getUser()
                 + "\nPassword: " + userEntity.getPassword());

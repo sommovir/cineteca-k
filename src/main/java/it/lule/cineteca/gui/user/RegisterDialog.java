@@ -5,12 +5,15 @@
  */
 package it.lule.cineteca.gui.user;
 
-import it.lule.cineteca.logic.db.controller.CUserController;
+import it.lule.cineteca.logic.db.controller.DBCUserController;
 import it.lule.cineteca.logic.db.entities.CUserEntity;
-import it.lule.cineteca.logic.exceptions.abstractControllerException.CreateException;
-import it.lule.cineteca.logic.exceptions.abstractControllerException.IsNullException;
+import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBAbstractControllerException;
+import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBCreateException;
+import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBIsNullException;
 import it.lule.cineteca.logic.exceptions.password.PasswordException;
 import it.lule.cineteca.logic.management.password.ManagementPassword;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 /**
@@ -175,17 +178,15 @@ public class RegisterDialog extends javax.swing.JDialog {
         try {
             ManagementPassword.getInstance().createUser(jTextFieldUser.getText(),
                     jPasswordField.getPassword(), jPasswordFieldConfirm.getPassword());
-    
-            
+//            login();
+//            disposeGui();
         } catch (PasswordException ex) {
             jLabelError.setText(ex.getMessage());
-        }
-
-        /* aggiungere il salvataggio dell USER */
+        }  
 
     }//GEN-LAST:event_jButtonRegisterActionPerformed
 
-    private void login() throws IsNullException, CreateException {
+    private void login() throws DBIsNullException, DBCreateException {
         char[] password = jPasswordField.getPassword();
         String passwordStr = new String(password);
 
@@ -194,7 +195,7 @@ public class RegisterDialog extends javax.swing.JDialog {
         userEntity.setUser(jTextFieldUser.getText());
         userEntity.setPassword(passwordStr);
 
-        CUserController.getInstance().createEntity(userEntity);
+        DBCUserController.getInstance().createEntity(userEntity);
     }    
     
     /* non è un errore è solo a titolo dimostrativo verrà modificata con la finestra vera di registrazione */

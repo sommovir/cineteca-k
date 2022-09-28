@@ -5,10 +5,10 @@
 
 import it.lule.cineteca.logic.db.entities.CUserEntity;
 import it.lule.cineteca.logic.enumname.ErrorCodeEnum;
-import it.lule.cineteca.logic.exceptions.abstractControllerException.CreateException;
-import it.lule.cineteca.logic.exceptions.abstractControllerException.FindException;
-import it.lule.cineteca.logic.exceptions.abstractControllerException.IsNullException;
-import it.lule.cineteca.logic.db.controller.CUserController;
+import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBCreateException;
+import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBFindException;
+import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBIsNullException;
+import it.lule.cineteca.logic.db.controller.DBCUserController;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
@@ -55,7 +55,7 @@ public class AbstractControllerTest {
 //    @Test
     @Deprecated
     @DisplayName(abstractControllerTest + " FindEntity")
-    public void FindEntity() throws IsNullException, FindException {
+    public void FindEntity() throws DBIsNullException, DBFindException {
 //        String value = "Lele";
 //        CUserController userController = new CUserController();
 //        CUserEntity userEntity = new CUserEntity();

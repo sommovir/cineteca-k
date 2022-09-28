@@ -4,30 +4,31 @@
  */
 package it.lule.cineteca.logic.db.controller;
 
-import it.lule.cineteca.logic.db.entities.MovieEntity;
-
-
+import it.lule.cineteca.logic.db.entities.FilmDirectorEntity;
 
 /**
  *
  * @author lele
  */
-public class MovieController extends AbstractController<MovieEntity>{
-    private static MovieController instance = null;
+public class DBFilmDirectorController extends DBAbstractController<FilmDirectorEntity>{
+    private static DBFilmDirectorController instance = null;
     
-    public static MovieController getInstance(){
+    public static DBFilmDirectorController getInstance(){
         if (instance == null){
-            instance = new MovieController();
+            instance = new DBFilmDirectorController();
         }
         return instance;
-    }        
+    }    
+
     
 //    @Override
-//    public MovieController getEntityByQuery(String query) {
+//    public FilmDirectorController getEntityByQuery(String query) {
 //        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
 //    }
 
-    private MovieController() {
-        super(MovieEntity.class);
+    private DBFilmDirectorController() {
+        super(FilmDirectorEntity.class);
     }
+
+
 }

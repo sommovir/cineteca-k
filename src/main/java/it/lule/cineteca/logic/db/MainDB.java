@@ -15,10 +15,12 @@ import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException
  * @author lele
  */
 public class MainDB {
+
     private static String value = "lele";
+
     public static void main(String[] args) throws DBIsNullException, DBCreateException, DBFindException {
-//        create();
-        read();
+        create();
+//        read();
 //        directorEntity()
 //        movieEntity();
 //        Search.byUserName(value);
@@ -27,22 +29,22 @@ public class MainDB {
     }
 
     public static void create() throws DBIsNullException, DBCreateException {
-        CUserEntity userEntity = new CUserEntity();
-        userEntity.setPassword("password");
-        userEntity.setUser(value);
-        DBCUserController.getInstance().createEntity(userEntity);
+//        CUserEntity userEntity = new CUserEntity();
+//        userEntity.setPassword("password");
+//        userEntity.setUser(value);
+//        DBCUserController.getInstance().createEntity(userEntity);
 
+        CUserEntity userEntity = null;
+        DBCUserController.getInstance().createEntity(userEntity);
     }
 
     public static void read() throws DBIsNullException, DBFindException {
         CUserEntity userEntity = new CUserEntity();
-        
+
         userEntity = DBCUserController.getInstance().getUserName(value);
 
         System.out.println("User: " + userEntity.getUser()
                 + "\nPassword: " + userEntity.getPassword());
     }
-
-
 
 }

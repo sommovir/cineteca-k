@@ -19,7 +19,6 @@ import java.util.Arrays;
 public class ManagementPassword {
 
     private static ManagementPassword instance = null;
-//    private boolean isPasswordCorrect = false;
     private int passwordMinimumLength = 3;
     private int passwordMaximumLength = 8;
 
@@ -111,7 +110,6 @@ public class ManagementPassword {
               jPasswordField.length == 0 || jPasswordFieldConfirm.length == 0  ){
             throw new PasswordEmptyException();
         }
-
     }
 
     /**
@@ -192,22 +190,4 @@ public class ManagementPassword {
 
         return false;
     }
-
-//    /**
-//     * Get jPassword Field
-//     *
-//     * @return
-//     */
-//    public char[] getjPasswordField() {
-//        return jPasswordField;
-//    }
-//
-//    /**
-//     * Return error code if password is wrong
-//     *
-//     * @return
-//     */
-//    public boolean isPasswordCorrect() {
-//        return isPasswordCorrect;
-//    }
 }

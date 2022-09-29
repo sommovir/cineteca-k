@@ -4,7 +4,7 @@
  */
 
 import it.lule.cineteca.logic.db.entities.CUserEntity;
-import it.lule.cineteca.logic.enumname.ErrorCodeEnum;
+import it.lule.cineteca.logic.enums.ErrorCodeEnum;
 import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBCreateException;
 import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBFindException;
 import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBIsNullException;

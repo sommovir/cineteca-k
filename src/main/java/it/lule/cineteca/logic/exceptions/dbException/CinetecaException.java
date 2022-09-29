@@ -4,7 +4,7 @@
  */
 package it.lule.cineteca.logic.exceptions.dbException;
 
-import it.lule.cineteca.logic.enumname.ErrorCodeEnum;
+import it.lule.cineteca.logic.enums.ErrorCodeEnum;
 
 /**
  *

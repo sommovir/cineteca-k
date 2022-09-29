@@ -4,7 +4,7 @@
  */
 package it.lule.cineteca.logic.exceptions.dbException.abstractControllerException;
 
-import it.lule.cineteca.logic.enumname.ErrorCodeEnum;
+import it.lule.cineteca.logic.enums.ErrorCodeEnum;
 import it.lule.cineteca.logic.exceptions.dbException.CinetecaException;
 
 /**

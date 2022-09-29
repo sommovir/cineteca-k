@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
  */
 
-import it.lule.cineteca.logic.enumname.ErrorCodeEnum;
+import it.lule.cineteca.logic.enums.ErrorCodeEnum;
 import it.lule.cineteca.logic.exceptions.password.PasswordsAreNotEqualsException;
 import it.lule.cineteca.logic.exceptions.password.PasswordEmptyException;
 import it.lule.cineteca.logic.exceptions.password.PasswordHasNotUpperCaseException;

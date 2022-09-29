@@ -5,22 +5,16 @@
 package it.lule.cineteca.logic.exceptions.password;
 
 import it.lule.cineteca.logic.enumname.ErrorCodeEnum;
+import it.lule.cineteca.logic.exceptions.dbException.CinetecaException;
 
 /**
  *
  * @author sommovir
  */
-public class PasswordException extends Exception {
-
-    private ErrorCodeEnum errorCode;
+public class PasswordException extends CinetecaException {
 
     public PasswordException(ErrorCodeEnum errorCode) {
-        super(errorCode.getMessage());
-        this.errorCode = errorCode;
-    }
-
-    public ErrorCodeEnum getErrorCode() {
-        return errorCode;
+        super(errorCode);
     }
 
 }

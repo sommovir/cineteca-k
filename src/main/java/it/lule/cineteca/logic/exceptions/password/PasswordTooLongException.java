@@ -10,10 +10,10 @@ import it.lule.cineteca.logic.enumname.ErrorCodeEnum;
  *
  * @author lele
  */
-public class PasswordTooLongException extends PasswordException{
+public class PasswordTooLongException extends PasswordException {
 
     public PasswordTooLongException() {
         super(ErrorCodeEnum.PASSWORD_TOO_LONG);
     }
-    
+
 }

@@ -10,7 +10,8 @@ import it.lule.cineteca.logic.enumname.ErrorCodeEnum;
  *
  * @author lele
  */
-public class DBFindException extends DBAbstractControllerException{
+public class DBFindException extends DBAbstractControllerException {
+
     public DBFindException() {
         super(ErrorCodeEnum.DB_FIND);
     }

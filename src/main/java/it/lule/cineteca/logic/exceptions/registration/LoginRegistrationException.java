@@ -5,20 +5,16 @@
 package it.lule.cineteca.logic.exceptions.registration;
 
 import it.lule.cineteca.logic.enumname.ErrorCodeEnum;
+import it.lule.cineteca.logic.exceptions.dbException.CinetecaException;
 
 /**
  *
  * @author lele
  */
-public class LoginRegistrationException extends Exception{
-    private ErrorCodeEnum errorCode;
+public class LoginRegistrationException extends CinetecaException{
 
     public LoginRegistrationException(ErrorCodeEnum errorCode) {
-        super(errorCode.getMessage());
-        this.errorCode = errorCode;
+        super(errorCode);
     }
 
-    public ErrorCodeEnum getErrorCode() {
-        return errorCode;
-    }    
 }

@@ -10,10 +10,10 @@ import it.lule.cineteca.logic.enumname.ErrorCodeEnum;
  *
  * @author lele
  */
-public class PasswordTooShortException extends PasswordException{
+public class PasswordTooShortException extends PasswordException {
 
     public PasswordTooShortException() {
         super(ErrorCodeEnum.PASSWORD_TOO_SHORT);
     }
-    
+
 }

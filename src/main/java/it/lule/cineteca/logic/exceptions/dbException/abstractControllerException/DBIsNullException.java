@@ -10,8 +10,9 @@ import it.lule.cineteca.logic.enumname.ErrorCodeEnum;
  *
  * @author lele
  */
-public class DBIsNullException extends DBAbstractControllerException{    
+public class DBIsNullException extends DBAbstractControllerException {
+
     public DBIsNullException() {
         super(ErrorCodeEnum.DB_IS_NULL);
-    }    
+    }
 }

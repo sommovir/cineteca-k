@@ -10,8 +10,9 @@ import it.lule.cineteca.logic.enumname.ErrorCodeEnum;
  *
  * @author lele
  */
-public class DBCreateException extends DBAbstractControllerException{   
+public class DBCreateException extends DBAbstractControllerException {
+
     public DBCreateException() {
         super(ErrorCodeEnum.DB_CREATE);
-    }   
+    }
 }

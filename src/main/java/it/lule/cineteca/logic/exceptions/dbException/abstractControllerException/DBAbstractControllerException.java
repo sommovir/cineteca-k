@@ -5,22 +5,16 @@
 package it.lule.cineteca.logic.exceptions.dbException.abstractControllerException;
 
 import it.lule.cineteca.logic.enumname.ErrorCodeEnum;
+import it.lule.cineteca.logic.exceptions.dbException.CinetecaException;
 
 /**
  *
  * @author lele
  */
-public class DBAbstractControllerException extends Exception {
-
-    private ErrorCodeEnum errorCode;
+public class DBAbstractControllerException extends CinetecaException {
 
     public DBAbstractControllerException(ErrorCodeEnum errorCode) {
-        super(errorCode.getMessage());
-        this.errorCode = errorCode;
+        super(errorCode);
     }
-
-    public ErrorCodeEnum getErrorCode() {
-        return errorCode;
-    }
-
+    
 }

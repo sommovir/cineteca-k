@@ -32,7 +32,7 @@ public class ManagementLoginRegistration {
      * @param passwordConfrim
      * @param user
      * @throws DBAbstractControllerException
-     * @throws PasswordException      
+     * @throws PasswordException
      */
     public void registrationAccount(String user, char[] password, char[] passwordConfrim)
             throws DBAbstractControllerException, PasswordException {
@@ -50,10 +50,12 @@ public class ManagementLoginRegistration {
      * @throws DBAbstractControllerException
      */
     public void deleteAccount(String user) throws DBAbstractControllerException {
+        
         CUserEntity userEntity = new CUserEntity();
         userEntity = DBCUserController.getInstance().getUserName(user);
 
         DBCUserController.getInstance().deleteUser(userEntity);
+        
     }
 
     /**
@@ -66,9 +68,11 @@ public class ManagementLoginRegistration {
      */
     public void login(String user, char[] password)
             throws DBAbstractControllerException, PasswordException {
+        
         ManagementPassword.getInstance().login(user, password);
         CUserEntity userEntity = new CUserEntity(user, new String(password));
-        
+
         DBCUserController.getInstance().getUserID(userEntity);
+        
     }
 }

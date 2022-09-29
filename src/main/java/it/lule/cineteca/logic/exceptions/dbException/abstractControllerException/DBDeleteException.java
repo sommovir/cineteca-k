@@ -10,8 +10,9 @@ import it.lule.cineteca.logic.enumname.ErrorCodeEnum;
  *
  * @author lele
  */
-public class DBDeleteException extends DBAbstractControllerException{
+public class DBDeleteException extends DBAbstractControllerException {
+
     public DBDeleteException() {
         super(ErrorCodeEnum.DB_DELETE);
-    }   
+    }
 }

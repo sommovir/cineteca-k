@@ -10,7 +10,8 @@ import it.lule.cineteca.logic.enumname.ErrorCodeEnum;
  *
  * @author lele
  */
-public class DBEditException extends DBAbstractControllerException{
+public class DBEditException extends DBAbstractControllerException {
+
     public DBEditException() {
         super(ErrorCodeEnum.DB_EDIT);
     }

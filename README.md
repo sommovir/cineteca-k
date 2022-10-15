@@ -18,3 +18,5 @@
 ![Coverage](https://lin.java-injection.dev/coverage/sonarqube?url=sonar.java-injection.dev&project-key=cineteka&token=squ_9c5d39cd6b90385d0dab01745adbe7a327064857)
 [![Security Rating](https://sonar.java-injection.dev/api/project_badges/measure?project=cineteka&metric=security_rating&token=squ_9c5d39cd6b90385d0dab01745adbe7a327064857)](https://sonar.java-injection.dev/dashboard?id=cineteka)
 [![Bugs](https://sonar.java-injection.dev/api/project_badges/measure?project=cineteka&metric=bugs&token=squ_9c5d39cd6b90385d0dab01745adbe7a327064857)](https://sonar.java-injection.dev/dashboard?id=cineteka)
+
+---

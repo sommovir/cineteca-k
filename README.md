@@ -9,10 +9,12 @@
 </p>
 </html>
 
+<iframe src="https://discord.com/widget?id=915391896564695050&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+
 
 ---
 ![example workflow](https://github.com/sommovir/cineteca-k/actions/workflows/maven.yml/badge.svg?event=push)
-[![Quality Gate Status](https://sonar.java-injection.dev/api/project_badges/measure?project=cineteka&metric=alert_status&token=sqp_11dc6304e5abde4dc333daedf1917cb554b9834e)](https://sonar.java-injection.dev/dashboard?id=cineteka)
-![Coverage](https://lin.java-injection.dev/coverage/sonarqube?url=sonar.java-injection.dev&project-key=cineteka&token=sqp_11dc6304e5abde4dc333daedf1917cb554b9834e)
-[![Security Rating](https://sonar.java-injection.dev/api/project_badges/measure?project=cineteka&metric=security_rating&token=sqp_11dc6304e5abde4dc333daedf1917cb554b9834e)](https://sonar.java-injection.dev/dashboard?id=cineteka)
-[![Bugs](https://sonar.java-injection.dev/api/project_badges/measure?project=cineteka&metric=bugs&token=sqp_11dc6304e5abde4dc333daedf1917cb554b9834e)](https://sonar.java-injection.dev/dashboard?id=cineteka)
+[![Quality Gate Status](https://sonar.java-injection.dev/api/project_badges/measure?project=cineteka&metric=alert_status&token=squ_9c5d39cd6b90385d0dab01745adbe7a327064857)](https://sonar.java-injection.dev/dashboard?id=cineteka)
+![Coverage](https://lin.java-injection.dev/coverage/sonarqube?url=sonar.java-injection.dev&project-key=cineteka&token=squ_9c5d39cd6b90385d0dab01745adbe7a327064857)
+[![Security Rating](https://sonar.java-injection.dev/api/project_badges/measure?project=cineteka&metric=security_rating&token=squ_9c5d39cd6b90385d0dab01745adbe7a327064857)](https://sonar.java-injection.dev/dashboard?id=cineteka)
+[![Bugs](https://sonar.java-injection.dev/api/project_badges/measure?project=cineteka&metric=bugs&token=squ_9c5d39cd6b90385d0dab01745adbe7a327064857)](https://sonar.java-injection.dev/dashboard?id=cineteka)

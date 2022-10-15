@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-
+    name: Build
     runs-on: ubuntu-latest
 
     steps:
@@ -27,7 +27,7 @@ jobs:
 
   sonarqube:
     needs: build
-    name: Build
+    name: QA Gate
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

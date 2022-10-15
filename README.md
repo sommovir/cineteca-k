@@ -20,3 +20,5 @@
 [![Bugs](https://sonar.java-injection.dev/api/project_badges/measure?project=cineteka&metric=bugs&token=squ_9c5d39cd6b90385d0dab01745adbe7a327064857)](https://sonar.java-injection.dev/dashboard?id=cineteka)
 
 ---
+
+prova :/

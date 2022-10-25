@@ -5,7 +5,7 @@
  */
 package it.lule.cineteca.gui.movie.add;
 
-import it.lule.cineteca.logic.entities.MovieEntity;
+import it.lule.cineteca.logic.db.entities.MovieEntity;
 
 
 /**
@@ -204,7 +204,7 @@ public class AddMovieJPanel extends javax.swing.JPanel {
 
     private void jButtonAddMovieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddMovieActionPerformed
         movie.setId(Long.MIN_VALUE);
-        movie.setTitoloTradotto(jLabelTitoloTradotto.getText());
+        movie.setTranslatedTitle(jLabelTitoloTradotto.getText());
         movie.setOriginalTitle(jLabelOriginalTitle.getText());
         movie.setMainActor(jLabelMainActor.getText());
         // movie.setReleaseDate(jLabelTitoloTradotto.getText());

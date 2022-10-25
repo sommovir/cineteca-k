@@ -1,17 +1,9 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package it.lule.cineteca.logic.db;
 
-import it.lule.cineteca.logic.entities.FilmDirectorEntity;
-import it.lule.cineteca.logic.entities.MovieEntity;
-import it.lule.cineteca.logic.exceptions.DBBadParamaterException;
-import it.lule.cineteca.logic.exceptions.DBUniqueViolationException;
-import java.util.List;
-import javax.persistence.PersistenceException;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.exception.ConstraintViolationException;
 import it.lule.cineteca.utils.test.Tested;
@@ -21,10 +13,11 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 /**
  *
- * @author sommovir
+ * @author lele
  */
-@Tested(name = "DbManager", testEnabled = true)
 public class DbManager {
+    private SessionFactory sessionFactory = null;
+    private static DbManager instance = null;
 
     private static DbManager _instance = null;
     private SessionFactory sessionFactory;
@@ -35,10 +28,10 @@ public class DbManager {
      * @return
      */
     public static DbManager getInstance() {
-        if (_instance == null) {
-            _instance = new DbManager();
+        if (instance == null) {
+            instance = new DbManager();
         }
-        return _instance;
+        return instance;
     }
 
     public void status() {
@@ -133,9 +126,11 @@ public class DbManager {
 
         session.persist(movie);
 
-        session.getTransaction().commit();
-        session.close();
-        return movie.getId();
+            sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
+        } catch (Exception e) {
+            // handle the exception
+            throw e;
+        }        
     }
 
     /**

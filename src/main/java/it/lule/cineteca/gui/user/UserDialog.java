@@ -5,12 +5,19 @@
  */
 package it.lule.cineteca.gui.user;
 
+import it.lule.cineteca.logic.db.controller.DBCUserController;
+import it.lule.cineteca.logic.db.entities.CUserEntity;
+import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBAbstractControllerException;
+import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBCreateException;
+import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBFindException;
+import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBIsNullException;
+import it.lule.cineteca.logic.exceptions.password.PasswordException;
+import it.lule.cineteca.logic.management.password.ManagementPassword;
 import java.awt.Color;
 import java.awt.Font;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-
+import javax.swing.JFrame;
 
 /**
  *
@@ -24,12 +31,13 @@ public class UserDialog extends javax.swing.JDialog {
     public UserDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setTitle("Login");
         jTextFieldUser.selectAll();
 //        jButtonRegister.setEnabled(false);
 
         jTextFieldUser.setText("gino");
-        jPasswordField.setText("password");
-        
+        jPasswordField.setText("A12345");
+
         jLabelError.setForeground(Color.red);
         jLabelError.setFont(new Font(Font.DIALOG, Font.BOLD, 24));
     }
@@ -152,25 +160,52 @@ public class UserDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextFieldUserActionPerformed
 
     private void jButtonRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegisterActionPerformed
-
-
         this.dispose();
+        RegisterDialog dialog = new RegisterDialog(new JFrame(), true);
+        dialog.dispose();
+        dialog.setLocationRelativeTo(dialog);
+        dialog.setVisible(true);
     }//GEN-LAST:event_jButtonRegisterActionPerformed
 
     private void jPasswordFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordFieldKeyReleased
-        enableButton();
+
     }//GEN-LAST:event_jPasswordFieldKeyReleased
 
     private void jTextFieldUserKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldUserKeyReleased
-        enableButton();
+
     }//GEN-LAST:event_jTextFieldUserKeyReleased
 
     private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
-        // TODO add your handling code here:
+        try {
+            ManagementPassword.getInstance().login(jTextFieldUser.getText(),
+                    jPasswordField.getPassword());
+//            login();
+//            disposeGui();
+        } catch (PasswordException ex) {
+            jLabelError.setText(ex.getMessage());
+        } 
+
     }//GEN-LAST:event_jButtonLoginActionPerformed
 
-    private void enableButton() {
+    private void login() throws DBIsNullException, DBCreateException, DBFindException {
+        char[] password = jPasswordField.getPassword();
+        String passwordStr = new String(password);
 
+        CUserEntity userEntity = new CUserEntity();
+
+        userEntity.setUser(jTextFieldUser.getText());
+        userEntity.setPassword(passwordStr);
+
+        userEntity = DBCUserController.getInstance().getUserName(jTextFieldUser.getText());
+        System.out.println(""+ userEntity.getUser());
+    }
+
+    private void disposeGui() {
+        this.dispose();
+        MainGui mainGui = new MainGui();
+        mainGui.dispose();
+        mainGui.setLocationRelativeTo(mainGui);
+        mainGui.setVisible(true);
     }
 
     /**

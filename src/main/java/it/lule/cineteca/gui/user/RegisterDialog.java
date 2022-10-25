@@ -5,10 +5,16 @@
  */
 package it.lule.cineteca.gui.user;
 
+import it.lule.cineteca.logic.db.controller.DBCUserController;
+import it.lule.cineteca.logic.db.entities.CUserEntity;
+import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBAbstractControllerException;
+import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBCreateException;
+import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBIsNullException;
+import it.lule.cineteca.logic.exceptions.password.PasswordException;
+import it.lule.cineteca.logic.management.password.ManagementPassword;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
-
+import javax.swing.JFrame;
 
 /**
  *
@@ -22,12 +28,12 @@ public class RegisterDialog extends javax.swing.JDialog {
     public RegisterDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setTitle("Registration");
         jTextFieldUser.selectAll();
-//        jButtonRegister.setEnabled(false);
 
         jTextFieldUser.setText("gino");
-        jPasswordField.setText("password");
-        jPasswordFieldConfirm.setText("password");
+        jPasswordField.setText("A12345");
+        jPasswordFieldConfirm.setText("A12345");
     }
 
     /**
@@ -47,6 +53,8 @@ public class RegisterDialog extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabelError = new javax.swing.JLabel();
+        jButtonCancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -88,6 +96,13 @@ public class RegisterDialog extends javax.swing.JDialog {
 
         jLabel3.setText("Password");
 
+        jButtonCancel.setText("Cancel");
+        jButtonCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -95,15 +110,25 @@ public class RegisterDialog extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jPasswordField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
-                        .addComponent(jTextFieldUser, javax.swing.GroupLayout.Alignment.LEADING))
-                    .addComponent(jPasswordFieldConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jButtonRegister))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldUser)
+                            .addComponent(jPasswordField)
+                            .addComponent(jPasswordFieldConfirm)
+                            .addComponent(jLabelError, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonCancel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                        .addComponent(jButtonRegister)
+                        .addGap(19, 19, 19))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -120,16 +145,22 @@ public class RegisterDialog extends javax.swing.JDialog {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPasswordFieldConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(jButtonRegister)
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonCancel)
+                    .addComponent(jButtonRegister))
+                .addGap(18, 18, 18)
+                .addComponent(jLabelError, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,26 +175,56 @@ public class RegisterDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextFieldUserActionPerformed
 
     private void jButtonRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegisterActionPerformed
+        try {
+            ManagementPassword.getInstance().createUser(jTextFieldUser.getText(),
+                    jPasswordField.getPassword(), jPasswordFieldConfirm.getPassword());
+//            login();
+//            disposeGui();
+        } catch (PasswordException ex) {
+            jLabelError.setText(ex.getMessage());
+        }  
 
-
-        this.dispose();
     }//GEN-LAST:event_jButtonRegisterActionPerformed
 
+    private void login() throws DBIsNullException, DBCreateException {
+        char[] password = jPasswordField.getPassword();
+        String passwordStr = new String(password);
+
+        CUserEntity userEntity = new CUserEntity();
+
+        userEntity.setUser(jTextFieldUser.getText());
+        userEntity.setPassword(passwordStr);
+
+        DBCUserController.getInstance().createEntity(userEntity);
+    }    
+    
+    /* non è un errore è solo a titolo dimostrativo verrà modificata con la finestra vera di registrazione */
+    private void disposeGui() {
+        this.dispose();
+        MainGui mainGui = new MainGui();
+        mainGui.dispose();
+        mainGui.setLocationRelativeTo(mainGui);
+        mainGui.setVisible(true);
+    }
+
     private void jPasswordFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordFieldKeyReleased
-        enableButton();
+
     }//GEN-LAST:event_jPasswordFieldKeyReleased
 
     private void jPasswordFieldConfirmKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordFieldConfirmKeyReleased
-        enableButton();
+
     }//GEN-LAST:event_jPasswordFieldConfirmKeyReleased
 
     private void jTextFieldUserKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldUserKeyReleased
-        enableButton();
+
     }//GEN-LAST:event_jTextFieldUserKeyReleased
 
-    private void enableButton() {
-
-    }
+    private void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelActionPerformed
+        this.dispose();
+        UserDialog userDialog = new UserDialog(new JFrame(), true);
+        userDialog.setLocationRelativeTo(userDialog);
+        userDialog.setVisible(true);
+    }//GEN-LAST:event_jButtonCancelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -216,10 +277,12 @@ public class RegisterDialog extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonCancel;
     private javax.swing.JButton jButtonRegister;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabelError;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordField;
     private javax.swing.JPasswordField jPasswordFieldConfirm;

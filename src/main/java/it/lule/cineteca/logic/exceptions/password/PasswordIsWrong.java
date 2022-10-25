@@ -4,16 +4,16 @@
  */
 package it.lule.cineteca.logic.exceptions.password;
 
-import it.lule.cineteca.logic.enumname.ErrorCodeEnum;
+import it.lule.cineteca.logic.enums.ErrorCodeEnum;
 
 /**
  *
  * @author lele
  */
-public class PasswordDoesNotMatchException extends PasswordException{
+public class PasswordIsWrong extends PasswordException {
 
-    public PasswordDoesNotMatchException() {
-        super(ErrorCodeEnum.PASSWORD_DOES_NOT_MATCH);
+    public PasswordIsWrong(ErrorCodeEnum errorCode) {
+        super(ErrorCodeEnum.PASSWORD_IS_WRONG);
     }
-    
+
 }

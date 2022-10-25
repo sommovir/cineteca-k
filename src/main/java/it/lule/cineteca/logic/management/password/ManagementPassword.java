@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package it.lule.cineteca.logic.password;
+package it.lule.cineteca.logic.management.password;
 
 import it.lule.cineteca.logic.exceptions.password.PasswordEmptyException;
-import it.lule.cineteca.logic.exceptions.password.PasswordDoesNotMatchException;
+import it.lule.cineteca.logic.exceptions.password.PasswordsAreNotEqualsException;
 import it.lule.cineteca.logic.exceptions.password.PasswordHasNotUpperCaseException;
 import it.lule.cineteca.logic.exceptions.password.PasswordTooLongException;
 import it.lule.cineteca.logic.exceptions.password.PasswordTooShortException;
@@ -19,9 +19,8 @@ import java.util.Arrays;
 public class ManagementPassword {
 
     private static ManagementPassword instance = null;
-//    private boolean isPasswordCorrect = false;
     private int passwordMinimumLength = 3;
-    private int passwordMaximumLength = 6;
+    private int passwordMaximumLength = 8;
 
     public static ManagementPassword getInstance() {
         if (instance == null) {
@@ -60,16 +59,16 @@ public class ManagementPassword {
      * @throws PasswordHasNotUpperCaseException
      * @throws UserEmptyException
      * @throws PasswordTooLongException
-     * @throws PasswordDoesNotMatchException
+     * @throws PasswordsAreNotEqualsException
      */
     public void createUser(String jTextFieldUser, char[] jPasswordField,
             char[] jPasswordFieldConfirm) throws PasswordEmptyException,
             PasswordTooShortException, PasswordHasNotUpperCaseException,
             UserEmptyException, PasswordTooLongException,
-            PasswordDoesNotMatchException {
+            PasswordsAreNotEqualsException {
 
         checkPassword(jTextFieldUser, jPasswordField, jPasswordFieldConfirm);
-        passwordHasNotEqual(jPasswordField, jPasswordFieldConfirm);
+        passwordsAreNotEquals(jPasswordField, jPasswordFieldConfirm);
     }
 
     public ManagementPassword() {
@@ -96,6 +95,7 @@ public class ManagementPassword {
         passwordTooShort(jPasswordField);
         passwordTooLong(jPasswordField);
         passwordHasNotUpperCase(jPasswordField);
+        userEmpty(jTextFieldUser);
     }
 
     /**
@@ -105,14 +105,11 @@ public class ManagementPassword {
      * @param jPasswordFieldConfirm
      * @throws PasswordEmptyException 
      */
-    private void passwordEmpty(char[] jPasswordField, char[] jPasswordFieldConfirm) throws PasswordEmptyException {
-        if (jPasswordField.length == 0
-                || jPasswordField == null
-                || jPasswordFieldConfirm.length == 0
-                || jPasswordFieldConfirm == null) {
+    private void passwordEmpty(char[] jPasswordField, char[] jPasswordFieldConfirm) throws PasswordEmptyException {      
+        if (jPasswordField == null || jPasswordFieldConfirm == null ||
+              jPasswordField.length == 0 || jPasswordFieldConfirm.length == 0  ){
             throw new PasswordEmptyException();
         }
-
     }
 
     /**
@@ -156,13 +153,13 @@ public class ManagementPassword {
      * 
      * @param jPasswordField
      * @param jPasswordFieldConfirm
-     * @throws PasswordDoesNotMatchException 
+     * @throws PasswordsAreNotEqualsException 
      */
-    private void passwordHasNotEqual(char[] jPasswordField,
-            char[] jPasswordFieldConfirm) throws PasswordDoesNotMatchException {
+    private void passwordsAreNotEquals(char[] jPasswordField,
+            char[] jPasswordFieldConfirm) throws PasswordsAreNotEqualsException {
 
         if (!Arrays.equals(jPasswordField, jPasswordFieldConfirm)) {
-            throw new PasswordDoesNotMatchException();
+            throw new PasswordsAreNotEqualsException();
         }
     }
 
@@ -193,22 +190,4 @@ public class ManagementPassword {
 
         return false;
     }
-
-//    /**
-//     * Get jPassword Field
-//     *
-//     * @return
-//     */
-//    public char[] getjPasswordField() {
-//        return jPasswordField;
-//    }
-//
-//    /**
-//     * Return error code if password is wrong
-//     *
-//     * @return
-//     */
-//    public boolean isPasswordCorrect() {
-//        return isPasswordCorrect;
-//    }
 }

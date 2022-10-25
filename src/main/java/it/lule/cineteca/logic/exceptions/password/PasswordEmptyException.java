@@ -4,16 +4,15 @@
  */
 package it.lule.cineteca.logic.exceptions.password;
 
-import it.lule.cineteca.logic.enumname.ErrorCodeEnum;
+import it.lule.cineteca.logic.enums.ErrorCodeEnum;
 
 /**
  *
  * @author lele
  */
-public class PasswordEmptyException extends PasswordException{
+public class PasswordEmptyException extends PasswordException {
 
     public PasswordEmptyException() {
         super(ErrorCodeEnum.PASSWORD_IS_EMPTY);
     }
-    
 }

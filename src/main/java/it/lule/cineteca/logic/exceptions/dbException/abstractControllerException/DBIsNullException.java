@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package it.lule.cineteca.logic.exceptions.password;
+package it.lule.cineteca.logic.exceptions.dbException.abstractControllerException;
 
 import it.lule.cineteca.logic.enums.ErrorCodeEnum;
 
@@ -10,10 +10,9 @@ import it.lule.cineteca.logic.enums.ErrorCodeEnum;
  *
  * @author lele
  */
-public class PasswordTooShortException extends PasswordException {
+public class DBIsNullException extends DBAbstractControllerException {
 
-    public PasswordTooShortException() {
-        super(ErrorCodeEnum.PASSWORD_TOO_SHORT);
+    public DBIsNullException() {
+        super(ErrorCodeEnum.DB_IS_NULL);
     }
-
 }

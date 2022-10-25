@@ -19,7 +19,7 @@ import it.lule.cineteca.gui.user.UserDialog;
 
 /**
  * https://app.gitkraken.com/glo/board/YfUy5R128ABI_uSA
- *
+ * test
  * @author sommovir
  */
 public class Main {

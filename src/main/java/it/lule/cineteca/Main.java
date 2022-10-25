@@ -26,6 +26,15 @@ public class Main {
 
     public final static String VERSION = "0.1";
 
+    /**
+     *
+     * @return
+     * nicely printed version
+     */
+    public static String getVersion(){
+        return "v."+VERSION;
+    }
+
     public static void main(String[] args) {
         System.out.println("Welcome to Cineteka! [v."+VERSION+"]");
         if (args.length == 1) {

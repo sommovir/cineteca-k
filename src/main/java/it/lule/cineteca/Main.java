@@ -24,7 +24,10 @@ import it.lule.cineteca.gui.user.UserDialog;
  */
 public class Main {
 
+    public final static String VERSION = "0.1";
+
     public static void main(String[] args) {
+        System.out.println("Welcome to Cineteka! [v."+VERSION+"]");
         if (args.length == 1) {
             if ("-tdb".equals(args[0])) {
                 System.out.println("[INFO] testing database.. ");

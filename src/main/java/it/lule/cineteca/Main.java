@@ -5,15 +5,17 @@
  */
 package it.lule.cineteca;
 
-import it.lule.cineteca.gui.user.UserDialog;
+
 import it.lule.cineteca.logic.db.DbManager;
-import it.lule.cineteca.logic.entities.FilmDirectorEntity;
-import it.lule.cineteca.logic.exceptions.DBBadParamaterException;
-import it.lule.cineteca.logic.exceptions.DBUniqueViolationException;
+import it.lule.cineteca.logic.db.entities.FilmDirectorEntity;
+import it.lule.cineteca.logic.exceptions.dbException.dbInstalled.DBBadParamaterException;
+import it.lule.cineteca.logic.exceptions.dbException.dbInstalled.DBUniqueViolationException;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
-import static org.junit.jupiter.api.Assertions.assertNull;
+
+import it.lule.cineteca.gui.user.UserDialog;
 
 /**
  * https://app.gitkraken.com/glo/board/YfUy5R128ABI_uSA

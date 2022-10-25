@@ -4,10 +4,10 @@
  */
 
 import it.lule.cineteca.logic.db.DbManager;
-import it.lule.cineteca.logic.entities.FilmDirectorEntity;
-import it.lule.cineteca.logic.entities.MovieEntity;
 import java.lang.reflect.Field;
 import java.util.List;
+
+import it.lule.cineteca.logic.db.entities.MovieEntity;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;

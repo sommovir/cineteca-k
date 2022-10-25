@@ -4,13 +4,11 @@
  */
 
 import it.lule.cineteca.logic.db.DbManager;
-import it.lule.cineteca.logic.entities.FilmDirectorEntity;
-import it.lule.cineteca.logic.exceptions.DBBadParamaterException;
-import it.lule.cineteca.logic.exceptions.DBUniqueViolationException;
-import it.lule.cineteca.utils.test.ConditionToExecute;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import it.lule.cineteca.logic.db.entities.FilmDirectorEntity;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -27,7 +25,6 @@ import org.junit.jupiter.api.Disabled;
  * @author Luca
  */
 @TestMethodOrder(MethodOrderer.Alphanumeric.class)
-@ConditionToExecute(classToCheck = DbManager.class)
 public class DBEngineTest {
 
     private String message;

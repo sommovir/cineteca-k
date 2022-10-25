@@ -4,12 +4,18 @@
  */
 package it.lule.cineteca.logic.db;
 
+import it.lule.cineteca.logic.db.entities.FilmDirectorEntity;
+import it.lule.cineteca.logic.db.entities.MovieEntity;
+import it.lule.cineteca.logic.exceptions.dbException.dbInstalled.DBBadParamaterException;
+import it.lule.cineteca.logic.exceptions.dbException.dbInstalled.DBUniqueViolationException;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.exception.ConstraintViolationException;
-import it.lule.cineteca.utils.test.Tested;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+
+import java.util.List;
 
 /**
  *
@@ -20,8 +26,8 @@ public class DbManager {
     private static DbManager instance = null;
 
     private static DbManager _instance = null;
-    private SessionFactory sessionFactory;
     private boolean installed = false;
+    private StandardServiceRegistry registry= null;
 
     /**
      *
@@ -63,7 +69,7 @@ public class DbManager {
         try {
             System.out.println("provo a costruire la connessione..");
             // configures settings from hibernate.cfg.xml 
-            StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure().build();
+            registry = new StandardServiceRegistryBuilder().configure().build();
 
             sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
             installed = true;
@@ -125,12 +131,7 @@ public class DbManager {
         session.beginTransaction();
 
         session.persist(movie);
-
-            sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
-        } catch (Exception e) {
-            // handle the exception
-            throw e;
-        }        
+        return movie.getId();
     }
 
     /**
@@ -280,6 +281,10 @@ public class DbManager {
 
         return result;
 
+    }
+
+    public SessionFactory getSessionFactory(){
+        return sessionFactory;
     }
 
 }

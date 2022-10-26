@@ -55,7 +55,7 @@ public class Main {
                 System.out.println("comando sconosciuto: "+args[0]);
             }
         } else {
-            System.out.println("[Cineteka-k] Welcome !");
+            System.out.println("[Cineteka-k] Welcome ! " + getVersion());
             UserDialog dialog = new UserDialog(new JFrame(), true);
 
             /* io ricordavo JFrame.EXIT_ON_CLOSE */
@@ -64,6 +64,8 @@ public class Main {
             dialog.dispose();
             dialog.setLocationRelativeTo(dialog);
             dialog.setVisible(true);
+
+            System.out.println("[Cineteka-k] closing..");
         }
 
     }

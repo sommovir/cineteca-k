@@ -160,9 +160,9 @@ public class DbManager {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
 
-        MovieEntity spacciato = new MovieEntity();
-        spacciato.setId(idMovie);
-        session.delete(spacciato);
+        MovieEntity movieEntity = new MovieEntity();
+        movieEntity.setId(idMovie);
+        session.delete(movieEntity);
 
         session.getTransaction().commit();
         session.close();
@@ -179,7 +179,7 @@ public class DbManager {
         String ciao = ";";
         FilmDirectorEntity mergedPerson = (FilmDirectorEntity) session.merge(filmDirectorToEdit);
         String aa = (String) session.merge(ciao);
-
+        System.out.println("oggetto mergiato: "+aa);
         session.getTransaction().commit();
         session.close();
         return mergedPerson;

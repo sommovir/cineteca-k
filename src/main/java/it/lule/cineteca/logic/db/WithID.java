@@ -6,7 +6,7 @@ package it.lule.cineteca.logic.db;
 
 /**
  *
- * @author lele
+ * @author sommovir
  */
 public interface WithID {
     public Long getId();

@@ -8,15 +8,13 @@ package it.lule.cineteca.gui.user;
 import it.lule.cineteca.logic.db.controller.DBCUserController;
 import it.lule.cineteca.logic.db.entities.CUserEntity;
 import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBAbstractControllerException;
-import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBCreateException;
-import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBFindException;
-import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBIsNullException;
+import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.errorDbException.DBCreateException;
+import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.errorDbException.DBFindException;
+import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.errorDbException.DBIsNullException;
 import it.lule.cineteca.logic.exceptions.password.PasswordException;
 import it.lule.cineteca.logic.management.password.ManagementPassword;
 import java.awt.Color;
 import java.awt.Font;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 /**
@@ -187,7 +185,7 @@ public class UserDialog extends javax.swing.JDialog {
 
     }//GEN-LAST:event_jButtonLoginActionPerformed
 
-    private void login() throws DBIsNullException, DBCreateException, DBFindException {
+    private void login() throws DBAbstractControllerException {
         char[] password = jPasswordField.getPassword();
         String passwordStr = new String(password);
 
@@ -196,7 +194,7 @@ public class UserDialog extends javax.swing.JDialog {
         userEntity.setUser(jTextFieldUser.getText());
         userEntity.setPassword(passwordStr);
 
-        userEntity = DBCUserController.getInstance().getUserName(jTextFieldUser.getText());
+        userEntity = DBCUserController.getInstance().getUserByName(jTextFieldUser.getText());
         System.out.println(""+ userEntity.getUser());
     }
 

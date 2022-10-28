@@ -26,6 +26,7 @@ public class MovieEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private Boolean favorite;
     private String translatedTitle;
     private String originalTitle;    
     private Date releaseDate;
@@ -80,9 +81,15 @@ public class MovieEntity implements Serializable {
     public void setFilmDirectorEntity(FilmDirectorEntity filmDirectorEntity) {
         this.filmDirectorEntity = filmDirectorEntity;
     }
-    
-    
 
+    public Boolean getFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(Boolean favorite) {
+        this.favorite = favorite;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;

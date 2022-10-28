@@ -10,7 +10,7 @@ package it.lule.cineteca.logic.db.controller;
  */
 public class Search {
 
-    public static String userByUserName(String user) {
+    public static String userByName(String user) {
         String query = "SELECT a FROM CUserEntity a WHERE a.user= :user";
         query = query.replace(":user", "'" + user +"'");
         return query;
@@ -21,13 +21,18 @@ public class Search {
         return query;
     }
 
-    public static String userByUserID(String id) {
+    public static String userByID(String id) {
         String query = "SELECT a FROM CUserEntity a WHERE a.id=:id";
         query = query.replace(":id", "'" + id +"'");
         return query;
     }
 
-    public static String filmDirectorByUserName(String name) {
+    public static String filmDirectorAllFilmDirectors() {
+        String query = "SELECT a FROM FilmDirectorEntity a WHERE a";
+        return query;
+    }
+        
+    public static String filmDirectorByName(String name) {
         String query = "SELECT a FROM FilmDirectorEntity a WHERE a.name= :name";
         query = query.replace(":name", "'" + name +"'");
         return query;
@@ -45,37 +50,42 @@ public class Search {
         return query;
     }
 
-    public static String filmDirectorByUserID(String id) {
+    public static String filmDirectorByID(String id) {
         String query = "SELECT a FROM FilmDirectorEntity a WHERE a.id= :id";
         query = query.replace(":id", "'" + id +"'");
         return query;
     }
 
-    public static String movieEntityByUserID(String id) {
+    public static String movieAllMovies() {
+        String query = "SELECT a FROM MovieEntity a WHERE a";
+        return query;
+    }    
+    
+    public static String movieByID(String id) {
         String query = "SELECT a FROM MovieEntity a WHERE a.id= :id";
         query = query.replace(":id", "'" + id +"'");
         return query;
     }
 
-    public static String movieEntityByMainActor(String mainActor) {
+    public static String movieByMainActor(String mainActor) {
         String query = "SELECT a FROM MovieEntity a WHERE a.mainActor= :mainActor";
         query = query.replace(":mainActor", "'" + mainActor +"'");
         return query;
     }
 
-    public static String movieEntityByReleaseDate(String releaseDate) {
+    public static String movieByReleaseDate(String releaseDate) {
         String query = "SELECT a FROM MovieEntity a WHERE a.releaseDate= :releaseDate";
         query = query.replace(":releaseDate", "'" + releaseDate +"'");
         return query;
     }
 
-    public static String movieEntityByoriginalTitle(String originalTitle) {
+    public static String movieByoriginalTitle(String originalTitle) {
         String query = "SELECT a FROM MovieEntity a WHERE a.originalTitle= :originalTitle";
         query = query.replace(":originalTitle", "'" + originalTitle +"'");
         return query;
     }
 
-    public static String movieEntityByTranslatedTitle(String translatedTitle) {
+    public static String movieByTranslatedTitle(String translatedTitle) {
         String query = "SELECT a FROM MovieEntity a WHERE a.translatedTitle= :translatedTitle";
         query = query.replace(":translatedTitle", "'" + translatedTitle +"'");
         return query;

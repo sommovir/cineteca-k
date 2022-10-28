@@ -5,6 +5,8 @@
 package it.lule.cineteca.logic.db.controller;
 
 import it.lule.cineteca.logic.db.entities.FilmDirectorEntity;
+import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBAbstractControllerException;
+import java.util.List;
 
 /**
  *
@@ -20,15 +22,32 @@ public class DBFilmDirectorController extends DBAbstractController<FilmDirectorE
         return instance;
     }    
 
-    
-//    @Override
-//    public FilmDirectorController getEntityByQuery(String query) {
-//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-//    }
-
     private DBFilmDirectorController() {
         super(FilmDirectorEntity.class);
     }
 
-
+    public void createFilmDirector(FilmDirectorEntity filmDirectorEntity) throws DBAbstractControllerException {
+        createEntity(filmDirectorEntity);
+    }    
+    
+    public void deleteFilmDirector(FilmDirectorEntity filmDirectorEntity) throws DBAbstractControllerException{
+        deleteEntity(filmDirectorEntity);
+    }
+    
+    public void editFilmDirector(FilmDirectorEntity filmDirectorEntity) throws DBAbstractControllerException{
+        createEntity(filmDirectorEntity);
+    }
+    
+    public FilmDirectorEntity getFilmDirectorByName(String filmDirectorName) throws DBAbstractControllerException{
+        return (FilmDirectorEntity) getEntityByQuery(Search.filmDirectorByName(filmDirectorName));    
+    }
+    
+    public FilmDirectorEntity getUserID(FilmDirectorEntity movieEntity) throws DBAbstractControllerException {
+          return getById(movieEntity);
+//        throw new UnsupportedOperationException();
+    }
+    
+    public List<FilmDirectorEntity> getfilmDirectorEntity(){
+        return getAllEntites(Search.filmDirectorAllFilmDirectors());
+    }  
 }

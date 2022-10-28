@@ -4,12 +4,12 @@
  */
 
 import it.lule.cineteca.logic.enums.ErrorCodeEnum;
-import it.lule.cineteca.logic.exceptions.password.PasswordsAreNotEqualsException;
-import it.lule.cineteca.logic.exceptions.password.PasswordEmptyException;
-import it.lule.cineteca.logic.exceptions.password.PasswordHasNotUpperCaseException;
-import it.lule.cineteca.logic.exceptions.password.PasswordTooLongException;
-import it.lule.cineteca.logic.exceptions.password.PasswordTooShortException;
-import it.lule.cineteca.logic.exceptions.password.UserEmptyException;
+import it.lule.cineteca.logic.exceptions.password.wrongPasswordException.PasswordEmptyException;
+import it.lule.cineteca.logic.exceptions.password.wrongPasswordException.PasswordHasNotUpperCaseException;
+import it.lule.cineteca.logic.exceptions.password.wrongPasswordException.PasswordTooLongException;
+import it.lule.cineteca.logic.exceptions.password.wrongPasswordException.PasswordTooShortException;
+import it.lule.cineteca.logic.exceptions.password.wrongPasswordException.PasswordsAreNotEqualsException;
+import it.lule.cineteca.logic.exceptions.password.wrongPasswordException.UserEmptyException;
 import it.lule.cineteca.logic.management.password.ManagementPassword;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
@@ -17,7 +17,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.TestInfo;
 import org.junit.jupiter.api.function.Executable;

@@ -4,12 +4,12 @@
  */
 package it.lule.cineteca.logic.management.password;
 
-import it.lule.cineteca.logic.exceptions.password.PasswordEmptyException;
-import it.lule.cineteca.logic.exceptions.password.PasswordsAreNotEqualsException;
-import it.lule.cineteca.logic.exceptions.password.PasswordHasNotUpperCaseException;
-import it.lule.cineteca.logic.exceptions.password.PasswordTooLongException;
-import it.lule.cineteca.logic.exceptions.password.PasswordTooShortException;
-import it.lule.cineteca.logic.exceptions.password.UserEmptyException;
+import it.lule.cineteca.logic.exceptions.password.wrongPasswordException.PasswordEmptyException;
+import it.lule.cineteca.logic.exceptions.password.wrongPasswordException.PasswordsAreNotEqualsException;
+import it.lule.cineteca.logic.exceptions.password.wrongPasswordException.PasswordHasNotUpperCaseException;
+import it.lule.cineteca.logic.exceptions.password.wrongPasswordException.PasswordTooLongException;
+import it.lule.cineteca.logic.exceptions.password.wrongPasswordException.PasswordTooShortException;
+import it.lule.cineteca.logic.exceptions.password.wrongPasswordException.UserEmptyException;
 import java.util.Arrays;
 
 /**

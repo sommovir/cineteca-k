@@ -5,6 +5,8 @@
 package it.lule.cineteca.logic.db.controller;
 
 import it.lule.cineteca.logic.db.entities.MovieEntity;
+import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBAbstractControllerException;
+import java.util.List;
 
 
 
@@ -21,13 +23,33 @@ public class DBMovieController extends DBAbstractController<MovieEntity>{
         }
         return instance;
     }        
-    
-//    @Override
-//    public MovieController getEntityByQuery(String query) {
-//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-//    }
 
     private DBMovieController() {
         super(MovieEntity.class);
     }
+    
+    public void createMovie(MovieEntity movieEntity) throws DBAbstractControllerException {
+        createEntity(movieEntity);
+    }       
+    
+    public void deleteMovie(MovieEntity movieEntity) throws DBAbstractControllerException{
+        deleteEntity(movieEntity);
+    }
+    
+    public void editMovie(MovieEntity userEntity) throws DBAbstractControllerException{
+        createEntity(userEntity);
+    }
+    
+    public MovieEntity getMovieByoriginalTitle(String movie) throws DBAbstractControllerException{
+        return (MovieEntity) getEntityByQuery(Search.movieByoriginalTitle(movie));    
+    }
+    
+    public MovieEntity getMovieID(MovieEntity movieEntity) throws DBAbstractControllerException {
+        return getById(movieEntity);
+
+    }
+    
+    public List<MovieEntity> getAllMovie(){
+        return getAllEntites(Search.movieAllMovies());
+    }      
 }

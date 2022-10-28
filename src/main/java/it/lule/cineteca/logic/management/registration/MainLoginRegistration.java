@@ -4,13 +4,6 @@
  */
 package it.lule.cineteca.logic.management.registration;
 
-import it.lule.cineteca.logic.db.controller.DBAbstractController;
-import it.lule.cineteca.logic.db.entities.CUserEntity;
-import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBCreateException;
-import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBFindException;
-import it.lule.cineteca.logic.db.controller.DBCUserController;
-import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBIsNullException;
-
 /**
  *
  * @author lele

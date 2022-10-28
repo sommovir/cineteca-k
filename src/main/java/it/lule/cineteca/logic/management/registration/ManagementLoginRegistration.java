@@ -52,7 +52,7 @@ public class ManagementLoginRegistration {
     public void deleteAccount(String user) throws DBAbstractControllerException {
         
         CUserEntity userEntity = new CUserEntity();
-        userEntity = DBCUserController.getInstance().getUserName(user);
+        userEntity = DBCUserController.getInstance().getUserByName(user);
 
         DBCUserController.getInstance().deleteUser(userEntity);
         

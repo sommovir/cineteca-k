@@ -4,9 +4,9 @@
  */
 package it.lule.cineteca.logic.db.controller;
 
-import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBCreateException;
-import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBDeleteException;
-import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBIsNullException;
+import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.errorDbException.DBCreateException;
+import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.errorDbException.DBDeleteException;
+import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.errorDbException.DBIsNullException;
 import it.lule.cineteca.logic.db.DbManager;
 import java.util.List;
 import org.hibernate.Session;

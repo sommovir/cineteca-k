@@ -51,5 +51,18 @@ public class DBMovieController extends DBAbstractController<MovieEntity>{
     
     public List<MovieEntity> getAllMovie(){
         return getAllEntites(Search.movieAllMovies());
-    }      
+    } 
+       
+    public List<MovieEntity> getFavorites(String favorite) {
+        return getAllEntites(Search.movieByFavorite(favorite));
+    }
+
+    /**
+     * @deprecated 
+     * @param favorites 
+     */
+    public void setFavorites(List<MovieEntity> favorites) {
+        throw new UnsupportedOperationException();
+    }
+        
 }

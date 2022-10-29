@@ -44,7 +44,7 @@ public class DbManager {
     public SessionFactory getSessionFactory(){
         return sessionFactory;
     }    
-    
+        
 //    private SessionFactory sessionFactory = null;
 //    private static DbManager instance = null;
 //

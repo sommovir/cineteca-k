@@ -186,7 +186,7 @@ public class RegisterDialog extends javax.swing.JDialog {
 
     }//GEN-LAST:event_jButtonRegisterActionPerformed
 
-    private void login() throws DBIsNullException, DBCreateException {
+    private void login() throws DBAbstractControllerException {
         char[] password = jPasswordField.getPassword();
         String passwordStr = new String(password);
 

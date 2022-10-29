@@ -91,4 +91,9 @@ public class Search {
         return query;
     }
 
+    public static String movieByFavorite(String favorite){
+        String query = "SELECT a FROM MovieEntity a WHERE a.favorite = :favorite";
+        query = query.replace(":favorite", "'" + favorite +"'");
+        return query;        
+    }
 }

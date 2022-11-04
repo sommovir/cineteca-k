@@ -37,7 +37,7 @@ public class DBMovieController extends DBAbstractController<MovieEntity>{
     }
     
     public void editMovie(MovieEntity userEntity) throws DBAbstractControllerException{
-        createEntity(userEntity);
+        editEntity(userEntity);
     }
     
     public MovieEntity getMovieByoriginalTitle(String movie) throws DBAbstractControllerException{
@@ -53,16 +53,8 @@ public class DBMovieController extends DBAbstractController<MovieEntity>{
         return getAllEntites(Search.movieAllMovies());
     } 
        
-    public List<MovieEntity> getFavorites(String favorite) {
-        return getAllEntites(Search.movieByFavorite(favorite));
+    public List<MovieEntity> getFavorites() {
+        return getAllEntites(Search.movieByFavorite());
     }
 
-    /**
-     * @deprecated 
-     * @param favorites 
-     */
-    public void setFavorites(List<MovieEntity> favorites) {
-        throw new UnsupportedOperationException();
-    }
-        
 }

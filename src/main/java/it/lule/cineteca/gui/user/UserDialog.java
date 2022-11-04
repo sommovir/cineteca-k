@@ -15,6 +15,8 @@ import it.lule.cineteca.logic.exceptions.password.PasswordException;
 import it.lule.cineteca.logic.management.password.ManagementPassword;
 import java.awt.Color;
 import java.awt.Font;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 /**
@@ -66,23 +68,6 @@ public class UserDialog extends javax.swing.JDialog {
         jButtonRegister.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonRegisterActionPerformed(evt);
-            }
-        });
-
-        jTextFieldUser.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldUserActionPerformed(evt);
-            }
-        });
-        jTextFieldUser.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTextFieldUserKeyReleased(evt);
-            }
-        });
-
-        jPasswordField.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jPasswordFieldKeyReleased(evt);
             }
         });
 
@@ -153,10 +138,6 @@ public class UserDialog extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextFieldUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldUserActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldUserActionPerformed
-
     private void jButtonRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegisterActionPerformed
         this.dispose();
         RegisterDialog dialog = new RegisterDialog(new JFrame(), true);
@@ -165,23 +146,17 @@ public class UserDialog extends javax.swing.JDialog {
         dialog.setVisible(true);
     }//GEN-LAST:event_jButtonRegisterActionPerformed
 
-    private void jPasswordFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordFieldKeyReleased
-
-    }//GEN-LAST:event_jPasswordFieldKeyReleased
-
-    private void jTextFieldUserKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldUserKeyReleased
-
-    }//GEN-LAST:event_jTextFieldUserKeyReleased
-
     private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
         try {
             ManagementPassword.getInstance().login(jTextFieldUser.getText(),
                     jPasswordField.getPassword());
-//            login();
-//            disposeGui();
+            login();
+            disposeGui();
         } catch (PasswordException ex) {
-            jLabelError.setText(ex.getMessage());
-        } 
+            Logger.getLogger(UserDialog.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (DBAbstractControllerException ex) {
+            Logger.getLogger(UserDialog.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }//GEN-LAST:event_jButtonLoginActionPerformed
 

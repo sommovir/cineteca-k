@@ -4,6 +4,7 @@
  */
 package it.lule.cineteca.logic.management.password;
 
+import it.lule.cineteca.logic.exceptions.password.PasswordException;
 import it.lule.cineteca.logic.exceptions.password.wrongPasswordException.PasswordEmptyException;
 import it.lule.cineteca.logic.exceptions.password.wrongPasswordException.PasswordsAreNotEqualsException;
 import it.lule.cineteca.logic.exceptions.password.wrongPasswordException.PasswordHasNotUpperCaseException;
@@ -31,41 +32,25 @@ public class ManagementPassword {
 
     /**
      * Login
-     *
      * @param jTextFieldUser
      * @param jPasswordField
-     * @throws PasswordEmptyException
-     * @throws PasswordTooShortException
-     * @throws PasswordHasNotUpperCaseException
-     * @throws UserEmptyException
-     * @throws PasswordTooLongException
+     * @throws PasswordException 
      */
     public void login(String jTextFieldUser, char[] jPasswordField)
-            throws PasswordEmptyException, PasswordTooShortException,
-            PasswordHasNotUpperCaseException, UserEmptyException,
-            PasswordTooLongException {
+            throws PasswordException {
         // jPasswordField, jPasswordField it's correct 
         checkPassword(jTextFieldUser, jPasswordField, jPasswordField);
     }
 
     /**
      * Create User
-     *
      * @param jTextFieldUser
      * @param jPasswordField
      * @param jPasswordFieldConfirm
-     * @throws PasswordEmptyException
-     * @throws PasswordTooShortException
-     * @throws PasswordHasNotUpperCaseException
-     * @throws UserEmptyException
-     * @throws PasswordTooLongException
-     * @throws PasswordsAreNotEqualsException
+     * @throws PasswordException 
      */
     public void createUser(String jTextFieldUser, char[] jPasswordField,
-            char[] jPasswordFieldConfirm) throws PasswordEmptyException,
-            PasswordTooShortException, PasswordHasNotUpperCaseException,
-            UserEmptyException, PasswordTooLongException,
-            PasswordsAreNotEqualsException {
+            char[] jPasswordFieldConfirm) throws PasswordException {
 
         checkPassword(jTextFieldUser, jPasswordField, jPasswordFieldConfirm);
         passwordsAreNotEquals(jPasswordField, jPasswordFieldConfirm);
@@ -76,19 +61,13 @@ public class ManagementPassword {
 
     /**
      * Check Password
-     *
      * @param jTextFieldUser
      * @param jPasswordField
      * @param jPasswordFieldConfirm
-     * @throws PasswordEmptyException
-     * @throws PasswordTooShortException
-     * @throws PasswordHasNotUpperCaseException
-     * @throws UserEmptyException
-     * @throws PasswordTooLongException
+     * @throws PasswordException 
      */
     private void checkPassword(String jTextFieldUser, char[] jPasswordField,
-            char[] jPasswordFieldConfirm) throws PasswordEmptyException,
-            PasswordTooShortException, PasswordHasNotUpperCaseException, UserEmptyException, PasswordTooLongException {
+            char[] jPasswordFieldConfirm) throws PasswordException {
         userEmpty(jTextFieldUser);
 
         passwordEmpty(jPasswordField, jPasswordFieldConfirm);

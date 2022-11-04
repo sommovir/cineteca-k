@@ -9,6 +9,7 @@ import it.lule.cineteca.logic.db.controller.DBMovieController;
 import it.lule.cineteca.logic.db.entities.FilmDirectorEntity;
 import it.lule.cineteca.logic.db.entities.MovieEntity;
 import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBAbstractControllerException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -19,30 +20,38 @@ import java.util.logging.Logger;
 public class FakeFilm {
 
     public FakeFilm() {
-        qualcosa01();
+        write();
+//        read();
     }
 
-    private void qualcosa02(){
-//            DBMovieController.getInstance().getFavorites("")
+    private void read() {
+        List<MovieEntity> movies = DBMovieController.getInstance().getAllMovie();
+
+        for (MovieEntity movy : movies) {
+            System.out.println(""+movy.getOriginalTitle());
+        }
+//        for (MovieEntity movie : movies) {
+//            System.out.println(""+ movie.getOriginalTitle());
+//        }
     }
-    
-    private void qualcosa01(){
-        initFilm("film1", "regista1", true);
-        initFilm("film2", "regista2", true);
-        initFilm("film3", "regista3", false);
-        initFilm("film4", "regista4", false);        
+
+    private void write() {
+        writeOnDb("film1", "regista1", true);
+        writeOnDb("film2", "regista2", true);
+        writeOnDb("film3", "regista3", false);
+        writeOnDb("film4", "regista4", false);
     }
-    
-    private void initFilm(String originalTitle, String nameDirector, boolean favorite) {
+
+    private void writeOnDb(String originalTitle, String nameDirector, boolean favorite) {
         try {
             MovieEntity movieEntity = new MovieEntity();
             movieEntity.setOriginalTitle(originalTitle);
             movieEntity.setFavorite(favorite);
-            
+
             FilmDirectorEntity directorEntity = new FilmDirectorEntity();
             directorEntity.setName(nameDirector);
             movieEntity.setFilmDirectorEntity(directorEntity);
-            
+
             DBFilmDirectorController.getInstance().createFilmDirector(directorEntity);
             DBMovieController.getInstance().createMovie(movieEntity);
         } catch (DBAbstractControllerException ex) {

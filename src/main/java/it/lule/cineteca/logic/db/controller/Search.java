@@ -57,7 +57,7 @@ public class Search {
     }
 
     public static String movieAllMovies() {
-        String query = "SELECT a FROM MovieEntity a WHERE a";
+        String query = "SELECT a FROM MovieEntity a";
         return query;
     }    
     
@@ -91,9 +91,8 @@ public class Search {
         return query;
     }
 
-    public static String movieByFavorite(String favorite){
-        String query = "SELECT a FROM MovieEntity a WHERE a.favorite = :favorite";
-        query = query.replace(":favorite", "'" + favorite +"'");
+    public static String movieByFavorite(){
+        String query = "SELECT a FROM MovieEntity a WHERE a.favorite = true";
         return query;        
     }
 }

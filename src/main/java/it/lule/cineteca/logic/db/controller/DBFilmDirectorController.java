@@ -35,7 +35,7 @@ public class DBFilmDirectorController extends DBAbstractController<FilmDirectorE
     }
     
     public void editFilmDirector(FilmDirectorEntity filmDirectorEntity) throws DBAbstractControllerException{
-        createEntity(filmDirectorEntity);
+        editEntity(filmDirectorEntity);
     }
     
     public FilmDirectorEntity getFilmDirectorByName(String filmDirectorName) throws DBAbstractControllerException{

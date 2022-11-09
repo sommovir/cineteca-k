@@ -28,7 +28,7 @@ public class FakeFilm {
         List<MovieEntity> movies = DBMovieController.getInstance().getAllMovie();
 
         for (MovieEntity movy : movies) {
-            System.out.println(""+movy.getOriginalTitle());
+            System.out.println("" + movy.getOriginalTitle());
         }
 //        for (MovieEntity movie : movies) {
 //            System.out.println(""+ movie.getOriginalTitle());
@@ -36,10 +36,15 @@ public class FakeFilm {
     }
 
     private void write() {
-        writeOnDb("film1", "regista1", true);
-        writeOnDb("film2", "regista2", true);
-        writeOnDb("film3", "regista3", false);
-        writeOnDb("film4", "regista4", false);
+        boolean flag = false;
+
+        for (int i = 0; i < 20; i++) {
+            if (i <= 10) {
+                flag = true;
+            }
+            writeOnDb("film"+i, "regista"+i, flag);
+            flag = false;
+        }
     }
 
     private void writeOnDb(String originalTitle, String nameDirector, boolean favorite) {

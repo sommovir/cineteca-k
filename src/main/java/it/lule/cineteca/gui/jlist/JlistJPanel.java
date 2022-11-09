@@ -7,9 +7,12 @@ package it.lule.cineteca.gui.jlist;
 import it.lule.cineteca.logic.db.controller.DBMovieController;
 import it.lule.cineteca.logic.db.entities.MovieEntity;
 import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBAbstractControllerException;
+import java.awt.Dimension;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionListener;
 
 /**
  *
@@ -24,10 +27,14 @@ public class JlistJPanel extends javax.swing.JPanel {
      */
     public JlistJPanel() {
         initComponents();
-        List<MovieEntity> allMovie = DBMovieController.getInstance().getAllMovie();
+        List<MovieEntity> allMovie = getAllMovies();
 
         for (MovieEntity movie : allMovie) {
             jlistModel1.addElement(movie);
+        }
+
+        if (jlistModel1.isEmpty()) {
+            disableButtons();
         }
     }
 
@@ -46,10 +53,18 @@ public class JlistJPanel extends javax.swing.JPanel {
         jList1 = new javax.swing.JList<>();
         jButton1 = new javax.swing.JButton();
         jButtonRemove = new javax.swing.JButton();
+        jButtonFavorite = new javax.swing.JButton();
+        jButtonAllFilms = new javax.swing.JButton();
 
         jlistRenderer1.setText("jlistRenderer1");
 
         jList1.setModel(jlistModel1);
+        jList1.setCellRenderer(jlistRenderer1);
+        jList1.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                jList1ValueChanged(evt);
+            }
+        });
         jScrollPane1.setViewportView(jList1);
 
         jButton1.setText("Add");
@@ -61,62 +76,130 @@ public class JlistJPanel extends javax.swing.JPanel {
             }
         });
 
+        jButtonFavorite.setText("Favorite");
+        jButtonFavorite.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonFavoriteActionPerformed(evt);
+            }
+        });
+
+        jButtonAllFilms.setText("All Films");
+        jButtonAllFilms.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAllFilmsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonRemove)
-                .addGap(19, 19, 19))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jScrollPane1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonFavorite)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonAllFilms)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonRemove)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButtonRemove))
-                .addGap(20, 20, 20))
+                    .addComponent(jButtonRemove)
+                    .addComponent(jButtonFavorite)
+                    .addComponent(jButtonAllFilms))
+                .addGap(19, 19, 19))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoveActionPerformed
         try {
-            Integer selectedIndex = jList1.getSelectedIndex();
 
-            if (selectedIndex.equals(-1)) {
-                return;
-            }
+            Integer selectedIndex = jList1.getSelectedIndex();
 
             movieEntity = jlistModel1.get(selectedIndex);
 
             DBMovieController.getInstance().deleteMovie(movieEntity);
             jlistModel1.remove(selectedIndex);
 
-            selectedIndex -= 1;
-
-            if (selectedIndex.equals(-1)) {
+            if (jlistModel1.isEmpty()) {
+                disableButtons();
                 return;
             }
+
+            selectedIndex--;
+
+            if (selectedIndex == -1) {
+                selectedIndex = 0;
+            }
+
             jList1.setSelectedIndex(selectedIndex);
-            
+
         } catch (DBAbstractControllerException ex) {
             Logger.getLogger(JlistJPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButtonRemoveActionPerformed
 
+    private void jButtonFavoriteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFavoriteActionPerformed
+        addList(getFavorites());
+    }//GEN-LAST:event_jButtonFavoriteActionPerformed
 
+    private void jButtonAllFilmsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAllFilmsActionPerformed
+        addList(getAllMovies());
+    }//GEN-LAST:event_jButtonAllFilmsActionPerformed
+
+    private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList1ValueChanged
+
+        jList1.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        
+        ListSelectionListener[] listSelectionListeners = jList1.getListSelectionListeners();
+        
+        for (ListSelectionListener listSelectionListener : listSelectionListeners) {
+            System.out.println(""+listSelectionListener);
+        }
+//        
+//        int[] selectedIndices = jList1.getSelectedIndices();
+//        for (int selectedIndice : selectedIndices) {
+//            System.out.println(""+ selectedIndice);
+//        }
+    }//GEN-LAST:event_jList1ValueChanged
+
+    private void disableButtons() {
+        jButtonRemove.setEnabled(false);
+        jButtonFavorite.setEnabled(false);
+        jButtonAllFilms.setEnabled(false);
+    }
+
+    private List<MovieEntity> getFavorites() {
+        return DBMovieController.getInstance().getFavorites();
+    }
+
+    private List<MovieEntity> getAllMovies() {
+        return DBMovieController.getInstance().getAllMovie();
+    }
+
+    private void addList(List<MovieEntity> movies) {
+        jlistModel1.removeAllElements();
+
+        for (MovieEntity movie : movies) {
+            jlistModel1.addElement(movie);
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonAllFilms;
+    private javax.swing.JButton jButtonFavorite;
     private javax.swing.JButton jButtonRemove;
     private javax.swing.JList<MovieEntity> jList1;
     private javax.swing.JScrollPane jScrollPane1;

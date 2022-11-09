@@ -60,9 +60,9 @@ public class JlistJPanel extends javax.swing.JPanel {
 
         jList1.setModel(jlistModel1);
         jList1.setCellRenderer(jlistRenderer1);
-        jList1.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
-            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                jList1ValueChanged(evt);
+        jList1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jList1MouseReleased(evt);
             }
         });
         jScrollPane1.setViewportView(jList1);
@@ -159,21 +159,16 @@ public class JlistJPanel extends javax.swing.JPanel {
         addList(getAllMovies());
     }//GEN-LAST:event_jButtonAllFilmsActionPerformed
 
-    private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList1ValueChanged
-
+    private void jList1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseReleased
         jList1.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         
-        ListSelectionListener[] listSelectionListeners = jList1.getListSelectionListeners();
+        List<MovieEntity> selectedValuesList = jList1.getSelectedValuesList();
         
-        for (ListSelectionListener listSelectionListener : listSelectionListeners) {
-            System.out.println(""+listSelectionListener);
+        for (MovieEntity movieEntity1 : selectedValuesList) {
+            System.out.println(""+movieEntity1.getOriginalTitle());
         }
-//        
-//        int[] selectedIndices = jList1.getSelectedIndices();
-//        for (int selectedIndice : selectedIndices) {
-//            System.out.println(""+ selectedIndice);
-//        }
-    }//GEN-LAST:event_jList1ValueChanged
+        System.out.println("");
+    }//GEN-LAST:event_jList1MouseReleased
 
     private void disableButtons() {
         jButtonRemove.setEnabled(false);

@@ -24,7 +24,15 @@ public enum ErrorCodeEnum {
     DB_FILM_DIRECTOR_EDIT(20,"Edit Film director"),    
     DB_FILM_DIRECTOR_GET_BY_ID(21,"Get Film director by ID"),   
     DB_FILM_DIRECTOR_GET_All(22,"Get all directors"), 
-    DB_FILM_DIRECTOR_NOT_EXISTS(23,"Film director not exists"),// ID più alto 
+    DB_FILM_DIRECTOR_NOT_EXISTS(23,"Film director not exists"),   
+    
+    DB_MOVIE_NOT_EXISTS(24,"Movie not exists"),
+    DB_MOVIE_ALREADY_EXISTS(25,"Movie already exists"),
+    DB_MOVIE_DELETE(26,"Delete Movie"),
+    DB_MOVIE_CREATE(27,"Create Movie"),    
+    DB_MOVIE_EDIT(28,"Edit Movie"),    
+    DB_MOVIE_GET_BY_ID(29,"Get Movie by ID"),   
+    DB_MOVIE_GET_All(30,"Get all Movies"),     // ID più alto 
     
     // ----------------------------
 

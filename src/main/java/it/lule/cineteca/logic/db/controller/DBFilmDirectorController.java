@@ -15,7 +15,7 @@ import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException
 import java.util.List;
 
 /**
- * @deprecated @author lele
+ * @author lele
  */
 public class DBFilmDirectorController extends DBAbstractController<FilmDirectorEntity> {
 
@@ -62,7 +62,6 @@ public class DBFilmDirectorController extends DBAbstractController<FilmDirectorE
         } catch (DBAbstractControllerException ex) {
             throw new DBFilmDirector_GetByNameException();
         }
-
     }
 
     public FilmDirectorEntity getFilmDirectorByID(FilmDirectorEntity filmDirectorEntity) throws DBAbstractControllerException {
@@ -74,12 +73,11 @@ public class DBFilmDirectorController extends DBAbstractController<FilmDirectorE
     }
 
     /**
-     * @return
-     * @throws DBAbstractControllerException 
+     * @return @throws DBAbstractControllerException
      */
     public List<FilmDirectorEntity> getfilmDirectorEntity() throws DBAbstractControllerException {
         try {
-         return getAllEntites(Search.filmDirectorAllFilmDirectors());
+            return getAllEntites(Search.filmDirectorAllFilmDirectors());
         } catch (DBAbstractControllerException e) {
             throw new DBFilmDirector_GetAllException();
         }

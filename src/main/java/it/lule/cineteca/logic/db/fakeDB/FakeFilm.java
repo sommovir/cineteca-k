@@ -24,7 +24,7 @@ public class FakeFilm {
 //        read();
     }
 
-    private void read() {
+    private void read() throws DBAbstractControllerException {
         List<MovieEntity> movies = DBMovieController.getInstance().getAllMovie();
 
         for (MovieEntity movy : movies) {

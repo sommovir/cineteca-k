@@ -197,11 +197,21 @@ public class JlistJPanel extends javax.swing.JPanel {
     }
 
     private List<MovieEntity> getFavorites() {
-        return DBMovieController.getInstance().getFavorites();
+//        try {
+//            return DBMovieController.getInstance().getFavorites();
+//        } catch (DBAbstractControllerException ex) {
+//            Logger.getLogger(JlistJPanel.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+        return null;
     }
 
     private List<MovieEntity> getAllMovies() {
-        return DBMovieController.getInstance().getAllMovie();
+//        try {
+//            return DBMovieController.getInstance().getAllMovie();
+//        } catch (DBAbstractControllerException ex) {
+//            Logger.getLogger(JlistJPanel.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+        return null;
     }
 
     private void addList(List<MovieEntity> movies) {

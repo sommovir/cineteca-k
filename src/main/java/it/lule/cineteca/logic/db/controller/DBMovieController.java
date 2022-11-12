@@ -11,7 +11,7 @@ import java.util.List;
 
 
 /**
- *
+ * @deprecated 
  * @author lele
  */
 public class DBMovieController extends DBAbstractController<MovieEntity>{
@@ -50,11 +50,13 @@ public class DBMovieController extends DBAbstractController<MovieEntity>{
     }
     
     public List<MovieEntity> getAllMovie(){
-        return getAllEntites(Search.movieAllMovies());
+//        return getAllEntites(Search.movieAllMovies());
+        throw new UnsupportedOperationException();
     } 
        
     public List<MovieEntity> getFavorites() {
-        return getAllEntites(Search.movieByFavorite());
+//        return getAllEntites(Search.movieByFavorite());
+        throw new UnsupportedOperationException();
     }
 
 }

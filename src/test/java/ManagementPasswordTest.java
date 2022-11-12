@@ -134,10 +134,10 @@ public class ManagementPasswordTest {
                     public void execute() throws Throwable {
                         ManagementPassword.getInstance().login(user, password);
                     }
-                }, "Mi aspettavo l'errore: " + ErrorCodeEnum.USER_EMPTY);
+                }, "Mi aspettavo l'errore: " + ErrorCodeEnum.PASSWORD_USER_EMPTY);
 
-        assertEquals(ErrorCodeEnum.USER_EMPTY, exception.getErrorCode(),
-                "Mi aspettavo l'errore: " + ErrorCodeEnum.USER_EMPTY);
+        assertEquals(ErrorCodeEnum.PASSWORD_USER_EMPTY, exception.getErrorCode(),
+                "Mi aspettavo l'errore: " + ErrorCodeEnum.PASSWORD_USER_EMPTY);
         passed = true;
     }
 

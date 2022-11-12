@@ -178,7 +178,7 @@ public class RegisterDialog extends javax.swing.JDialog {
 //            disposeGui();
         } catch (PasswordException ex) {
             jLabelError.setText(ex.getMessage());
-        }  
+        }
 
     }//GEN-LAST:event_jButtonRegisterActionPerformed
 
@@ -192,8 +192,8 @@ public class RegisterDialog extends javax.swing.JDialog {
         userEntity.setPassword(passwordStr);
 
         DBCUserController.getInstance().createEntity(userEntity);
-    }    
-    
+    }
+
     /* non è un errore è solo a titolo dimostrativo verrà modificata con la finestra vera di registrazione */
     private void disposeGui() {
         this.dispose();
@@ -260,6 +260,8 @@ public class RegisterDialog extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 RegisterDialog dialog = new RegisterDialog(new javax.swing.JFrame(), true);
+                dialog.setLocationRelativeTo(dialog);
+                dialog.setVisible(true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

@@ -6,6 +6,11 @@ package it.lule.cineteca.logic.db.controller;
 
 import it.lule.cineteca.logic.db.entities.CUserEntity;
 import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBAbstractControllerException;
+import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.errorDBUserController.DBUser_CreateException;
+import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.errorDBUserController.DBUser_DeleteException;
+import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.errorDBUserController.DBUser_EditException;
+import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.errorDBUserController.DBUser_GetByIdException;
+import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.errorDBUserController.DBUser_GetByNameException;
 import java.util.List;
 
 /**
@@ -28,27 +33,47 @@ public class DBCUserController extends DBAbstractController<CUserEntity> {
     }
 
     public void createUser(CUserEntity userEntity) throws DBAbstractControllerException {
-        createEntity(userEntity);
+        try {
+            createEntity(userEntity);
+        } catch (DBAbstractControllerException ex) {
+            throw new DBUser_CreateException();
+        }
+
     }
 
     public void deleteUser(CUserEntity userEntity) throws DBAbstractControllerException {
-        deleteEntity(userEntity);
+        try {
+            deleteEntity(userEntity);
+        } catch (DBAbstractControllerException ex) {
+            throw new DBUser_DeleteException();
+        }
     }
 
     public void editUser(CUserEntity userEntity) throws DBAbstractControllerException {
-        editEntity(userEntity);
+        try {
+            editEntity(userEntity);
+        } catch (DBAbstractControllerException e) {
+            throw new DBUser_EditException();
+        }
     }
 
-    public CUserEntity getUserByName(String user) throws DBAbstractControllerException {
-        return (CUserEntity) getEntityByQuery(Search.userByName(user));
+    public CUserEntity getUserByName(CUserEntity userEntity) throws DBAbstractControllerException {
+        try {
+            return (CUserEntity) getEntityByQuery(Search.userByName(userEntity.getUser()));
+        } catch (DBAbstractControllerException e) {
+            throw new DBUser_GetByNameException();
+        }
     }
 
     public CUserEntity getUserID(CUserEntity userEntity) throws DBAbstractControllerException {
-        return getById(userEntity);
-//        throw new UnsupportedOperationException();
+        try {
+            return (CUserEntity) getEntityByQuery(Search.userByID(userEntity.getId().toString()));
+        } catch (DBAbstractControllerException e) {
+            throw new DBUser_GetByIdException();
+        }
     }
 
-    public List<CUserEntity> getAllUser() {
+    public List<CUserEntity> getAllUser() throws DBAbstractControllerException {
         return getAllEntites(Search.userAllUsers());
     }
 

@@ -5,18 +5,9 @@
  */
 package it.lule.cineteca.gui.user;
 
-import it.lule.cineteca.logic.db.controller.DBCUserController;
-import it.lule.cineteca.logic.db.entities.CUserEntity;
-import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBAbstractControllerException;
-import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.errorDbException.DBCreateException;
-import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.errorDbException.DBFindException;
-import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.errorDbException.DBIsNullException;
-import it.lule.cineteca.logic.exceptions.password.PasswordException;
-import it.lule.cineteca.logic.management.password.ManagementPassword;
+import it.lule.cineteca.logic.management.registration.ManagementLoginRegistration;
 import java.awt.Color;
 import java.awt.Font;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 /**
@@ -146,32 +137,39 @@ public class UserDialog extends javax.swing.JDialog {
         dialog.setVisible(true);
     }//GEN-LAST:event_jButtonRegisterActionPerformed
 
+    /**
+     * @deprecated 
+     * @param evt 
+     */
     private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
-        try {
-            ManagementPassword.getInstance().login(jTextFieldUser.getText(),
-                    jPasswordField.getPassword());
-            login();
-            disposeGui();
-        } catch (PasswordException ex) {
-            Logger.getLogger(UserDialog.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (DBAbstractControllerException ex) {
-            Logger.getLogger(UserDialog.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
+//        ManagementLoginRegistration.getInstance().login(jTextFieldUser.getText(),
+//                jPasswordField.getPassword());
+
+//        try {
+//            ManagementPassword.getInstance().login(jTextFieldUser.getText(),
+//                    jPasswordField.getPassword());
+//            login();
+//            disposeGui();
+//        } catch (PasswordException ex) {
+//            Logger.getLogger(UserDialog.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (DBAbstractControllerException ex) {
+//            Logger.getLogger(UserDialog.class.getName()).log(Level.SEVERE, null, ex);
+//        }
 
     }//GEN-LAST:event_jButtonLoginActionPerformed
 
-    private void login() throws DBAbstractControllerException {
-        char[] password = jPasswordField.getPassword();
-        String passwordStr = new String(password);
-
-        CUserEntity userEntity = new CUserEntity();
-
-        userEntity.setUser(jTextFieldUser.getText());
-        userEntity.setPassword(passwordStr);
-
-        userEntity = DBCUserController.getInstance().getUserByName(jTextFieldUser.getText());
-        System.out.println(""+ userEntity.getUser());
-    }
+//    private void login() throws DBAbstractControllerException {
+//        char[] password = jPasswordField.getPassword();
+//        String passwordStr = new String(password);
+//
+//        CUserEntity userEntity = new CUserEntity();
+//
+//        userEntity.setUser(jTextFieldUser.getText());
+//        userEntity.setPassword(passwordStr);
+//        userEntity = DBCUserController.getInstance().getUserByName(jTextFieldUser.getText());
+//        System.out.println(""+ userEntity.getUser());
+//    }
 
     private void disposeGui() {
         this.dispose();
@@ -227,6 +225,8 @@ public class UserDialog extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 UserDialog dialog = new UserDialog(new javax.swing.JFrame(), true);
+                dialog.setLocationRelativeTo(dialog);
+                dialog.setVisible(true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

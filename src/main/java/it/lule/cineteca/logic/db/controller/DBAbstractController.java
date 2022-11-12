@@ -26,7 +26,6 @@ public abstract class DBAbstractController<E> {
     public DBAbstractController(Class<E> clazz) {
         super();
         this.clazz = clazz;
-
     }
 
     private void initConnection() {
@@ -42,27 +41,38 @@ public abstract class DBAbstractController<E> {
     public void createEntity(E entity) throws DBAbstractControllerException {
         isNull(entity);
         initConnection();
-        try {
-            session.beginTransaction();
-            session.persist(entity);
-            session.getTransaction().commit();
-            session.close();
-        } catch (Exception e) {
-            throw new DBCreateException();
-        }
+
+        session.beginTransaction();
+        session.persist(entity);
+        session.getTransaction().commit();
+        session.close();
+
+//        try {
+//            session.beginTransaction();
+//            session.persist(entity);
+//            session.getTransaction().commit();
+//            session.close();
+//        } catch (Exception e) {
+//            throw new DBCreateException();
+//        }
     }
 
     public void deleteEntity(E entity) throws DBAbstractControllerException {
         isNull(entity);
         initConnection();
-        try {
-            session.beginTransaction();
-            session.delete(entity);
-            session.getTransaction().commit();
-            session.close();
-        } catch (Exception e) {
-            throw new DBDeleteException();
-        }
+        session.beginTransaction();
+        session.delete(entity);
+        session.getTransaction().commit();
+        session.close();
+
+//        try {
+//            session.beginTransaction();
+//            session.delete(entity);
+//            session.getTransaction().commit();
+//            session.close();
+//        } catch (Exception e) {
+//            throw new DBDeleteException();
+//        }
     }
 
     public void editEntity(E entity) throws DBAbstractControllerException {
@@ -74,7 +84,7 @@ public abstract class DBAbstractController<E> {
         session.close();
     }
 
-    public E getEntityByQuery(String query) {
+    public E getEntityByQuery(String query) throws DBAbstractControllerException {
         initConnection();
         session.beginTransaction();
         Query<E> createQuery
@@ -85,15 +95,16 @@ public abstract class DBAbstractController<E> {
     }
 
     public E getById(E entity) throws DBAbstractControllerException {
-        isNull(entity);
-        initConnection();
-        session.beginTransaction();
-        session.getTransaction().commit();
-        session.close();
+//        isNull(entity);
+//        initConnection();
+//        session.beginTransaction();
+//        session.getTransaction().commit();
+//        session.close();
+//        return null;
         throw new UnsupportedOperationException();
     }
 
-    public List<E> getAllEntites(String query) {
+    public List<E> getAllEntites(String query) throws DBAbstractControllerException {
         initConnection();
         session.beginTransaction();
         Query<E> createQuery

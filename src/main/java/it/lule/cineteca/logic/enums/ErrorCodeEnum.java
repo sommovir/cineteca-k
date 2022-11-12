@@ -13,13 +13,15 @@ public enum ErrorCodeEnum {
     DB_USER_NOT_EXISTS(1,"User not exists"),
     DB_USER_ALREADY_EXISTS(2,"User already exists"),
     DB_USER_ALREADY_CONNECTED(3,"User already connected"),
-    DB_WRONG_PASSWORD(4,"DB_WRONG_PASSWORD"),   
+    DB_USER_DELETE(13,"Delete User"),
+    DB_USER_CREATE(12,"Create User"),    
+    DB_USER_EDIT(14,"Edit User"),    
+    DB_USER_GET_BY_ID(4,"Get User by ID"),   
+    DB_USER_GET_All(17,"Get all users"), // ID più alto    
     // ----------------------------
-    DB_CREATE(12,"to complete: ID 12"),
-    DB_DELETE(13,"to complete: ID 13"),
-    DB_EDIT(14,"to complete: ID 14"),
+
     DB_IS_NULL(15,"to complete: ID 15"),
-    DB_FIND(17,"to complete: ID 17"), // ID più alto
+
     // ----------------------------
     PASSWORD_ARE_NOT_EQUALS(5,"Password are not equals"),
     PASSWORD_IS_EMPTY(6,"Password is empty"),
@@ -29,7 +31,7 @@ public enum ErrorCodeEnum {
     PASSWORD_HAS_NOT_UPPER_CASE(10,"Password has not upper case"),
     PASSWORD_IS_WRONG(16, "Password is wrong"),
     // ----------------------------    
-    USER_EMPTY(11,"user is empty");
+    PASSWORD_USER_EMPTY(11,"user is empty");
 
     private int code;
     private String message;

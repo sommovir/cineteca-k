@@ -8,12 +8,13 @@ import it.lule.cineteca.logic.enums.ErrorCodeEnum;
 import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBAbstractControllerException;
 
 /**
- *
+ * Troppo generico, valuto di eliminarli
+ * @deprecated 
  * @author lele
  */
 public class DBDeleteException extends DBAbstractControllerException {
 
     public DBDeleteException() {
-        super(ErrorCodeEnum.DB_DELETE);
+        super(ErrorCodeEnum.DB_USER_DELETE);
     }
 }

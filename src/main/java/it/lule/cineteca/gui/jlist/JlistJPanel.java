@@ -7,8 +7,8 @@ package it.lule.cineteca.gui.jlist;
 import it.lule.cineteca.logic.db.controller.DBMovieController;
 import it.lule.cineteca.logic.db.entities.MovieEntity;
 import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBAbstractControllerException;
-import java.awt.Dimension;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ListSelectionModel;
@@ -124,31 +124,51 @@ public class JlistJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoveActionPerformed
-        try {
 
-            Integer selectedIndex = jList1.getSelectedIndex();
-
-            movieEntity = jlistModel1.get(selectedIndex);
-
-            DBMovieController.getInstance().deleteMovie(movieEntity);
-            jlistModel1.remove(selectedIndex);
-
-            if (jlistModel1.isEmpty()) {
-                disableButtons();
-                return;
-            }
-
-            selectedIndex--;
-
-            if (selectedIndex == -1) {
-                selectedIndex = 0;
-            }
-
-            jList1.setSelectedIndex(selectedIndex);
-
-        } catch (DBAbstractControllerException ex) {
-            Logger.getLogger(JlistJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        List<MovieEntity> selectedValuesList = jList1.getSelectedValuesList();
+        
+        for (int i = 0; i <= selectedValuesList.size(); i++) {
+            jlistModel1.remove(i);
         }
+        
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        /* ----------------------------------------------------------- */
+//        try {
+//
+//            Integer selectedIndex = jList1.getSelectedIndex();
+//
+//            movieEntity = jlistModel1.get(selectedIndex);
+//
+//            DBMovieController.getInstance().deleteMovie(movieEntity);
+//            jlistModel1.remove(selectedIndex);
+//
+//            if (jlistModel1.isEmpty()) {
+//                disableButtons();
+//                return;
+//            }
+//
+//            selectedIndex--;
+//
+//            if (selectedIndex == -1) {
+//                selectedIndex = 0;
+//            }
+//
+//            jList1.setSelectedIndex(selectedIndex);
+//
+//        } catch (DBAbstractControllerException ex) {
+//            Logger.getLogger(JlistJPanel.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+;
+
     }//GEN-LAST:event_jButtonRemoveActionPerformed
 
     private void jButtonFavoriteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFavoriteActionPerformed
@@ -161,11 +181,11 @@ public class JlistJPanel extends javax.swing.JPanel {
 
     private void jList1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseReleased
         jList1.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-        
+
         List<MovieEntity> selectedValuesList = jList1.getSelectedValuesList();
-        
+
         for (MovieEntity movieEntity1 : selectedValuesList) {
-            System.out.println(""+movieEntity1.getOriginalTitle());
+            System.out.println("jList1MouseReleased " + movieEntity1.getOriginalTitle());
         }
         System.out.println("");
     }//GEN-LAST:event_jList1MouseReleased

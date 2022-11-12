@@ -2,19 +2,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.errorDbException;
+package it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.errorDBUserController;
 
 import it.lule.cineteca.logic.enums.ErrorCodeEnum;
 import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBAbstractControllerException;
 
 /**
- * Troppo generico, valuto di eliminarli
- * @deprecated 
  * @author lele
  */
-public class DBCreateException extends DBAbstractControllerException {
+public class DBUser_EditException extends DBAbstractControllerException {
 
-    public DBCreateException() {
-        super(ErrorCodeEnum.DB_USER_CREATE);
+    public DBUser_EditException() {
+        super(ErrorCodeEnum.DB_USER_EDIT);
     }
 }

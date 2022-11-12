@@ -8,7 +8,7 @@ import it.lule.cineteca.logic.enums.ErrorCodeEnum;
 import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBAbstractControllerException;
 
 /**
- *
+ * 
  * @author lele
  */
 public class DBIsNullException extends DBAbstractControllerException {

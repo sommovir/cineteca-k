@@ -14,7 +14,7 @@ import it.lule.cineteca.logic.exceptions.password.PasswordException;
 public class UserEmptyException extends PasswordException{
 
     public UserEmptyException() {
-        super(ErrorCodeEnum.USER_EMPTY);
+        super(ErrorCodeEnum.PASSWORD_USER_EMPTY);
     }
     
 }

@@ -9,7 +9,7 @@ import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException
 import java.util.List;
 
 /**
- *
+ * @deprecated 
  * @author lele
  */
 public class DBFilmDirectorController extends DBAbstractController<FilmDirectorEntity>{
@@ -48,6 +48,7 @@ public class DBFilmDirectorController extends DBAbstractController<FilmDirectorE
     }
     
     public List<FilmDirectorEntity> getfilmDirectorEntity(){
-        return getAllEntites(Search.filmDirectorAllFilmDirectors());
+//        return getAllEntites(Search.filmDirectorAllFilmDirectors());
+        throw new UnsupportedOperationException();
     }  
 }

@@ -11,7 +11,7 @@ import it.lule.cineteca.logic.exceptions.password.PasswordException;
 import it.lule.cineteca.logic.management.password.ManagementPassword;
 
 /**
- *
+ * @deprecated 
  * @author lele
  */
 public class ManagementLoginRegistration {
@@ -47,15 +47,12 @@ public class ManagementLoginRegistration {
      * Delete Account
      *
      * @param user
-     * @throws DBAbstractControllerException
      */
-    public void deleteAccount(String user) throws DBAbstractControllerException {
-        
-        CUserEntity userEntity = new CUserEntity();
-        userEntity = DBCUserController.getInstance().getUserByName(user);
-
-        DBCUserController.getInstance().deleteUser(userEntity);
-        
+    public void deleteAccount(String user) {
+//        CUserEntity userEntity = new CUserEntity();
+//        userEntity.setUser(user);
+//
+//        DBCUserController.getInstance().deleteUser(userEntity);
     }
 
     /**
@@ -66,13 +63,12 @@ public class ManagementLoginRegistration {
      * @throws DBAbstractControllerException
      * @throws PasswordException
      */
-    public void login(String user, char[] password)
-            throws DBAbstractControllerException, PasswordException {
-        
-        ManagementPassword.getInstance().login(user, password);
-        CUserEntity userEntity = new CUserEntity(user, new String(password));
+    public void login(String user, char[] password) throws PasswordException {
+//        ManagementPassword.getInstance().login(user, password);
+//
+//        CUserEntity userEntity = new CUserEntity(user, new String(password));
+//
+//        DBCUserController.getInstance().getUserByName(userEntity);
 
-        DBCUserController.getInstance().getUserID(userEntity);
-        
     }
 }

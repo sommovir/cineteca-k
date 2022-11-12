@@ -94,7 +94,7 @@ public abstract class DBAbstractController<E> {
         return (E) singleResult;
     }
 
-    public E getById(E entity) throws DBAbstractControllerException {
+    public E getEntityById(E entity) throws DBAbstractControllerException {
 //        isNull(entity);
 //        initConnection();
 //        session.beginTransaction();

@@ -6,49 +6,82 @@ package it.lule.cineteca.logic.db.controller;
 
 import it.lule.cineteca.logic.db.entities.FilmDirectorEntity;
 import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBAbstractControllerException;
+import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.errorDBFilmdirectorController.DBFilmDirector_CreateException;
+import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.errorDBFilmdirectorController.DBFilmDirector_DeleteException;
+import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.errorDBFilmdirectorController.DBFilmDirector_EditException;
+import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.errorDBFilmdirectorController.DBFilmDirector_GetAllException;
+import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.errorDBFilmdirectorController.DBFilmDirector_GetByIdException;
+import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.errorDBFilmdirectorController.DBFilmDirector_GetByNameException;
 import java.util.List;
 
 /**
- * @deprecated 
- * @author lele
+ * @deprecated @author lele
  */
-public class DBFilmDirectorController extends DBAbstractController<FilmDirectorEntity>{
+public class DBFilmDirectorController extends DBAbstractController<FilmDirectorEntity> {
+
     private static DBFilmDirectorController instance = null;
-    
-    public static DBFilmDirectorController getInstance(){
-        if (instance == null){
+
+    public static DBFilmDirectorController getInstance() {
+        if (instance == null) {
             instance = new DBFilmDirectorController();
         }
         return instance;
-    }    
+    }
 
     private DBFilmDirectorController() {
         super(FilmDirectorEntity.class);
     }
 
     public void createFilmDirector(FilmDirectorEntity filmDirectorEntity) throws DBAbstractControllerException {
-        createEntity(filmDirectorEntity);
-    }    
-    
-    public void deleteFilmDirector(FilmDirectorEntity filmDirectorEntity) throws DBAbstractControllerException{
-        deleteEntity(filmDirectorEntity);
+        try {
+            createEntity(filmDirectorEntity);
+        } catch (DBAbstractControllerException ex) {
+            throw new DBFilmDirector_CreateException();
+        }
     }
-    
-    public void editFilmDirector(FilmDirectorEntity filmDirectorEntity) throws DBAbstractControllerException{
-        editEntity(filmDirectorEntity);
+
+    public void deleteFilmDirector(FilmDirectorEntity filmDirectorEntity) throws DBAbstractControllerException {
+        try {
+            deleteEntity(filmDirectorEntity);
+        } catch (DBAbstractControllerException ex) {
+            throw new DBFilmDirector_DeleteException();
+        }
     }
-    
-    public FilmDirectorEntity getFilmDirectorByName(String filmDirectorName) throws DBAbstractControllerException{
-        return (FilmDirectorEntity) getEntityByQuery(Search.filmDirectorByName(filmDirectorName));    
+
+    public void editFilmDirector(FilmDirectorEntity filmDirectorEntity) throws DBAbstractControllerException {
+        try {
+            editEntity(filmDirectorEntity);
+        } catch (DBAbstractControllerException ex) {
+            throw new DBFilmDirector_EditException();
+        }
     }
-    
-    public FilmDirectorEntity getUserID(FilmDirectorEntity movieEntity) throws DBAbstractControllerException {
-          return getById(movieEntity);
-//        throw new UnsupportedOperationException();
+
+    public FilmDirectorEntity getFilmDirectorByName(String filmDirectorName) throws DBAbstractControllerException {
+        try {
+            return (FilmDirectorEntity) getEntityByQuery(Search.filmDirectorByName(filmDirectorName));
+        } catch (DBAbstractControllerException ex) {
+            throw new DBFilmDirector_GetByNameException();
+        }
+
     }
-    
-    public List<FilmDirectorEntity> getfilmDirectorEntity(){
-//        return getAllEntites(Search.filmDirectorAllFilmDirectors());
-        throw new UnsupportedOperationException();
-    }  
+
+    public FilmDirectorEntity getFilmDirectorByID(FilmDirectorEntity filmDirectorEntity) throws DBAbstractControllerException {
+        try {
+            return (FilmDirectorEntity) getEntityByQuery(Search.userByID(filmDirectorEntity.getId().toString()));
+        } catch (DBAbstractControllerException e) {
+            throw new DBFilmDirector_GetByIdException();
+        }
+    }
+
+    /**
+     * @return
+     * @throws DBAbstractControllerException 
+     */
+    public List<FilmDirectorEntity> getfilmDirectorEntity() throws DBAbstractControllerException {
+        try {
+         return getAllEntites(Search.filmDirectorAllFilmDirectors());
+        } catch (DBAbstractControllerException e) {
+            throw new DBFilmDirector_GetAllException();
+        }
+    }
 }

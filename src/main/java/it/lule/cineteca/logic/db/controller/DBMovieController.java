@@ -45,7 +45,7 @@ public class DBMovieController extends DBAbstractController<MovieEntity>{
     }
     
     public MovieEntity getMovieID(MovieEntity movieEntity) throws DBAbstractControllerException {
-        return getById(movieEntity);
+        return getEntityById(movieEntity);
 
     }
     

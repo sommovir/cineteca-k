@@ -17,7 +17,15 @@ public enum ErrorCodeEnum {
     DB_USER_CREATE(12,"Create User"),    
     DB_USER_EDIT(14,"Edit User"),    
     DB_USER_GET_BY_ID(4,"Get User by ID"),   
-    DB_USER_GET_All(17,"Get all users"), // ID più alto    
+    DB_USER_GET_All(17,"Get all users"), 
+    
+    DB_FILM_DIRECTOR_DELETE(18,"Delete Film director"),
+    DB_FILM_DIRECTOR_CREATE(19,"Create Film director"),    
+    DB_FILM_DIRECTOR_EDIT(20,"Edit Film director"),    
+    DB_FILM_DIRECTOR_GET_BY_ID(21,"Get Film director by ID"),   
+    DB_FILM_DIRECTOR_GET_All(22,"Get all directors"), 
+    DB_FILM_DIRECTOR_NOT_EXISTS(23,"Film director not exists"),// ID più alto 
+    
     // ----------------------------
 
     DB_IS_NULL(15,"to complete: ID 15"),

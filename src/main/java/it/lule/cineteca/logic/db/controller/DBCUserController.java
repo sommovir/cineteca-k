@@ -9,6 +9,7 @@ import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException
 import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.errorDBUserController.DBUser_CreateException;
 import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.errorDBUserController.DBUser_DeleteException;
 import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.errorDBUserController.DBUser_EditException;
+import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.errorDBUserController.DBUser_GetAllException;
 import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.errorDBUserController.DBUser_GetByIdException;
 import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.errorDBUserController.DBUser_GetByNameException;
 import java.util.List;
@@ -65,7 +66,7 @@ public class DBCUserController extends DBAbstractController<CUserEntity> {
         }
     }
 
-    public CUserEntity getUserID(CUserEntity userEntity) throws DBAbstractControllerException {
+    public CUserEntity getUserByID(CUserEntity userEntity) throws DBAbstractControllerException {
         try {
             return (CUserEntity) getEntityByQuery(Search.userByID(userEntity.getId().toString()));
         } catch (DBAbstractControllerException e) {
@@ -73,8 +74,16 @@ public class DBCUserController extends DBAbstractController<CUserEntity> {
         }
     }
 
+    /**
+     * @return
+     * @throws DBAbstractControllerException 
+     */
     public List<CUserEntity> getAllUser() throws DBAbstractControllerException {
-        return getAllEntites(Search.userAllUsers());
+        try {
+            return getAllEntites(Search.userAllUsers());
+        } catch (DBAbstractControllerException e) {
+            throw new DBUser_GetAllException();
+        }
     }
 
 }

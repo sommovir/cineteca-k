@@ -5,9 +5,12 @@
  */
 package it.lule.cineteca.gui.user;
 
+import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBAbstractControllerException;
 import it.lule.cineteca.logic.management.registration.ManagementLoginRegistration;
 import java.awt.Color;
 import java.awt.Font;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 /**
@@ -138,14 +141,19 @@ public class UserDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonRegisterActionPerformed
 
     /**
-     * @deprecated 
-     * @param evt 
+     * @deprecated @param evt
      */
     private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
 
+        try {
+            ManagementLoginRegistration.getInstance().login(
+                    jTextFieldUser.getText(), jPasswordField.getPassword());
+         } catch (DBAbstractControllerException ex) {
+            Logger.getLogger(UserDialog.class.getName()).log(Level.SEVERE, null, ex);
+        }           
+
 //        ManagementLoginRegistration.getInstance().login(jTextFieldUser.getText(),
 //                jPasswordField.getPassword());
-
 //        try {
 //            ManagementPassword.getInstance().login(jTextFieldUser.getText(),
 //                    jPasswordField.getPassword());
@@ -156,6 +164,7 @@ public class UserDialog extends javax.swing.JDialog {
 //        } catch (DBAbstractControllerException ex) {
 //            Logger.getLogger(UserDialog.class.getName()).log(Level.SEVERE, null, ex);
 //        }
+
 
     }//GEN-LAST:event_jButtonLoginActionPerformed
 
@@ -170,7 +179,6 @@ public class UserDialog extends javax.swing.JDialog {
 //        userEntity = DBCUserController.getInstance().getUserByName(jTextFieldUser.getText());
 //        System.out.println(""+ userEntity.getUser());
 //    }
-
     private void disposeGui() {
         this.dispose();
         MainGui mainGui = new MainGui();

@@ -52,8 +52,8 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jTextFieldUser" max="32767" attributes="0"/>
-                              <Component id="jPasswordField" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jPasswordFieldConfirm" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jTextPasswordField" alignment="0" max="32767" attributes="0"/>
+                              <Component id="jTextPasswordFieldConfirm" alignment="0" max="32767" attributes="0"/>
                               <Component id="jLabelError" alignment="0" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -87,11 +87,11 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                  <Component id="jPasswordField" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextPasswordField" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jPasswordFieldConfirm" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextPasswordFieldConfirm" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jButtonCancel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -114,20 +114,10 @@
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldUser">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldUserActionPerformed"/>
-            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldUserKeyReleased"/>
-          </Events>
         </Component>
-        <Component class="javax.swing.JPasswordField" name="jPasswordField">
-          <Events>
-            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jPasswordFieldKeyReleased"/>
-          </Events>
+        <Component class="javax.swing.JPasswordField" name="jTextPasswordField">
         </Component>
-        <Component class="javax.swing.JPasswordField" name="jPasswordFieldConfirm">
-          <Events>
-            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jPasswordFieldConfirmKeyReleased"/>
-          </Events>
+        <Component class="javax.swing.JPasswordField" name="jTextPasswordFieldConfirm">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>

@@ -11,8 +11,7 @@ import it.lule.cineteca.logic.exceptions.password.PasswordException;
 import it.lule.cineteca.logic.management.password.ManagementPassword;
 
 /**
- * @deprecated 
- * @author lele
+ * @deprecated @author lele
  */
 public class ManagementLoginRegistration {
 
@@ -34,25 +33,25 @@ public class ManagementLoginRegistration {
      * @throws DBAbstractControllerException
      * @throws PasswordException
      */
-    public void registrationAccount(String user, char[] password, char[] passwordConfrim)
-            throws DBAbstractControllerException, PasswordException {
+    public void registrationAccount(String user, char[] password, char[] passwordConfrim) throws DBAbstractControllerException {
 
         ManagementPassword.getInstance().createUser(user, password, passwordConfrim);
 
         CUserEntity userEntity = new CUserEntity(user, new String(password));
-        DBCUserController.getInstance().createEntity(userEntity);
+        DBCUserController.getInstance().createUser(userEntity);
     }
 
     /**
      * Delete Account
      *
      * @param user
+     * @throws it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBAbstractControllerException
      */
-    public void deleteAccount(String user) {
-//        CUserEntity userEntity = new CUserEntity();
-//        userEntity.setUser(user);
-//
-//        DBCUserController.getInstance().deleteUser(userEntity);
+    public void deleteAccount(String user) throws DBAbstractControllerException {
+        CUserEntity userEntity = new CUserEntity();
+        userEntity.setUser(user);
+
+        DBCUserController.getInstance().deleteUser(userEntity);
     }
 
     /**
@@ -63,12 +62,12 @@ public class ManagementLoginRegistration {
      * @throws DBAbstractControllerException
      * @throws PasswordException
      */
-    public void login(String user, char[] password) throws PasswordException {
-//        ManagementPassword.getInstance().login(user, password);
-//
-//        CUserEntity userEntity = new CUserEntity(user, new String(password));
-//
-//        DBCUserController.getInstance().getUserByName(userEntity);
+    public void login(String user, char[] password) throws DBAbstractControllerException  {
+        ManagementPassword.getInstance().login(user, password);
+
+        CUserEntity userEntity = new CUserEntity(user, new String(password));
+
+        DBCUserController.getInstance().getUserByName(userEntity);
 
     }
 }

@@ -12,6 +12,8 @@ import it.lule.cineteca.logic.exceptions.password.wrongPasswordException.Passwor
 import it.lule.cineteca.logic.exceptions.password.wrongPasswordException.PasswordTooShortException;
 import it.lule.cineteca.logic.exceptions.password.wrongPasswordException.UserEmptyException;
 import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -32,28 +34,35 @@ public class ManagementPassword {
 
     /**
      * Login
+     *
      * @param jTextFieldUser
      * @param jPasswordField
-     * @throws PasswordException 
      */
-    public void login(String jTextFieldUser, char[] jPasswordField)
-            throws PasswordException {
-        // jPasswordField, jPasswordField it's correct 
-        checkPassword(jTextFieldUser, jPasswordField, jPasswordField);
+    public void login(String jTextFieldUser, char[] jPasswordField) {
+        try {
+            // jPasswordField, jPasswordField it's correct
+            checkPassword(jTextFieldUser, jPasswordField, jPasswordField);
+        } catch (PasswordException ex) {
+            Logger.getLogger(ManagementPassword.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
      * Create User
+     *
      * @param jTextFieldUser
      * @param jPasswordField
      * @param jPasswordFieldConfirm
-     * @throws PasswordException 
      */
     public void createUser(String jTextFieldUser, char[] jPasswordField,
-            char[] jPasswordFieldConfirm) throws PasswordException {
+            char[] jPasswordFieldConfirm) {
 
-        checkPassword(jTextFieldUser, jPasswordField, jPasswordFieldConfirm);
-        passwordsAreNotEquals(jPasswordField, jPasswordFieldConfirm);
+        try {
+            checkPassword(jTextFieldUser, jPasswordField, jPasswordFieldConfirm);
+            passwordsAreNotEquals(jPasswordField, jPasswordFieldConfirm);
+        } catch (PasswordException ex) {
+            Logger.getLogger(ManagementPassword.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public ManagementPassword() {
@@ -61,10 +70,11 @@ public class ManagementPassword {
 
     /**
      * Check Password
+     *
      * @param jTextFieldUser
      * @param jPasswordField
      * @param jPasswordFieldConfirm
-     * @throws PasswordException 
+     * @throws PasswordException
      */
     private void checkPassword(String jTextFieldUser, char[] jPasswordField,
             char[] jPasswordFieldConfirm) throws PasswordException {
@@ -79,23 +89,23 @@ public class ManagementPassword {
 
     /**
      * Password or User are empty
-     * 
+     *
      * @param jPasswordField
      * @param jPasswordFieldConfirm
-     * @throws PasswordEmptyException 
+     * @throws PasswordEmptyException
      */
-    private void passwordEmpty(char[] jPasswordField, char[] jPasswordFieldConfirm) throws PasswordEmptyException {      
-        if (jPasswordField == null || jPasswordFieldConfirm == null ||
-              jPasswordField.length == 0 || jPasswordFieldConfirm.length == 0  ){
+    private void passwordEmpty(char[] jPasswordField, char[] jPasswordFieldConfirm) throws PasswordEmptyException {
+        if (jPasswordField == null || jPasswordFieldConfirm == null
+                || jPasswordField.length == 0 || jPasswordFieldConfirm.length == 0) {
             throw new PasswordEmptyException();
         }
     }
 
     /**
      * Password is too short
-     * 
+     *
      * @param jPasswordField
-     * @throws PasswordTooShortException 
+     * @throws PasswordTooShortException
      */
     private void passwordTooShort(char[] jPasswordField) throws PasswordTooShortException {
         if (jPasswordField.length < passwordMinimumLength) {
@@ -105,9 +115,9 @@ public class ManagementPassword {
 
     /**
      * Password is too long
-     * 
+     *
      * @param jPasswordField
-     * @throws PasswordTooLongException 
+     * @throws PasswordTooLongException
      */
     private void passwordTooLong(char[] jPasswordField) throws PasswordTooLongException {
         if (jPasswordField.length > passwordMaximumLength) {
@@ -117,9 +127,9 @@ public class ManagementPassword {
 
     /**
      * User Is Empty
-     * 
+     *
      * @param jTextFieldUser
-     * @throws UserEmptyException 
+     * @throws UserEmptyException
      */
     private void userEmpty(String jTextFieldUser) throws UserEmptyException {
         if (jTextFieldUser.isEmpty()) {
@@ -129,10 +139,10 @@ public class ManagementPassword {
 
     /**
      * Password is equal
-     * 
+     *
      * @param jPasswordField
      * @param jPasswordFieldConfirm
-     * @throws PasswordsAreNotEqualsException 
+     * @throws PasswordsAreNotEqualsException
      */
     private void passwordsAreNotEquals(char[] jPasswordField,
             char[] jPasswordFieldConfirm) throws PasswordsAreNotEqualsException {
@@ -144,9 +154,9 @@ public class ManagementPassword {
 
     /**
      * Password is Upper Case
-     * 
+     *
      * @param jPasswordField
-     * @throws PasswordHasNotUpperCaseException 
+     * @throws PasswordHasNotUpperCaseException
      */
     private void passwordHasNotUpperCase(char[] jPasswordField) throws PasswordHasNotUpperCaseException {
         if (checkUpperCase(jPasswordField) == false) {
@@ -156,9 +166,9 @@ public class ManagementPassword {
 
     /**
      * Check Upper Case
-     * 
+     *
      * @param jPasswordField
-     * @return 
+     * @return
      */
     private boolean checkUpperCase(char[] jPasswordField) {
         for (int i = 0; i < jPasswordField.length; i++) {

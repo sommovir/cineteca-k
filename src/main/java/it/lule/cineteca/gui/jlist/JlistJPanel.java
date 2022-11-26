@@ -28,14 +28,16 @@ public class JlistJPanel extends javax.swing.JPanel {
     public JlistJPanel() {
         initComponents();
         List<MovieEntity> allMovie = getAllMovies();
+        if (allMovie != null) {
+            for (MovieEntity movie : allMovie) {
+                jlistModel1.addElement(movie);
+            }
 
-        for (MovieEntity movie : allMovie) {
-            jlistModel1.addElement(movie);
+            if (jlistModel1.isEmpty()) {
+                disableButtons();
+            }
         }
 
-        if (jlistModel1.isEmpty()) {
-            disableButtons();
-        }
     }
 
     /**
@@ -126,48 +128,37 @@ public class JlistJPanel extends javax.swing.JPanel {
     private void jButtonRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoveActionPerformed
 
         List<MovieEntity> selectedValuesList = jList1.getSelectedValuesList();
-        
+
         for (int i = 0; i <= selectedValuesList.size(); i++) {
             jlistModel1.remove(i);
         }
-        
-      
-        
-        
-        
-        
-        
-        
-        
-        
-        
         /* ----------------------------------------------------------- */
-//        try {
-//
-//            Integer selectedIndex = jList1.getSelectedIndex();
-//
-//            movieEntity = jlistModel1.get(selectedIndex);
-//
-//            DBMovieController.getInstance().deleteMovie(movieEntity);
-//            jlistModel1.remove(selectedIndex);
-//
-//            if (jlistModel1.isEmpty()) {
-//                disableButtons();
-//                return;
-//            }
-//
-//            selectedIndex--;
-//
-//            if (selectedIndex == -1) {
-//                selectedIndex = 0;
-//            }
-//
-//            jList1.setSelectedIndex(selectedIndex);
-//
-//        } catch (DBAbstractControllerException ex) {
-//            Logger.getLogger(JlistJPanel.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-;
+        //        try {
+        //
+        //            Integer selectedIndex = jList1.getSelectedIndex();
+        //
+        //            movieEntity = jlistModel1.get(selectedIndex);
+        //
+        //            DBMovieController.getInstance().deleteMovie(movieEntity);
+        //            jlistModel1.remove(selectedIndex);
+        //
+        //            if (jlistModel1.isEmpty()) {
+        //                disableButtons();
+        //                return;
+        //            }
+        //
+        //            selectedIndex--;
+        //
+        //            if (selectedIndex == -1) {
+        //                selectedIndex = 0;
+        //            }
+        //
+        //            jList1.setSelectedIndex(selectedIndex);
+        //
+        //        } catch (DBAbstractControllerException ex) {
+        //            Logger.getLogger(JlistJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        //        }
+        ;
 
     }//GEN-LAST:event_jButtonRemoveActionPerformed
 

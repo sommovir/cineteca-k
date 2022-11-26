@@ -5,11 +5,8 @@
  */
 package it.lule.cineteca.gui.user;
 
-import it.lule.cineteca.logic.db.controller.DBCUserController;
-import it.lule.cineteca.logic.db.entities.CUserEntity;
 import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBAbstractControllerException;
 import it.lule.cineteca.logic.exceptions.password.PasswordException;
-import it.lule.cineteca.logic.management.password.ManagementPassword;
 import it.lule.cineteca.logic.management.registration.ManagementLoginRegistration;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -151,24 +148,14 @@ public class RegisterDialog extends javax.swing.JDialog {
             ManagementLoginRegistration.getInstance().registrationAccount(jTextFieldUser.getText(),
                     jTextPasswordField.getPassword(), 
                     jTextPasswordFieldConfirm.getPassword());
+            disposeGui();
+            
         } catch (DBAbstractControllerException ex) {
             Logger.getLogger(RegisterDialog.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (PasswordException ex) {
+            Logger.getLogger(RegisterDialog.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-
     }//GEN-LAST:event_jButtonRegisterActionPerformed
-
-    private void login() throws DBAbstractControllerException {
-//        char[] password = jTextPasswordField.getPassword();
-//        String passwordStr = new String(password);
-//
-//        CUserEntity userEntity = new CUserEntity();
-//
-//        userEntity.setUser(jTextFieldUser.getText());
-//        userEntity.setPassword(passwordStr);
-//
-//        DBCUserController.getInstance().createEntity(userEntity);
-    }
 
     /* non è un errore è solo a titolo dimostrativo verrà modificata con la finestra vera di registrazione */
     private void disposeGui() {

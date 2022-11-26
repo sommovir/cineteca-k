@@ -11,7 +11,7 @@ import it.lule.cineteca.logic.exceptions.password.PasswordException;
 import it.lule.cineteca.logic.management.password.ManagementPassword;
 
 /**
- * @deprecated @author lele
+ * @author lele
  */
 public class ManagementLoginRegistration {
 
@@ -33,9 +33,10 @@ public class ManagementLoginRegistration {
      * @throws DBAbstractControllerException
      * @throws PasswordException
      */
-    public void registrationAccount(String user, char[] password, char[] passwordConfrim) throws DBAbstractControllerException {
+    public void registrationAccount(String user, char[] password, char[] passwordConfrim) 
+            throws DBAbstractControllerException, PasswordException {
 
-        ManagementPassword.getInstance().createUser(user, password, passwordConfrim);
+        ManagementPassword.getInstance().RulePasswordRegistration(user, password, passwordConfrim);
 
         CUserEntity userEntity = new CUserEntity(user, new String(password));
         DBCUserController.getInstance().createUser(userEntity);
@@ -62,12 +63,11 @@ public class ManagementLoginRegistration {
      * @throws DBAbstractControllerException
      * @throws PasswordException
      */
-    public void login(String user, char[] password) throws DBAbstractControllerException  {
-        ManagementPassword.getInstance().login(user, password);
+    public void login(String user, char[] password) throws DBAbstractControllerException, PasswordException  {
+        ManagementPassword.getInstance().RulePasswordLogin(user, password);
 
         CUserEntity userEntity = new CUserEntity(user, new String(password));
 
         DBCUserController.getInstance().getUserByName(userEntity);
-
     }
 }

@@ -66,7 +66,6 @@ public class DBMovieController extends DBAbstractController<MovieEntity> {
         } catch (DBAbstractControllerException ex) {
             throw new DBMovie_GetByNameException();
         }
-
     }
 
     public MovieEntity getMovieID(MovieEntity movieEntity) throws DBAbstractControllerException {
@@ -92,5 +91,4 @@ public class DBMovieController extends DBAbstractController<MovieEntity> {
             throw new DBFilmDirector_GetAllException();
         }
     }
-
 }

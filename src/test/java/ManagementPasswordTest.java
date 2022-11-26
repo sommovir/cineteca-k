@@ -51,7 +51,7 @@ public class ManagementPasswordTest {
 
                     @Override
                     public void execute() throws Throwable {
-                        ManagementPassword.getInstance().login("lele", password);
+                        ManagementPassword.getInstance().RulePasswordLogin("lele", password);
                     }
                 }, "mi aspettavo che lanciasse un'eccezione");
 
@@ -70,7 +70,7 @@ public class ManagementPasswordTest {
                 = assertThrows(PasswordTooShortException.class, new Executable() {
                     @Override
                     public void execute() throws Throwable {
-                        ManagementPassword.getInstance().login("lele", password);
+                        ManagementPassword.getInstance().RulePasswordLogin("lele", password);
                     }
                 }, "mi aspettavo che lanciasse un'eccezione");
 
@@ -89,7 +89,7 @@ public class ManagementPasswordTest {
                 = assertThrows(PasswordHasNotUpperCaseException.class, new Executable() {
                     @Override
                     public void execute() throws Throwable {
-                        ManagementPassword.getInstance().login("lele", password);
+                        ManagementPassword.getInstance().RulePasswordLogin("lele", password);
                     }
                 }, "mi aspettavo che lanciasse un'eccezione: ");
 
@@ -111,7 +111,7 @@ public class ManagementPasswordTest {
                 = assertThrows(PasswordsAreNotEqualsException.class, new Executable() {
                     @Override
                     public void execute() throws Throwable {
-                        ManagementPassword.getInstance().createUser("lele", password, password2);
+                        ManagementPassword.getInstance().RulePasswordRegistration("lele", password, password2);
                     }
                 }, "mi aspettavo che lanciasse un'eccezione: ");
 
@@ -132,7 +132,7 @@ public class ManagementPasswordTest {
 
                     @Override
                     public void execute() throws Throwable {
-                        ManagementPassword.getInstance().login(user, password);
+                        ManagementPassword.getInstance().RulePasswordLogin(user, password);
                     }
                 }, "Mi aspettavo l'errore: " + ErrorCodeEnum.PASSWORD_USER_EMPTY);
 
@@ -151,7 +151,7 @@ public class ManagementPasswordTest {
                 = assertThrows(PasswordEmptyException.class, new Executable() {
                     @Override
                     public void execute() throws Throwable {
-                        ManagementPassword.getInstance().login("lele", password);
+                        ManagementPassword.getInstance().RulePasswordLogin("lele", password);
                     }
                 }, "Mi aspettavo l'errore: " + ErrorCodeEnum.PASSWORD_IS_EMPTY);
         passed = true;

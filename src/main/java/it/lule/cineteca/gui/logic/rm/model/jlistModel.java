@@ -6,7 +6,6 @@ package it.lule.cineteca.gui.logic.rm.model;
 
 import it.lule.cineteca.logic.db.entities.MovieEntity;
 import javax.swing.DefaultListModel;
-import javax.swing.event.ListSelectionListener;
 
 /**
  *
@@ -16,9 +15,4 @@ public class jlistModel extends DefaultListModel<MovieEntity>{
 
     public jlistModel() {
     }
-
-    public void get(ListSelectionListener listSelectionListener) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    
 }

@@ -39,7 +39,6 @@ public class DBCUserController extends DBAbstractController<CUserEntity> {
         } catch (DBAbstractControllerException ex) {
             throw new DBUser_CreateException();
         }
-
     }
 
     public void deleteUser(CUserEntity userEntity) throws DBAbstractControllerException {
@@ -75,8 +74,7 @@ public class DBCUserController extends DBAbstractController<CUserEntity> {
     }
 
     /**
-     * @return
-     * @throws DBAbstractControllerException 
+     * @return @throws DBAbstractControllerException
      */
     public List<CUserEntity> getAllUser() throws DBAbstractControllerException {
         try {
@@ -85,5 +83,4 @@ public class DBCUserController extends DBAbstractController<CUserEntity> {
             throw new DBUser_GetAllException();
         }
     }
-
 }

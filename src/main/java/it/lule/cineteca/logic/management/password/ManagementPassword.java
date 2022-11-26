@@ -12,8 +12,6 @@ import it.lule.cineteca.logic.exceptions.password.wrongPasswordException.Passwor
 import it.lule.cineteca.logic.exceptions.password.wrongPasswordException.PasswordTooShortException;
 import it.lule.cineteca.logic.exceptions.password.wrongPasswordException.UserEmptyException;
 import java.util.Arrays;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -33,36 +31,29 @@ public class ManagementPassword {
     }
 
     /**
-     * Login
+     * Rule Login
      *
      * @param jTextFieldUser
      * @param jPasswordField
+     * @throws it.lule.cineteca.logic.exceptions.password.PasswordException
      */
-    public void login(String jTextFieldUser, char[] jPasswordField) {
-        try {
-            // jPasswordField, jPasswordField it's correct
-            checkPassword(jTextFieldUser, jPasswordField, jPasswordField);
-        } catch (PasswordException ex) {
-            Logger.getLogger(ManagementPassword.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    public void RulePasswordLogin(String jTextFieldUser, char[] jPasswordField) throws PasswordException {
+        // jPasswordField, jPasswordField it's correct
+        checkPassword(jTextFieldUser, jPasswordField, jPasswordField);
     }
 
     /**
-     * Create User
+     * Rule Registration
      *
      * @param jTextFieldUser
      * @param jPasswordField
      * @param jPasswordFieldConfirm
+     * @throws it.lule.cineteca.logic.exceptions.password.PasswordException
      */
-    public void createUser(String jTextFieldUser, char[] jPasswordField,
-            char[] jPasswordFieldConfirm) {
-
-        try {
-            checkPassword(jTextFieldUser, jPasswordField, jPasswordFieldConfirm);
-            passwordsAreNotEquals(jPasswordField, jPasswordFieldConfirm);
-        } catch (PasswordException ex) {
-            Logger.getLogger(ManagementPassword.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    public void RulePasswordRegistration(String jTextFieldUser, char[] jPasswordField,
+            char[] jPasswordFieldConfirm) throws PasswordException {
+        checkPassword(jTextFieldUser, jPasswordField, jPasswordFieldConfirm);
+        passwordsAreNotEquals(jPasswordField, jPasswordFieldConfirm);
     }
 
     public ManagementPassword() {

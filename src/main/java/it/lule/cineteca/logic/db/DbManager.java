@@ -42,7 +42,7 @@ public class DbManager {
     }
 
     private void initConnection() {
-        if (sessionFactory != null) {
+        if (sessionFactory == null) {
 
             try {
                 // configures settings from hibernate.cfg.xml

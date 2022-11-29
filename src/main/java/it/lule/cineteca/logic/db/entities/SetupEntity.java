@@ -4,6 +4,7 @@
  */
 package it.lule.cineteca.logic.db.entities;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,7 +17,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "setup")
-public class SetupEntity {
+public class SetupEntity implements Serializable {
     
     private static final long serialVersionUID = 1L;
     @Id
@@ -25,7 +26,8 @@ public class SetupEntity {
     private String key;
     private String value;
 
-    public SetupEntity() {
+    public SetupEntity(){
+        
     }
 
     public SetupEntity(Long id, String key, String value) {

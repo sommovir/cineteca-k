@@ -36,6 +36,9 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("[Cineteka-k] Welcome ! " + getVersion());
         UserDialog dialog = new UserDialog(new JFrame(), true);
+        
+        DbManager.getInstance().init();
+        System.out.println("[INFO] database initializated");
 
         /* io ricordavo JFrame.EXIT_ON_CLOSE */
         dialog.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

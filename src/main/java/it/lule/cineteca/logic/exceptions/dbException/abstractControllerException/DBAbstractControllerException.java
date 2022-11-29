@@ -11,7 +11,7 @@ import it.lule.cineteca.logic.exceptions.dbException.CinetecaException;
  *
  * @author lele
  */
-public class DBAbstractControllerException extends CinetecaException {
+public abstract class DBAbstractControllerException extends CinetecaException {
 
     public DBAbstractControllerException(ErrorCodeEnum errorCode) {
         super(errorCode);

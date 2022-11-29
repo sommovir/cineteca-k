@@ -4,17 +4,25 @@
  */
 package it.lule.cineteca.logic.db;
 
+import it.lule.cineteca.logic.db.controller.DBCUserController;
+import it.lule.cineteca.logic.db.controller.DBSetupController;
+import it.lule.cineteca.logic.db.entities.CUserEntity;
+import it.lule.cineteca.logic.db.entities.SetupEntity;
+import it.lule.cineteca.logic.db.entities.SetupKeys;
+import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBAbstractControllerException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-
 
 /**
  *
  * @author lele
  */
 public class DbManager {
+
     private SessionFactory sessionFactory = null;
     private static DbManager instance = null;
 
@@ -26,25 +34,44 @@ public class DbManager {
     }
 
     public DbManager() {
+        //initConnection();
+    }
+
+    public void init() {
         initConnection();
     }
-    
-    private void initConnection() {
-        try {
-            // configures settings from hibernate.cfg.xml 
-            StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure().build();
 
-            sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
-        } catch (Exception e) {
-            // handle the exception
-            throw e;
-        }        
+    private void initConnection() {
+        if (sessionFactory != null) {
+
+            try {
+                // configures settings from hibernate.cfg.xml
+                StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure().build();
+
+                sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
+                SetupEntity installedSetup = DBSetupController.getInstance().getEntityById(SetupEntity.class, SetupKeys.INSTALLED.getId());
+                if (installedSetup == null || !installedSetup.getValue().equals("DONE")) {
+                    //salvare le cose che vuoi mettere in installazione
+
+                    CUserEntity cUserEntity = new CUserEntity("gino", "gino");
+                    DBCUserController.getInstance().createEntity(cUserEntity);
+                    System.out.println("[INFO] creazione utente gino.. [DONE]");
+
+                    installedSetup.setValue("DONE");
+                    DBSetupController.getInstance().editEntity(installedSetup);
+                }
+            } catch (DBAbstractControllerException ex) {
+                Logger.getLogger(DbManager.class.getName()).log(Level.SEVERE, null, ex);
+                System.err.println("[CRITICAL] initialization of database failed. ");
+            }
+        }
+
     }
-    
-    public SessionFactory getSessionFactory(){
+
+    public SessionFactory getSessionFactory() {
         return sessionFactory;
-    }    
-        
+    }
+
 //    private SessionFactory sessionFactory = null;
 //    private static DbManager instance = null;
 //
@@ -309,5 +336,4 @@ public class DbManager {
 //    public SessionFactory getSessionFactory(){
 //        return sessionFactory;
 //    }
-
 }

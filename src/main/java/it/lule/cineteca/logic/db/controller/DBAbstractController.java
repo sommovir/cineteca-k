@@ -6,12 +6,13 @@ package it.lule.cineteca.logic.db.controller;
 
 import it.lule.cineteca.logic.db.DbManager;
 import it.lule.cineteca.logic.enums.ErrorCodeEnum;
+import it.lule.cineteca.logic.exceptions.dbException.DBGenericException;
 import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBAbstractControllerException;
 import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.errorDbException.DBIsNullException;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
-
+import java.lang.*;
 /**
  * // throw new UnsupportedOperationException();
  *
@@ -41,13 +42,12 @@ public abstract class DBAbstractController<E> {
         try {
             isNull(entity);
             initConnection();
-
             session.beginTransaction();
             session.persist(entity);
             session.getTransaction().commit();
             session.close();
         } catch (Exception ex) {
-            throw new DBAbstractControllerException(ErrorCodeEnum.DB_GENERIC_ERROR);
+            throw new DBGenericException();
         }
     }
 
@@ -88,19 +88,18 @@ public abstract class DBAbstractController<E> {
             singleResult = createQuery.getSingleResult();
             session.close();
         } catch (Exception ex) {
-            throw new DBAbstractControllerException(ErrorCodeEnum.DB_GENERIC_ERROR);
+            throw new DBGenericException();
         }
         return (E) singleResult;
     }
 
-    public E getEntityById(E entity) throws DBAbstractControllerException {
-//        isNull(entity);
-//        initConnection();
-//        session.beginTransaction();
-//        session.getTransaction().commit();
-//        session.close();
-//        return null;
-        throw new UnsupportedOperationException();
+    public E getEntityById(Class<E> clazz, Long id) throws DBAbstractControllerException {
+        initConnection();
+        session.beginTransaction();
+        E e = (E) session.get(clazz, id);
+        session.getTransaction().commit();
+        session.close();
+        return e;
     }
 
     public List<E> getAllEntites(String query) throws DBAbstractControllerException {

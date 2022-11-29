@@ -13,6 +13,7 @@ import java.awt.Font;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -147,12 +148,18 @@ public class UserDialog extends javax.swing.JDialog {
                     jTextFieldUser.getText(), jPasswordField.getPassword());
             disposeGui();
          } catch (DBAbstractControllerException ex) {
+            printErrorOnGUI(ex.getMessage());
             Logger.getLogger(UserDialog.class.getName()).log(Level.SEVERE, null, ex);
         } catch (PasswordException ex) {
             Logger.getLogger(UserDialog.class.getName()).log(Level.SEVERE, null, ex);
         }           
     }//GEN-LAST:event_jButtonLoginActionPerformed
 
+    
+    public void printErrorOnGUI(String error){
+        this.jLabelError.setText(error);
+    }
+    
     private void disposeGui() {
         this.dispose();
         MainGui mainGui = new MainGui();

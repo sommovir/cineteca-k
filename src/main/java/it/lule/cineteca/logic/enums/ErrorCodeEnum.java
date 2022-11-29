@@ -10,6 +10,7 @@ package it.lule.cineteca.logic.enums;
  * @author lele
  */
 public enum ErrorCodeEnum {
+    DB_GENERIC_ERROR(0,"Generic error"),
     DB_USER_NOT_EXISTS(1,"User not exists"),
     DB_USER_ALREADY_EXISTS(2,"User already exists"),
     DB_USER_ALREADY_CONNECTED(3,"User already connected"),

@@ -5,6 +5,7 @@
 package it.lule.cineteca.logic.db.controller;
 
 import it.lule.cineteca.logic.db.DbManager;
+import it.lule.cineteca.logic.enums.ErrorCodeEnum;
 import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBAbstractControllerException;
 import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.errorDbException.DBIsNullException;
 import java.util.List;
@@ -37,22 +38,17 @@ public abstract class DBAbstractController<E> {
     }
 
     public void createEntity(E entity) throws DBAbstractControllerException {
-        isNull(entity);
-        initConnection();
+        try {
+            isNull(entity);
+            initConnection();
 
-        session.beginTransaction();
-        session.persist(entity);
-        session.getTransaction().commit();
-        session.close();
-
-//        try {
-//            session.beginTransaction();
-//            session.persist(entity);
-//            session.getTransaction().commit();
-//            session.close();
-//        } catch (Exception e) {
-//            throw new DBCreateException();
-//        }
+            session.beginTransaction();
+            session.persist(entity);
+            session.getTransaction().commit();
+            session.close();
+        } catch (Exception ex) {
+            throw new DBAbstractControllerException(ErrorCodeEnum.DB_GENERIC_ERROR);
+        }
     }
 
     public void deleteEntity(E entity) throws DBAbstractControllerException {
@@ -83,12 +79,17 @@ public abstract class DBAbstractController<E> {
     }
 
     public E getEntityByQuery(String query) throws DBAbstractControllerException {
-        initConnection();
-        session.beginTransaction();
-        Query<E> createQuery
-                = session.createQuery(query, this.clazz);
-        E singleResult = createQuery.getSingleResult();
-        session.close();
+        E singleResult = null;
+        try {
+            initConnection();
+            session.beginTransaction();
+            Query<E> createQuery
+                    = session.createQuery(query, this.clazz);
+            singleResult = createQuery.getSingleResult();
+            session.close();
+        } catch (Exception ex) {
+            throw new DBAbstractControllerException(ErrorCodeEnum.DB_GENERIC_ERROR);
+        }
         return (E) singleResult;
     }
 

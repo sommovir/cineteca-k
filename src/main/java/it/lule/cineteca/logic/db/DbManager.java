@@ -49,17 +49,17 @@ public class DbManager {
                 StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure().build();
 
                 sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
-                SetupEntity installedSetup = DBSetupController.getInstance().getEntityById(SetupEntity.class, SetupKeys.INSTALLED.getId());
-                if (installedSetup == null || !installedSetup.getValue().equals("DONE")) {
-                    //salvare le cose che vuoi mettere in installazione
-
+//                SetupEntity installedSetup = DBSetupController.getInstance().getEntityById(SetupEntity.class, SetupKeys.INSTALLED.getId());
+//                if (installedSetup == null || !installedSetup.getValue().equals("DONE")) {
+//                    //salvare le cose che vuoi mettere in installazione
+//
                     CUserEntity cUserEntity = new CUserEntity("gino", "gino");
                     DBCUserController.getInstance().createEntity(cUserEntity);
                     System.out.println("[INFO] creazione utente gino.. [DONE]");
 
-                    installedSetup.setValue("DONE");
-                    DBSetupController.getInstance().editEntity(installedSetup);
-                }
+//                    installedSetup.setValue("DONE");
+//                    DBSetupController.getInstance().editEntity(installedSetup);
+//                }
             } catch (DBAbstractControllerException ex) {
                 Logger.getLogger(DbManager.class.getName()).log(Level.SEVERE, null, ex);
                 System.err.println("[CRITICAL] initialization of database failed. ");

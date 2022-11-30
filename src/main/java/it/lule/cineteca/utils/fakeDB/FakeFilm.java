@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package it.lule.cineteca.logic.db.fakeDB;
+package it.lule.cineteca.utils.fakeDB;
 
 import it.lule.cineteca.logic.db.controller.DBFilmDirectorController;
 import it.lule.cineteca.logic.db.controller.DBMovieController;
@@ -19,12 +19,12 @@ import java.util.logging.Logger;
  */
 public class FakeFilm {
 
-    public FakeFilm() {
-        write();
-//        read();
-    }
+//    public FakeFilm() {
+//        write();
+////        read();
+//    }
 
-    private void read() throws DBAbstractControllerException {
+    public static void read() throws DBAbstractControllerException {
         List<MovieEntity> movies = DBMovieController.getInstance().getAllMovie();
 
         for (MovieEntity movy : movies) {
@@ -35,7 +35,7 @@ public class FakeFilm {
 //        }
     }
 
-    private void write() {
+    public static void write() {
         boolean flag = false;
 
         for (int i = 0; i < 20; i++) {
@@ -47,7 +47,7 @@ public class FakeFilm {
         }
     }
 
-    private void writeOnDb(String originalTitle, String nameDirector, boolean favorite) {
+    private static void writeOnDb(String originalTitle, String nameDirector, boolean favorite) {
         try {
             MovieEntity movieEntity = new MovieEntity();
             movieEntity.setOriginalTitle(originalTitle);

@@ -6,6 +6,7 @@ package it.lule.cineteca.logic.db.controller;
 
 import it.lule.cineteca.logic.db.entities.CUserEntity;
 import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBAbstractControllerException;
+import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBGenericErrorException;
 import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.errorDBUserController.DBUser_CreateException;
 import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.errorDBUserController.DBUser_DeleteException;
 import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.errorDBUserController.DBUser_EditException;
@@ -57,7 +58,7 @@ public class DBCUserController extends DBAbstractController<CUserEntity> {
         }
     }
 
-    public CUserEntity getUserByName(CUserEntity userEntity) throws DBAbstractControllerException {
+    public CUserEntity getUserByName(CUserEntity userEntity) throws DBAbstractControllerException, DBGenericErrorException {
         try {
             return (CUserEntity) getEntityByQuery(Search.userByName(userEntity.getUser()));
         } catch (DBAbstractControllerException e) {

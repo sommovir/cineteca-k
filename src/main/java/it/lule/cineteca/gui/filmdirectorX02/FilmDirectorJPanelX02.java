@@ -5,9 +5,14 @@
  */
 package it.lule.cineteca.gui.filmdirectorX02;
 
-import it.lule.cineteca.gui.movie.add.AddMovieJFrame;
+import it.lule.cineteca.logic.db.controller.DBFilmDirectorController;
+import it.lule.cineteca.logic.db.entities.FilmDirectorEntity;
+import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBAbstractControllerException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
 
 /**
  *
@@ -19,7 +24,8 @@ public class FilmDirectorJPanelX02 extends javax.swing.JPanel implements ActionL
      */
     public FilmDirectorJPanelX02() {
         initComponents();
-
+        this.jTextFieldSurname.setText("Surname");
+        this.jTextFieldName.setText("Name");
     }
 
     /**
@@ -77,7 +83,7 @@ public class FilmDirectorJPanelX02 extends javax.swing.JPanel implements ActionL
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonAddMovie, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 8, Short.MAX_VALUE)
+                        .addGap(0, 16, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabelDateOfBirth, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -113,8 +119,9 @@ public class FilmDirectorJPanelX02 extends javax.swing.JPanel implements ActionL
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonAddMovie))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 159, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jButtonAddFilmDirector.setText("Add Film director");
@@ -139,11 +146,11 @@ public class FilmDirectorJPanelX02 extends javax.swing.JPanel implements ActionL
                 .addGap(0, 13, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
+                        .addGap(20, 20, 20)
                         .addComponent(jButtonAddFilmDirector)
-                        .addGap(74, 74, 74)
+                        .addGap(72, 72, 72)
                         .addComponent(jButtonRemoveFilmDirector, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18))
+                        .addGap(13, 13, 13))
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -152,16 +159,24 @@ public class FilmDirectorJPanelX02 extends javax.swing.JPanel implements ActionL
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonAddFilmDirector)
-                    .addComponent(jButtonRemoveFilmDirector))
-                .addGap(21, 21, 21))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonRemoveFilmDirector)
+                    .addComponent(jButtonAddFilmDirector))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAddFilmDirectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddFilmDirectorActionPerformed
-
+        FilmDirectorEntity directorEntity = new FilmDirectorEntity();
+        directorEntity.setName(jTextFieldName.getText());
+        directorEntity.setSurname(jTextFieldSurname.getText());
+        
+        try {
+            DBFilmDirectorController.getInstance().createFilmDirector(directorEntity);
+        } catch (DBAbstractControllerException ex) {
+            Logger.getLogger(FilmDirectorJPanelX02.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButtonAddFilmDirectorActionPerformed
 
     private void jButtonAddMovieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddMovieActionPerformed

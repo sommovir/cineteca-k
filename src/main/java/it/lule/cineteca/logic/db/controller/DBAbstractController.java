@@ -28,7 +28,7 @@ public abstract class DBAbstractController<E> {
         this.clazz = clazz;
     }
 
-    private void initConnection() {
+    protected void initConnection() {
         session = DbManager.getInstance().getSessionFactory().openSession();
     }
 
@@ -55,11 +55,11 @@ public abstract class DBAbstractController<E> {
         isNull(entity);
 
         try {
-        initConnection();
-        session.beginTransaction();
-        session.delete(entity);
-        session.getTransaction().commit();
-        session.close();
+            initConnection();
+            session.beginTransaction();
+            session.delete(entity);
+            session.getTransaction().commit();
+            session.close();
         } catch (Exception ex) {
             throw new DBGenericErrorException(ErrorCodeEnum.DB_GENERIC_ERROR);
         }
@@ -69,22 +69,23 @@ public abstract class DBAbstractController<E> {
         isNull(entity);
 
         try {
-        initConnection();
-        session.beginTransaction();
-        session.merge(entity);
-        session.getTransaction().commit();
-        session.close();
+            initConnection();
+            session.beginTransaction();
+            session.merge(entity);
+            session.getTransaction().commit();
+            session.close();
         } catch (Exception ex) {
             throw new DBGenericErrorException(ErrorCodeEnum.DB_GENERIC_ERROR);
         }
     }
 
     public E getEntityByQuery(String query) throws DBAbstractControllerException {
+        Query<E> createQuery = null;
         E singleResult = null;
         try {
             initConnection();
             session.beginTransaction();
-            Query<E> createQuery
+             createQuery
                     = session.createQuery(query, this.clazz);
             singleResult = createQuery.getSingleResult();
             session.close();
@@ -104,7 +105,7 @@ public abstract class DBAbstractController<E> {
 //        } catch (Exception ex) {
 //            throw new DBGenericErrorException(ErrorCodeEnum.DB_GENERIC_ERROR);
 //        }
-        
+
         throw new UnsupportedOperationException();
     }
 
@@ -116,9 +117,10 @@ public abstract class DBAbstractController<E> {
                     = session.createQuery(query, this.clazz);
             List<E> resultList = createQuery.getResultList();
             session.close();
-            return resultList;     
+            return resultList;
         } catch (Exception ex) {
             throw new DBGenericErrorException(ErrorCodeEnum.DB_GENERIC_ERROR);
         }
     }
+    
 }

@@ -9,9 +9,14 @@ package it.lule.cineteca.logic.db.controller;
  * @author lele
  */
 public class Search {
-
     public static String userByName(String user) {
         String query = "SELECT a FROM CUserEntity a WHERE a.user= :user";
+        query = query.replace(":user", "'" + user +"'");
+        return query;
+    }
+    
+    public static String userIsAlreadyExits(String user) {
+        String query = "SELECT count(*) FROM CUserEntity a WHERE a.user= :user";
         query = query.replace(":user", "'" + user +"'");
         return query;
     }

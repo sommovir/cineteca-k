@@ -27,17 +27,21 @@ public class FilmDirectorJFrameX02 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        filmDirectorJPanelX021 = new it.lule.cineteca.gui.filmdirectorX02.FilmDirectorJPanelX02();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 315, Short.MAX_VALUE)
+            .addComponent(filmDirectorJPanelX021, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 367, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(filmDirectorJPanelX021, javax.swing.GroupLayout.DEFAULT_SIZE, 363, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -86,5 +90,6 @@ public class FilmDirectorJFrameX02 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private it.lule.cineteca.gui.filmdirectorX02.FilmDirectorJPanelX02 filmDirectorJPanelX021;
     // End of variables declaration//GEN-END:variables
 }

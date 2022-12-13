@@ -39,6 +39,9 @@ public class ManagementLoginRegistration {
         ManagementPassword.getInstance().RulePasswordRegistration(user, password, passwordConfrim);
 
         CUserEntity userEntity = new CUserEntity(user, new String(password));
+
+        boolean alreadyExits_DBG = DBCUserController.getInstance().isAlreadyExits_DBG(userEntity.getUser());
+        System.out.println(""+ alreadyExits_DBG);
         DBCUserController.getInstance().createUser(userEntity);
     }
 

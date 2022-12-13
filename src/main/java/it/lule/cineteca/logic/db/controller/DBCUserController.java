@@ -5,6 +5,7 @@
 package it.lule.cineteca.logic.db.controller;
 
 import it.lule.cineteca.logic.db.entities.CUserEntity;
+import it.lule.cineteca.logic.enums.ErrorCodeEnum;
 import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBAbstractControllerException;
 import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBGenericErrorException;
 import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.errorDBUserController.DBUser_CreateException;
@@ -13,7 +14,9 @@ import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException
 import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.errorDBUserController.DBUser_GetAllException;
 import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.errorDBUserController.DBUser_GetByIdException;
 import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.errorDBUserController.DBUser_GetByNameException;
+import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.errorDBUserController.DBUser_IsAlreadyExitsException;
 import java.util.List;
+import org.hibernate.query.Query;
 
 /**
  *
@@ -58,7 +61,7 @@ public class DBCUserController extends DBAbstractController<CUserEntity> {
         }
     }
 
-    public CUserEntity getUserByName(CUserEntity userEntity) throws DBAbstractControllerException, DBGenericErrorException {
+    public CUserEntity getUserByName(CUserEntity userEntity) throws DBAbstractControllerException {
         try {
             return (CUserEntity) getEntityByQuery(Search.userByName(userEntity.getUser()));
         } catch (DBAbstractControllerException e) {
@@ -83,5 +86,27 @@ public class DBCUserController extends DBAbstractController<CUserEntity> {
         } catch (DBAbstractControllerException e) {
             throw new DBUser_GetAllException();
         }
+    }
+
+    public boolean isAlreadyExits_DBG(String query) throws DBAbstractControllerException  {
+        Query<Long> createQuery = null;
+        Long singleResult = null;
+        try {
+            initConnection();
+            session.beginTransaction();
+             createQuery
+                    = session.createQuery(Search.userIsAlreadyExits(query), Long.class);
+            singleResult = createQuery.getSingleResult();
+            session.close();
+        } catch (Exception ex) {
+            throw new DBGenericErrorException(ErrorCodeEnum.DB_GENERIC_ERROR);
+        }
+        return singleResult == 1;
+
+//        try {
+//            isEntityAlreadyExits(query);
+//        } catch (DBAbstractControllerException ex) {
+//            throw new DBUser_IsAlreadyExitsException(); 
+//        }
     }
 }

@@ -143,9 +143,9 @@
                               <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="textFieldName1" pref="237" max="32767" attributes="0"/>
+                                      <Component id="textFieldTitoloTradotto" pref="237" max="32767" attributes="0"/>
                                       <Component id="textFieldReleaseDate" max="32767" attributes="0"/>
-                                      <Component id="textFieldName3" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="textFieldMainActor" alignment="0" max="32767" attributes="0"/>
                                       <Component id="textFieldTitleOrginal" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
@@ -167,7 +167,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabelTitoloTradotto" alignment="1" min="-2" pref="14" max="-2" attributes="0"/>
-                      <Component id="textFieldName1" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="textFieldTitoloTradotto" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
@@ -182,11 +182,11 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabelMainActor" min="-2" max="-2" attributes="0"/>
-                      <Component id="textFieldName3" min="-2" max="-2" attributes="0"/>
+                      <Component id="textFieldMainActor" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace pref="33" max="32767" attributes="0"/>
                   <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="17" max="32767" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jButtonAddMovie" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButtonFilmDirector" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -214,7 +214,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelMainActor">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jLabel1"/>
+            <Property name="text" type="java.lang.String" value="Main Actor"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButtonAddMovie">
@@ -227,11 +227,11 @@
         </Component>
         <Component class="java.awt.TextField" name="textFieldTitleOrginal">
         </Component>
-        <Component class="java.awt.TextField" name="textFieldName1">
+        <Component class="java.awt.TextField" name="textFieldTitoloTradotto">
         </Component>
         <Component class="java.awt.TextField" name="textFieldReleaseDate">
         </Component>
-        <Component class="java.awt.TextField" name="textFieldName3">
+        <Component class="java.awt.TextField" name="textFieldMainActor">
         </Component>
         <Component class="javax.swing.JComboBox" name="jComboBox1">
           <Properties>

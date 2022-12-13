@@ -5,7 +5,13 @@
  */
 package it.lule.cineteca.gui.movie.add;
 
+import it.lule.cineteca.gui.filmdirectorX02.FilmDirectorJFrameX02;
+import it.lule.cineteca.logic.db.controller.DBFilmDirectorController;
+import it.lule.cineteca.logic.db.controller.DBMovieController;
 import it.lule.cineteca.logic.db.entities.MovieEntity;
+import it.lule.cineteca.logic.exceptions.dbException.abstractControllerException.DBAbstractControllerException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -20,6 +26,12 @@ public class AddMovieJPanel extends javax.swing.JPanel {
      */
     public AddMovieJPanel() {
         initComponents();
+        this.textFieldMainActor.setText("Attore principale");
+        
+        this.textFieldTitoloTradotto.setText("Titolo tradotto");
+        
+        this.textFieldTitleOrginal.setText("TItolo originale");
+        this.textFieldMainActor.setText("Attore principale");        
     }
 
     /**
@@ -45,9 +57,9 @@ public class AddMovieJPanel extends javax.swing.JPanel {
         jLabelMainActor = new javax.swing.JLabel();
         jButtonAddMovie = new javax.swing.JButton();
         textFieldTitleOrginal = new java.awt.TextField();
-        textFieldName1 = new java.awt.TextField();
+        textFieldTitoloTradotto = new java.awt.TextField();
         textFieldReleaseDate = new java.awt.TextField();
-        textFieldName3 = new java.awt.TextField();
+        textFieldMainActor = new java.awt.TextField();
         jComboBox1 = new javax.swing.JComboBox<>();
         jButtonFilmDirector = new javax.swing.JButton();
 
@@ -108,7 +120,7 @@ public class AddMovieJPanel extends javax.swing.JPanel {
 
         jLabelReleaseDate.setText("ReleaseDate");
 
-        jLabelMainActor.setText("jLabel1");
+        jLabelMainActor.setText("Main Actor");
 
         jButtonAddMovie.setText("Add Film");
         jButtonAddMovie.addActionListener(new java.awt.event.ActionListener() {
@@ -146,9 +158,9 @@ public class AddMovieJPanel extends javax.swing.JPanel {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(textFieldName1, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+                                    .addComponent(textFieldTitoloTradotto, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
                                     .addComponent(textFieldReleaseDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(textFieldName3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(textFieldMainActor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(textFieldTitleOrginal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(11, 11, 11)
@@ -162,7 +174,7 @@ public class AddMovieJPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelTitoloTradotto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textFieldName1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textFieldTitoloTradotto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabelOriginalTitle)
@@ -174,10 +186,10 @@ public class AddMovieJPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelMainActor)
-                    .addComponent(textFieldName3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(textFieldMainActor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAddMovie)
                     .addComponent(jButtonFilmDirector))
@@ -203,16 +215,23 @@ public class AddMovieJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAddMovieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddMovieActionPerformed
-        movie.setId(Long.MIN_VALUE);
+//        movie.setId(Long.MIN_VALUE);
         movie.setTranslatedTitle(jLabelTitoloTradotto.getText());
         movie.setOriginalTitle(jLabelOriginalTitle.getText());
         movie.setMainActor(jLabelMainActor.getText());
-        // movie.setReleaseDate(jLabelTitoloTradotto.getText());
+        try {
+            DBMovieController.getInstance().createMovie(movie);
+            // movie.setReleaseDate(jLabelTitoloTradotto.getText());
 //        FakeManagerMovieDB.addMovies(movie);
+        } catch (DBAbstractControllerException ex) {
+            Logger.getLogger(AddMovieJPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButtonAddMovieActionPerformed
 
     private void jButtonFilmDirectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFilmDirectorActionPerformed
-
+        FilmDirectorJFrameX02 filmDirector = new FilmDirectorJFrameX02();
+        filmDirector.setLocationRelativeTo(filmDirector);
+        filmDirector.setVisible(true);
     }//GEN-LAST:event_jButtonFilmDirectorActionPerformed
 
 
@@ -232,9 +251,9 @@ public class AddMovieJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabelTitoloTradotto;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private java.awt.TextField textFieldName1;
-    private java.awt.TextField textFieldName3;
+    private java.awt.TextField textFieldMainActor;
     private java.awt.TextField textFieldReleaseDate;
     private java.awt.TextField textFieldTitleOrginal;
+    private java.awt.TextField textFieldTitoloTradotto;
     // End of variables declaration//GEN-END:variables
 }

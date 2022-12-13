@@ -13,7 +13,6 @@ import java.awt.Font;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -166,6 +165,7 @@ public class UserDialog extends javax.swing.JDialog {
         mainGui.dispose();
         mainGui.setLocationRelativeTo(mainGui);
         mainGui.setVisible(true);
+        
     }
 
     /**
